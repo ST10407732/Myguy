@@ -1,0 +1,39 @@
+﻿@model List<MYGUYY.Models.Message>
+@{
+    ViewBag.Title = "Task Messages";
+    var taskId = ViewData["TaskId"];
+}
+
+<div class="container mt-4">
+    <h2 class="text-primary mb-3">Messages for Task @taskId</h2>
+
+    <div class="message-form mb-4 p-4 shadow-sm bg-white rounded">
+        <form method="post" asp-action="SendMessageForClient" asp-route-taskId="@taskId">
+            <div class="form-group">
+                <label for="content" class="font-weight-bold">New Message:</label>
+                <textarea id="content" name="content" class="form-control" rows="4" placeholder="Type your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Send</button>
+        </form>
+    </div>
+
+    <hr class="my-4" />
+
+    <h3 class="text-secondary mb-3">Message History</h3>
+    @if (Model.Count > 0)
+    {
+        <ul class="list-group">
+            @foreach (var message in Model)
+            {
+                <li class="list-group-item">
+                    <strong>@message.SentAt.ToString("yyyy-MM-dd HH:mm"):</strong>
+                    <span class="ml-2">@message.Content</span>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="text-muted">No messages yet.</p>
+    }
+</div>

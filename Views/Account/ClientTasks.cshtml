@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MYGUYY.Models.TaskRequest>
+@{
+    ViewData["Title"] = "Client Tasks";
+}
+
+<h2>Client Tasks</h2>
+
+@if (ViewBag.TaskSummaries != null)
+{
+    <div class="task-summary">
+        <h4>Task Summary:</h4>
+        <ul>
+            <li>Total Tasks: @ViewBag.TaskSummaries.Total</li>
+            <li>Pending Tasks: @ViewBag.TaskSummaries.Pending</li>
+            <li>Accepted Tasks: @ViewBag.TaskSummaries.Accepted</li>
+            <li>Completed Tasks: @ViewBag.TaskSummaries.Completed</li>
+            <li>Declined Tasks: @ViewBag.TaskSummaries.Declined</li>
+        </ul>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Description</td>
+                <td>@task.Status</td>
+                <td>@task.CreatedAt.ToString("MM/dd/yyyy HH:mm")</td>
+                <td>
+                    @if (task.Status == "Pending")
+                    {
+                        <a href="@Url.Action("SendMessageForClient", "Account", new { taskId = task.Id })" class="btn btn-primary">Send Message</a>
+                    }
+                    else if (task.Status == "Accepted")
+                    {
+                        <a href="@Url.Action("ViewMessages", "Account", new { taskId = task.Id })" class="btn btn-secondary">View Messages</a>
+                    }
+                    else
+                    {
+                        <span class="badge badge-secondary">No Action</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

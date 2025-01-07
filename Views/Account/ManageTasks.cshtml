@@ -1,0 +1,44 @@
+﻿<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Client Username</th>
+            <th>Driver Username</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Description</td>
+                <td>@(task.Client != null ? task.Client.Username : "Not Assigned")</td>
+                <td>@(task.Driver != null ? task.Driver.Username : "Not Assigned")</td>
+                <td>@task.Status</td>
+                <td>
+                    @if (task.Status == "Pending")
+                    {
+                        <form method="post" asp-action="UpdateTaskStatus" asp-route-id="@task.Id" asp-route-status="Accepted" style="display:inline;">
+                            <button type="submit" class="btn btn-success btn-sm">Accept</button>
+                        </form>
+                        <form method="post" asp-action="UpdateTaskStatus" asp-route-id="@task.Id" asp-route-status="Declined" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Decline</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form method="post" asp-action="UpdateTaskStatus" asp-route-id="@task.Id" asp-route-status="Completed" style="display:inline;">
+                            <button type="submit" class="btn btn-primary btn-sm">Mark as Completed</button>
+                        </form>
+                    }
+
+                    <!-- View Messages Button -->
+                    <form method="get" asp-action="ViewMessages" asp-route-taskId="@task.Id" style="display:inline;">
+                        <button type="submit" class="btn btn-info btn-sm">View Messages</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

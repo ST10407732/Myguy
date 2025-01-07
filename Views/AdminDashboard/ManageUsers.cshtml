@@ -1,0 +1,35 @@
+﻿@* @model IEnumerable<MYGUYY.Models.User>
+
+<h2>Manage Users</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Name</td>
+                <td>@(user.IsActive ? "Active" : "Inactive")</td>
+                <td>
+                    @if (!user.IsActive)
+                    {
+                        <a href="@Url.Action("ActivateUser", "Admin", new { id = user.Id })">Activate</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("DeactivateUser", "Admin", new { id = user.Id })">Deactivate</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+ *@

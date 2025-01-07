@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MYGUYY.Models.Review>
+
+<h1>Reviews</h1>
+<a href="/Review/Create">Add New Review</a>
+<table>
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Rating</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var review in Model)
+        {
+            <tr>
+                <td>@review.UserId</td>
+                <td>@review.Rating</td>
+                <td>@review.Comments</td>
+            </tr>
+        }
+    </tbody>
+</table>

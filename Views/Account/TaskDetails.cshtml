@@ -1,0 +1,53 @@
+﻿@model MYGUYY.Models.TaskRequest
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<h1>Task Details</h1>
+
+<div class="mb-3">
+    <a href="@Url.Action("ManageTasks")" class="btn btn-primary">Back to Tasks</a>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Description</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Client</th>
+        <td>@(Model.Client != null ? Model.Client.Username : "Not Assigned")</td>
+    </tr>
+    <tr>
+        <th>Driver</th>
+        <td>@(Model.Driver != null ? Model.Driver.Username : "Not Assigned")</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <th>Created At</th>
+        <td>@Model.CreatedAt</td>
+    </tr>
+</table>
+
+<!-- Actions -->
+<div class="mb-3">
+    @if (Model.Status == "Pending")
+    {
+        <form method="post" asp-action="UpdateTaskStatus" asp-route-id="@Model.Id" asp-route-status="Accepted" style="display:inline;">
+            <button type="submit" class="btn btn-success btn-sm">Accept</button>
+        </form>
+        <form method="post" asp-action="UpdateTaskStatus" asp-route-id="@Model.Id" asp-route-status="Declined" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Decline</button>
+        </form>
+    }
+    else if (Model.Status == "Accepted")
+    {
+        <form method="post" asp-action="UpdateTaskStatus" asp-route-id="@Model.Id" asp-route-status="Completed" style="display:inline;">
+            <button type="submit" class="btn btn-primary btn-sm">Mark as Completed</button>
+        </form>
+    }
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MYGUYY.Models.TaskRequest>
+@{
+    ViewData["Title"] = "Available Tasks for Drivers";
+}
+
+<div class="container mt-4">
+    <h2 class="text-primary mb-4">@ViewData["Title"]</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-info">
+            @TempData["Message"]
+        </div>
+    }
+
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Description</th>
+                <th>Client</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model)
+            {
+                <tr>
+                    <td>@task.Description</td>
+                    <td>@task.Client.Username</td>
+                    <td>
+                        <span class="badge @(task.Status == "Pending" ? "badge-warning" : "badge-success")">@task.Status</span>
+                    </td>
+                    <td>
+                        @if (task.Status == "Pending")
+                        {
+                            <form method="post" asp-action="AcceptTask" asp-route-id="@task.Id" style="display:inline;">
+                                <button class="btn btn-primary btn-sm" type="submit">Accept</button>
+                            </form>
+                            <form method="post" asp-action="DeclineTask" asp-route-id="@task.Id" style="display:inline;">
+                                <button class="btn btn-danger btn-sm" type="submit">Decline</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

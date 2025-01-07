@@ -1,0 +1,65 @@
+﻿<!-- Include Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+<!-- Create the Map Container -->
+<div id="map" style="height: 500px; width: 100%;"></div>
+
+<!-- Form to submit the task with pickup and dropoff locations -->
+<form id="taskForm" method="post" asp-action="CreateTask">
+    <input type="hidden" id="PickupLatitude" name="PickupLatitude" />
+    <input type="hidden" id="PickupLongitude" name="PickupLongitude" />
+    <input type="hidden" id="DropoffLatitude" name="DropoffLatitude" />
+    <input type="hidden" id="DropoffLongitude" name="DropoffLongitude" />
+
+    <div>
+        <label for="Description">Description:</label>
+        <input type="text" id="Description" name="Description" />
+    </div>
+
+    <button type="submit">Create Task</button>
+</form>
+
+<!-- Include Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var map = L.map('map').setView([51.505, -0.09], 13); // Default coordinates for map center
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var pickupMarker = null;
+        var dropoffMarker = null;
+
+        // Add event listener for map clicks to select locations
+        map.on('click', function (e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+
+            // If the pick-up marker is not set, set it
+            if (!pickupMarker) {
+                pickupMarker = L.marker([lat, lng]).addTo(map)
+                    .bindPopup('Pick-up location')
+                    .openPopup();
+
+                // Set hidden input fields for the pick-up location
+                document.getElementById("PickupLatitude").value = lat;
+                document.getElementById("PickupLongitude").value = lng;
+            }
+            // If pick-up is already set, set the drop-off marker
+            else if (!dropoffMarker) {
+                dropoffMarker = L.marker([lat, lng]).addTo(map)
+                    .bindPopup('Drop-off location')
+                    .openPopup();
+
+                // Set hidden input fields for the drop-off location
+                document.getElementById("DropoffLatitude").value = lat;
+                document.getElementById("DropoffLongitude").value = lng;
+            }
+        });
+    });
+</script>

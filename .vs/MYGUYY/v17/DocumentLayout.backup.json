@@ -1,0 +1,1464 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\createtask.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\createtask.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\viewmessages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\viewmessages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\taskrequestsfordriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\taskrequestsfordriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\taskrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\taskrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\taskrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\taskrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\clienttasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\clienttasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\clientmap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\clientmap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\Downloads\\leaflet\\leaflet.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\taskdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\taskdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\managetasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\managetasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\sendmessage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\sendmessage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\viewmessagesfordriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\viewmessagesfordriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\user\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\user\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\usertask\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\usertask\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\usertask\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\usertask\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\account\\drivertasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\account\\drivertasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\Downloads\\leaflet\\leaflet-src.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\Downloads\\leaflet\\leaflet-src.esm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\usertaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\usertaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\hubs\\messagehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:hubs\\messagehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\admin\\managetasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\admin\\managetasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\usertask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\usertask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\admindashboard\\manageusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\admindashboard\\manageusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\admindashboard\\viewrequests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\admindashboard\\viewrequests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\taskrequest\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\taskrequest\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\admindashboard\\financialreports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\admindashboard\\financialreports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\admin\\manageusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\admin\\manageusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\data\\myguyycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:data\\myguyycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\messagingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\messagingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\taskrequest\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\taskrequest\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\taskrequest\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\taskrequest\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\myguyy.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:myguyy.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\user\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\user\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\taskrequest\\placetaskrequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\taskrequest\\placetaskrequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241229091509_updatetaskrequestschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241229091509_updatetaskrequestschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\usertask\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\usertask\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\models\\financialreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:models\\financialreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241222063321_newww.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241222063321_newww.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222060254_update1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241222060254_update1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222055146_new1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241222055146_new1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222054232_fk5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241222054232_fk5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222053529_latest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241222053529_latest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241221200900_pendingchanges.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241221200900_pendingchanges.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241218163215_dave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241218163215_dave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241217063259_creat2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241217063259_creat2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241217062845_createview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241217062845_createview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203092044_new.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241203092044_new.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203090150_MY.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241203090150_MY.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203090101_MYMIGRATION.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241203090101_MYMIGRATION.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203085939_mymigrate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20241203085939_mymigrate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\views\\review\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:views\\review\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241229111257_ooooooo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241229111257_ooooooo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241229095658_brandnew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241229095658_brandnew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241229095425_updatetaskrequestschemaaaa2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241229095425_updatetaskrequestschemaaaa2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241229094358_updatetaskrequestschemaaaa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241229094358_updatetaskrequestschemaaaa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241228184354_pagetowork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241228184354_pagetowork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241228161255_dave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241228161255_dave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241228102031_newrelationships.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241228102031_newrelationships.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241227063818_togenerate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241227063818_togenerate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20241230061444_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20241230061444_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20250103165725_newmodelsformessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20250103165725_newmodelsformessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20250103085529_driverapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20250103085529_driverapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20250106091930_removelatt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20250106091930_removelatt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20250106004932_maps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20250106004932_maps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|c:\\users\\davyc\\source\\repos\\myguyy\\migrations\\20250105212340_mapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2DFCE62-F325-4EC4-AFA4-446D3E22D4DA}|MYGUYY.csproj|solutionrelative:migrations\\20250105212340_mapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 133,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaskRequestsForDriver.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\TaskRequestsForDriver.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\TaskRequestsForDriver.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\TaskRequestsForDriver.cshtml",
+              "RelativeToolTip": "Views\\Account\\TaskRequestsForDriver.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-29T07:09:37.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ViewMessages.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ViewMessages.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ViewMessages.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ViewMessages.cshtml",
+              "RelativeToolTip": "Views\\Account\\ViewMessages.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-03T13:05:26.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreateTask.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\CreateTask.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\CreateTask.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\CreateTask.cshtml",
+              "RelativeToolTip": "Views\\Account\\CreateTask.cshtml",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAUwIgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-28T11:13:55.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-17T10:01:37.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAIBAAAAAAAAAADwv6cBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T09:59:35.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T19:01:53.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T16:58:24.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TaskRequest.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\TaskRequest.cs",
+              "RelativeDocumentMoniker": "Models\\TaskRequest.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\TaskRequest.cs",
+              "RelativeToolTip": "Models\\TaskRequest.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAcwCQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T09:06:40.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TaskRequestController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\TaskRequestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TaskRequestController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\TaskRequestController.cs",
+              "RelativeToolTip": "Controllers\\TaskRequestController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwGIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T09:08:21.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ClientTasks.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ClientTasks.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ClientTasks.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ClientTasks.cshtml",
+              "RelativeToolTip": "Views\\Account\\ClientTasks.cshtml",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAUwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-30T08:31:06.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "leaflet.js",
+              "DocumentMoniker": "C:\\Users\\davyc\\Downloads\\leaflet\\leaflet.js",
+              "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\leaflet\\leaflet.js",
+              "ToolTip": "C:\\Users\\davyc\\Downloads\\leaflet\\leaflet.js",
+              "RelativeToolTip": "..\\..\\..\\Downloads\\leaflet\\leaflet.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAADROAIAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-06T08:50:29.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ManageTasks.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ManageTasks.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ManageTasks.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ManageTasks.cshtml",
+              "RelativeToolTip": "Views\\Account\\ManageTasks.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-30T09:56:44.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ClientMap.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ClientMap.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ClientMap.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ClientMap.cshtml",
+              "RelativeToolTip": "Views\\Account\\ClientMap.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-05T20:43:29.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TaskDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\TaskDetails.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\TaskDetails.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\TaskDetails.cshtml",
+              "RelativeToolTip": "Views\\Account\\TaskDetails.cshtml",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAUwAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-03T09:57:12.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SendMessage.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\SendMessage.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\SendMessage.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\SendMessage.cshtml",
+              "RelativeToolTip": "Views\\Account\\SendMessage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-03T17:39:50.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAgwF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T15:37:51.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-30T05:47:17.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ViewMessagesForDriver.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ViewMessagesForDriver.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ViewMessagesForDriver.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\ViewMessagesForDriver.cshtml",
+              "RelativeToolTip": "Views\\Account\\ViewMessagesForDriver.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-03T22:34:59.213Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\User\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Create.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\User\\Create.cshtml",
+              "RelativeToolTip": "Views\\User\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T15:17:08.64Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\UserTask\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\UserTask\\Create.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\UserTask\\Create.cshtml",
+              "RelativeToolTip": "Views\\UserTask\\Create.cshtml",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwDEAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T17:51:17.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAACFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-02T14:49:30.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\UserTask\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\UserTask\\Index.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\UserTask\\Index.cshtml",
+              "RelativeToolTip": "Views\\UserTask\\Index.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAF4AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T17:41:49.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "20250106091930_removelatt.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250106091930_removelatt.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250106091930_removelatt.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250106091930_removelatt.cs",
+              "RelativeToolTip": "Migrations\\20250106091930_removelatt.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T09:19:31.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\Review.cs",
+              "RelativeDocumentMoniker": "Models\\Review.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\Review.cs",
+              "RelativeToolTip": "Models\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T14:58:16.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DriverTasks.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\DriverTasks.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\DriverTasks.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Account\\DriverTasks.cshtml",
+              "RelativeToolTip": "Views\\Account\\DriverTasks.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-03T08:54:02.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ClientController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\ClientController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClientController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\ClientController.cs",
+              "RelativeToolTip": "Controllers\\ClientController.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAgwCwAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T11:10:57.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "leaflet-src.esm.js",
+              "DocumentMoniker": "C:\\Users\\davyc\\Downloads\\leaflet\\leaflet-src.esm.js",
+              "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\leaflet\\leaflet-src.esm.js",
+              "ToolTip": "C:\\Users\\davyc\\Downloads\\leaflet\\leaflet-src.esm.js",
+              "RelativeToolTip": "..\\..\\..\\Downloads\\leaflet\\leaflet-src.esm.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-06T08:50:58.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "leaflet-src.js",
+              "DocumentMoniker": "C:\\Users\\davyc\\Downloads\\leaflet\\leaflet-src.js",
+              "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\leaflet\\leaflet-src.js",
+              "ToolTip": "C:\\Users\\davyc\\Downloads\\leaflet\\leaflet-src.js",
+              "RelativeToolTip": "..\\..\\..\\Downloads\\leaflet\\leaflet-src.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-06T08:51:26.841Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "20250106004932_maps.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250106004932_maps.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250106004932_maps.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250106004932_maps.cs",
+              "RelativeToolTip": "Migrations\\20250106004932_maps.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T00:49:32.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "20250105212340_mapping.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250105212340_mapping.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250105212340_mapping.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250105212340_mapping.cs",
+              "RelativeToolTip": "Migrations\\20250105212340_mapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T21:23:41.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T16:45:07.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UserTaskController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\UserTaskController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserTaskController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\UserTaskController.cs",
+              "RelativeToolTip": "Controllers\\UserTaskController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwDQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T17:41:06.976Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAgwGcAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T14:56:58.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\Message.cs",
+              "RelativeDocumentMoniker": "Models\\Message.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\Message.cs",
+              "RelativeToolTip": "Models\\Message.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T12:54:49.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "MessageHub.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Hubs\\MessageHub.cs",
+              "RelativeDocumentMoniker": "Hubs\\MessageHub.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Hubs\\MessageHub.cs",
+              "RelativeToolTip": "Hubs\\MessageHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T13:11:42.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T14:57:54.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T15:00:08.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ManageTasks.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Admin\\ManageTasks.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\ManageTasks.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Admin\\ManageTasks.cshtml",
+              "RelativeToolTip": "Views\\Admin\\ManageTasks.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T09:40:33.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "UserTask.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\UserTask.cs",
+              "RelativeDocumentMoniker": "Models\\UserTask.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\UserTask.cs",
+              "RelativeToolTip": "Models\\UserTask.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T14:58:05.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\TaskRequest\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\TaskRequest\\Create.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\TaskRequest\\Create.cshtml",
+              "RelativeToolTip": "Views\\TaskRequest\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T09:35:39.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "FinancialReports.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\AdminDashboard\\FinancialReports.cshtml",
+              "RelativeDocumentMoniker": "Views\\AdminDashboard\\FinancialReports.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\AdminDashboard\\FinancialReports.cshtml",
+              "RelativeToolTip": "Views\\AdminDashboard\\FinancialReports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T19:48:48.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ManageUsers.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\AdminDashboard\\ManageUsers.cshtml",
+              "RelativeDocumentMoniker": "Views\\AdminDashboard\\ManageUsers.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\AdminDashboard\\ManageUsers.cshtml",
+              "RelativeToolTip": "Views\\AdminDashboard\\ManageUsers.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T19:47:17.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ViewRequests.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\AdminDashboard\\ViewRequests.cshtml",
+              "RelativeDocumentMoniker": "Views\\AdminDashboard\\ViewRequests.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\AdminDashboard\\ViewRequests.cshtml",
+              "RelativeToolTip": "Views\\AdminDashboard\\ViewRequests.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T19:49:36.152Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "ManageUsers.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Admin\\ManageUsers.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\ManageUsers.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Admin\\ManageUsers.cshtml",
+              "RelativeToolTip": "Views\\Admin\\ManageUsers.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T09:38:33.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "20250103165725_newmodelsformessages.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250103165725_newmodelsformessages.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250103165725_newmodelsformessages.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250103165725_newmodelsformessages.cs",
+              "RelativeToolTip": "Migrations\\20250103165725_newmodelsformessages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T16:57:26.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "MYGUYYContext.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Data\\MYGUYYContext.cs",
+              "RelativeDocumentMoniker": "Data\\MYGUYYContext.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Data\\MYGUYYContext.cs",
+              "RelativeToolTip": "Data\\MYGUYYContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T10:03:40.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "Controllers\\PaymentController.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAkwB8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T09:08:53.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "MessagingController.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\MessagingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MessagingController.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Controllers\\MessagingController.cs",
+              "RelativeToolTip": "Controllers\\MessagingController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAgwFYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T12:57:38.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\TaskRequest\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\TaskRequest\\Details.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\TaskRequest\\Details.cshtml",
+              "RelativeToolTip": "Views\\TaskRequest\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T19:46:46.261Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\TaskRequest\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\TaskRequest\\Index.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\TaskRequest\\Index.cshtml",
+              "RelativeToolTip": "Views\\TaskRequest\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T09:34:12.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Payment\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Payment\\Index.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Payment\\Index.cshtml",
+              "RelativeToolTip": "Views\\Payment\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T09:36:55.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T15:09:35.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "MYGUYY.csproj",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\MYGUYY.csproj",
+              "RelativeDocumentMoniker": "MYGUYY.csproj",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\MYGUYY.csproj",
+              "RelativeToolTip": "MYGUYY.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-02T15:03:18.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "20250103085529_driverapp.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250103085529_driverapp.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250103085529_driverapp.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20250103085529_driverapp.cs",
+              "RelativeToolTip": "Migrations\\20250103085529_driverapp.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T08:55:30.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\User\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Details.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\User\\Details.cshtml",
+              "RelativeToolTip": "Views\\User\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T10:20:37.829Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "PlaceTaskRequest.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\TaskRequest\\PlaceTaskRequest.cshtml",
+              "RelativeDocumentMoniker": "Views\\TaskRequest\\PlaceTaskRequest.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\TaskRequest\\PlaceTaskRequest.cshtml",
+              "RelativeToolTip": "Views\\TaskRequest\\PlaceTaskRequest.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T19:45:37.162Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\Payment.cs",
+              "RelativeDocumentMoniker": "Models\\Payment.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\Payment.cs",
+              "RelativeToolTip": "Models\\Payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T09:06:52.205Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "Location.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\Location.cs",
+              "RelativeDocumentMoniker": "Models\\Location.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\Location.cs",
+              "RelativeToolTip": "Models\\Location.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T09:07:10.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "20241230061444_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241230061444_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241230061444_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241230061444_InitialCreate.cs",
+              "RelativeToolTip": "Migrations\\20241230061444_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T06:14:44.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\User\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Index.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\User\\Index.cshtml",
+              "RelativeToolTip": "Views\\User\\Index.cshtml",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAADAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T15:12:49.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\User\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\User\\Edit.cshtml",
+              "RelativeToolTip": "Views\\User\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T17:30:51.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "20241229111257_ooooooo.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229111257_ooooooo.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241229111257_ooooooo.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229111257_ooooooo.cs",
+              "RelativeToolTip": "Migrations\\20241229111257_ooooooo.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T11:12:57.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "additional-methods.js",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "RelativeToolTip": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "ViewState": "AgIAAPUAAAAAAAAAAAAhwBABAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-29T10:51:48.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "20241229095658_brandnew.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229095658_brandnew.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241229095658_brandnew.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229095658_brandnew.cs",
+              "RelativeToolTip": "Migrations\\20241229095658_brandnew.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T09:56:59.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "20241229095425_UpdateTaskRequestSchemaaaa2.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229095425_UpdateTaskRequestSchemaaaa2.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241229095425_UpdateTaskRequestSchemaaaa2.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229095425_UpdateTaskRequestSchemaaaa2.cs",
+              "RelativeToolTip": "Migrations\\20241229095425_UpdateTaskRequestSchemaaaa2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T09:54:26.28Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "20241229094358_UpdateTaskRequestSchemaaaa.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229094358_UpdateTaskRequestSchemaaaa.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241229094358_UpdateTaskRequestSchemaaaa.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229094358_UpdateTaskRequestSchemaaaa.cs",
+              "RelativeToolTip": "Migrations\\20241229094358_UpdateTaskRequestSchemaaaa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T09:43:58.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "20241229091509_UpdateTaskRequestSchema.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229091509_UpdateTaskRequestSchema.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241229091509_UpdateTaskRequestSchema.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241229091509_UpdateTaskRequestSchema.cs",
+              "RelativeToolTip": "Migrations\\20241229091509_UpdateTaskRequestSchema.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T09:15:10.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\UserTask\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\UserTask\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\UserTask\\Edit.cshtml",
+              "RelativeToolTip": "Views\\UserTask\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T18:06:23.436Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-03T08:43:06.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "20241228184354_pagetowork.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241228184354_pagetowork.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241228184354_pagetowork.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241228184354_pagetowork.cs",
+              "RelativeToolTip": "Migrations\\20241228184354_pagetowork.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T18:43:55.984Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "20241228161255_dave.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241228161255_dave.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241228161255_dave.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241228161255_dave.cs",
+              "RelativeToolTip": "Migrations\\20241228161255_dave.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T16:12:56.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "FinancialReport.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\FinancialReport.cs",
+              "RelativeDocumentMoniker": "Models\\FinancialReport.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Models\\FinancialReport.cs",
+              "RelativeToolTip": "Models\\FinancialReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T18:59:21.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "20241228102031_newrelationships.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241228102031_newrelationships.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241228102031_newrelationships.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241228102031_newrelationships.cs",
+              "RelativeToolTip": "Migrations\\20241228102031_newrelationships.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T10:20:32.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "20241227063818_togenerate.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241227063818_togenerate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241227063818_togenerate.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241227063818_togenerate.cs",
+              "RelativeToolTip": "Migrations\\20241227063818_togenerate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-27T06:38:18.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "20241222063321_newww.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222063321_newww.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241222063321_newww.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222063321_newww.cs",
+              "RelativeToolTip": "Migrations\\20241222063321_newww.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T06:33:21.615Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "bootstrap-reboot.css.map",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAADW6QAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-22T06:20:59.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "20241222060254_update1.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222060254_update1.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241222060254_update1.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222060254_update1.cs",
+              "RelativeToolTip": "Migrations\\20241222060254_update1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T06:02:54.693Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "20241222055146_new1.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222055146_new1.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241222055146_new1.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222055146_new1.cs",
+              "RelativeToolTip": "Migrations\\20241222055146_new1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T05:51:46.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "20241222054232_fk5.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222054232_fk5.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241222054232_fk5.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222054232_fk5.cs",
+              "RelativeToolTip": "Migrations\\20241222054232_fk5.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T05:42:33.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "20241222053529_latest.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222053529_latest.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241222053529_latest.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241222053529_latest.cs",
+              "RelativeToolTip": "Migrations\\20241222053529_latest.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T05:35:30.234Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "20241221200900_pendingchanges.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241221200900_pendingchanges.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241221200900_pendingchanges.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241221200900_pendingchanges.cs",
+              "RelativeToolTip": "Migrations\\20241221200900_pendingchanges.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T20:09:00.636Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "20241218163215_dave.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241218163215_dave.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241218163215_dave.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241218163215_dave.cs",
+              "RelativeToolTip": "Migrations\\20241218163215_dave.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T16:32:15.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "20241217063259_creat2.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241217063259_creat2.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241217063259_creat2.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241217063259_creat2.cs",
+              "RelativeToolTip": "Migrations\\20241217063259_creat2.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T06:32:59.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "20241217062845_createview.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241217062845_createview.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241217062845_createview.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241217062845_createview.cs",
+              "RelativeToolTip": "Migrations\\20241217062845_createview.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T06:28:45.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "20241203092044_new.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203092044_new.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241203092044_new.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203092044_new.cs",
+              "RelativeToolTip": "Migrations\\20241203092044_new.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T09:20:44.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "20241203090150_MY.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203090150_MY.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241203090150_MY.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203090150_MY.cs",
+              "RelativeToolTip": "Migrations\\20241203090150_MY.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T09:01:50.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "20241203090101_MYMIGRATION.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203090101_MYMIGRATION.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241203090101_MYMIGRATION.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203090101_MYMIGRATION.cs",
+              "RelativeToolTip": "Migrations\\20241203090101_MYMIGRATION.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T09:01:01.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "20241203085939_mymigrate.cs",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203085939_mymigrate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241203085939_mymigrate.cs",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Migrations\\20241203085939_mymigrate.cs",
+              "RelativeToolTip": "Migrations\\20241203085939_mymigrate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T08:59:39.403Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Review\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Review\\Index.cshtml",
+              "ToolTip": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\Views\\Review\\Index.cshtml",
+              "RelativeToolTip": "Views\\Review\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T16:11:20.19Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 245,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

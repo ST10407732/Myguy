@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="text-center text-light">
+        <h1 class="display-4 mb-4 text-info">Welcome to MYGUYY</h1>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="alert alert-success">
+                <h3 class="mb-3">Hello, @User.Identity.Name!</h3>
+                <p>You are logged in as: <span class="badge badge-light">@User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value</span></p>
+                <p><a asp-controller="Account" asp-action="Logout" class="btn btn-danger mt-3">Logout</a></p>
+            </div>
+        }
+        else
+        {
+            <p class="lead">Please <a asp-controller="Account" asp-action="Login" class="text-decoration-none text-info">Login</a> or register below:</p>
+
+            <!-- Registration Form -->
+            <div class="card mx-auto shadow-lg p-4 bg-dark text-light" style="max-width: 400px;">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-3 text-info">Register</h5>
+                    <form asp-action="Register" method="post" asp-controller="Home">
+                        <div class="form-group">
+                            <label for="Username" class="font-weight-bold">Username</label>
+                            <input type="text" name="username" id="Username" class="form-control bg-secondary text-light" placeholder="Enter your username" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Password" class="font-weight-bold">Password</label>
+                            <input type="password" name="password" id="Password" class="form-control bg-secondary text-light" placeholder="Enter your password" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Role" class="font-weight-bold">Role</label>
+                            <select name="role" id="Role" class="form-control bg-secondary text-light" required>
+                                <option value="Client">Client</option>
+                                <option value="Driver">Driver</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-info btn-block mt-3">Register</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>

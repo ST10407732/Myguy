@@ -1,0 +1,29 @@
+﻿@* @model MYGUYY.Models.UserTask
+
+<h1>Edit Task</h1>
+
+<form asp-action="Edit" method="post">
+    <div>
+        <label asp-for="Description"></label>
+        <input asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div>
+        <label asp-for="DueDate"></label>
+        <input asp-for="DueDate" type="date" />
+        <span asp-validation-for="DueDate"></span>
+    </div>
+
+    <div>
+        <label asp-for="IsCompleted"></label>
+        <input asp-for="IsCompleted" type="checkbox" />
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit">Save</button>
+</form>
+
+<a href="@Url.Action("Index")">Back to Task List</a>
+     *@

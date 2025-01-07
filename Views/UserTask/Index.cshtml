@@ -1,0 +1,95 @@
+﻿@* @model IEnumerable<MYGUYY.Models.UserTask>
+
+@{
+    ViewData["Title"] = "User Tasks";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        td a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Tasks</h1>
+    <a href="/UserTask/Create">Create New Task</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Is Completed</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var userTask in Model)
+            {
+                <tr>
+                    <td>@userTask.Description</td>
+                    <td>@userTask.DueDate.ToShortDateString()</td>
+                    <td>@userTask.Price</td>
+                    <td>@userTask.Status</td>
+                    <td>@userTask.IsCompleted</td>
+                    <td>
+                        <a href="/UserTask/Edit/@userTask.Id">Edit</a>
+                        <a href="/UserTask/Delete/@userTask.Id" onclick="return confirm('Are you sure you want to delete this task?');">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+ *@

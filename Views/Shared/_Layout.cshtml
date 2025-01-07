@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - MyGuy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-xodZBNTC5n17Xt2Do+JcLrX54J2zY1u1RI+XaDJtk9A=" crossorigin="" />
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7k8xy4pRdZSNlRL5YKjbIKkqo1jbsnVTELJ4Kk=" crossorigin=""></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MYGUYY</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        @switch (User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value)
+                        {
+                            case "Admin":
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Admin" asp-action="ManageTasks">Admin Dashboard</a>
+                                </li>
+                                break;
+
+                            case "Driver":
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="TaskRequestsForDriver">View Tasks</a>
+                                </li>
+                                break;
+
+                            case "Client":
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="ClientTasks">Your Tasks</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="CreateTask">Create Task</a>
+                                </li>
+                                break;
+                        }
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+                        </li>
+                        @if (User.IsInRole("Driver"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="TaskRequestsForDriver" asp-controller="Account">Available Tasks</a>
+                            </li>
+                        }
+
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                    }
+                </ul>
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-info">@TempData["Message"]</div>
+                }
+                @if (User.IsInRole("Client"))
+                {
+                    <li><a asp-controller="Account" asp-action="ClientMap">Map</a></li>
+                }
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 MyGuy. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

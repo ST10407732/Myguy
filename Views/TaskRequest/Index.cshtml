@@ -1,0 +1,34 @@
+﻿@* @model IEnumerable<MYGUYY.Models.TaskRequest>
+@{
+    ViewData["Title"] = "Task Requests";
+}
+
+<h2>Task Requests</h2>
+
+@if (ViewData["Message"] != null)
+{
+    <p>@ViewData["Message"]</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Task Type</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.TaskType</td>
+                <td>@task.Description</td>
+                <td>@task.Status</td>
+                <td>@task.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+ *@

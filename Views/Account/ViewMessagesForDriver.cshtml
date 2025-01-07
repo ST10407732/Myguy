@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MYGUYY.Models.Message>
+
+@{
+    ViewData["Title"] = "Messages for Task";
+    var taskId = ViewData["TaskId"];
+}
+
+<div class="container mt-4">
+    <h1 class="text-primary mb-4">Messages for Task @taskId</h1>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">@TempData["Message"]</div>
+    }
+
+    <div class="messages mb-4">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var message in Model)
+            {
+                <div class="message bg-light p-3 mb-3 rounded shadow-sm">
+                    <div class="message-header font-weight-bold text-secondary">
+                        @message.SentAt.ToString("g")
+                    </div>
+                    <p class="message-content mt-2">@message.Content</p>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No messages yet.</p>
+        }
+    </div>
+
+    <h2 class="text-secondary">Send a Message</h2>
+    <form method="post" asp-action="ViewMessagesForDriver" asp-route-taskId="@taskId" class="shadow p-4 bg-white rounded">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <textarea id="content" name="content" class="form-control" rows="4" placeholder="Write your message here..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Send Message</button>
+    </form>
+
+    <hr class="my-4" />
+    <a href="@Url.Action("TaskRequestsForDriver", "Account")" class="btn btn-secondary">Back to Task Requests</a>
+</div>

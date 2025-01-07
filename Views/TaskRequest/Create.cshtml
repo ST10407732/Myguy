@@ -1,0 +1,24 @@
+﻿@* @model MYGUYY.Models.TaskRequest
+@{
+    ViewData["Title"] = "Create Task";
+}
+
+<h2>Create Task</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="TaskType">Task Type</label>
+        <select asp-for="TaskType" asp-items="@(new SelectList((List<string>)ViewData["TaskTypes"]))" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <p class="text-danger">Please correct the errors in the form.</p>
+}
+ *@

@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Task Details";
+}
+
+<h2>Task Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Description</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <th>Created At</th>
+        <td>@Model.CreatedAt.ToString("g")</td>
+    </tr>
+</table>
+
+@* You can add buttons here for the driver to accept or decline the task, as needed *@
+<form method="post" asp-action="AcceptTask" asp-route-id="@Model.Id">
+    <button type="submit" class="btn btn-success">Accept Task</button>
+</form>
+
+<form method="post" asp-action="DeclineTask" asp-route-id="@Model.Id">
+    <button type="submit" class="btn btn-danger">Decline Task</button>
+</form>

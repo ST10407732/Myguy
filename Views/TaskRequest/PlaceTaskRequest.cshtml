@@ -1,0 +1,31 @@
+﻿@* @model MYGUYY.Models.TaskRequest
+
+<h2>Place Task Request</h2>
+
+<form method="post" asp-action="PlaceTaskRequest" asp-controller="TaskRequest">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="Amount">Amount</label>
+        <input type="text" class="form-control" id="Amount" name="Amount" required />
+    </div>
+    <div class="form-group">
+        <label for="ClientId">Client ID</label>
+        <input type="number" class="form-control" id="ClientId" name="ClientId" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Place Task Request</button>
+</form>
+
+<div class="mt-4">
+    <a class="btn btn-secondary" asp-action="Create" asp-controller="TaskRequest">Go to Create Task</a>
+    <a class="btn btn-info" asp-action="Index" asp-controller="TaskRequest">View All Tasks</a>
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+ *@

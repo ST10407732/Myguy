@@ -1,0 +1,32 @@
+﻿@* @model IEnumerable<MYGUYY.Models.Payment>
+
+@{
+    ViewData["Title"] = "Payments";
+}
+
+<h2>Payments</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Task ID</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var payment in Model)
+        {
+            <tr>
+                <td>@payment.Id</td>
+                <td>@payment.TaskRequestId</td>
+                <td>@payment.Amount:C</td>
+                <td>@payment.PaymentDate</td>
+                <td>@payment.PaymentStatus</td>
+            </tr>
+        }
+    </tbody>
+</table>
+ *@

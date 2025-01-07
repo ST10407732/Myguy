@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "Create New Task";
+}
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+<div class="container mt-4">
+    <h2 class="text-success mb-4">@ViewBag.Title</h2>
+
+    <!-- Error Messages -->
+    <div id="errorContainer" class="alert alert-danger d-none" role="alert">
+        <span id="errorMessage"></span>
+    </div>
+
+    @model TaskRequest
+
+    <!-- Form -->
+    <form asp-action="CreateTask" method="post" onsubmit="return validateForm();">
+        <!-- Map -->
+        <div id="map" style="height: 400px; width: 100%;" class="mb-4"></div>
+
+        <div class="form-group">
+            <label for="Description">Task Description</label>
+            <textarea asp-for="Description" id="Description" class="form-control" required></textarea>
+        </div>
+
+        <!-- Pickup Location -->
+        <div class="form-group">
+            <label for="PickupLocation">Pick-up Location</label>
+            <input id="PickupLocation" class="form-control" type="text" placeholder="Enter pick-up location" required />
+        </div>
+        <input asp-for="PickupLatitude" id="PickupLatitude" class="form-control" type="hidden" />
+        <input asp-for="PickupLongitude" id="PickupLongitude" class="form-control" type="hidden" />
+
+        <!-- Dropoff Location -->
+        <div class="form-group">
+            <label for="DropoffLocation">Drop-off Location</label>
+            <input id="DropoffLocation" class="form-control" type="text" placeholder="Enter drop-off location" required />
+        </div>
+        <input asp-for="DropoffLatitude" id="DropoffLatitude" class="form-control" type="hidden" />
+        <input asp-for="DropoffLongitude" id="DropoffLongitude" class="form-control" type="hidden" />
+
+        <button type="button" class="btn btn-secondary mt-3" id="findLocations">Find Locations</button>
+        <button type="submit" class="btn btn-primary mt-3">Create Task</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let map = L.map('map').setView([51.505, -0.09], 13);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        let pickupMarker = null;
+        let dropoffMarker = null;
+
+        document.getElementById("findLocations").addEventListener("click", function () {
+            let pickupLocation = document.getElementById("PickupLocation").value;
+            let dropoffLocation = document.getElementById("DropoffLocation").value;
+
+            if (pickupLocation) {
+                geocodeLocation(pickupLocation, function (coords) {
+                    if (pickupMarker) {
+                        map.removeLayer(pickupMarker);
+                    }
+                    pickupMarker = L.marker(coords).addTo(map)
+                        .bindPopup('Pick-up location: ' + pickupLocation)
+                        .openPopup();
+                    map.setView(coords, 13);
+                    document.getElementById("PickupLatitude").value = coords[0];
+                    document.getElementById("PickupLongitude").value = coords[1];
+                });
+            }
+
+            if (dropoffLocation) {
+                geocodeLocation(dropoffLocation, function (coords) {
+                    if (dropoffMarker) {
+                        map.removeLayer(dropoffMarker);
+                    }
+                    dropoffMarker = L.marker(coords).addTo(map)
+                        .bindPopup('Drop-off location: ' + dropoffLocation)
+                        .openPopup();
+                    map.setView(coords, 13);
+                    document.getElementById("DropoffLatitude").value = coords[0];
+                    document.getElementById("DropoffLongitude").value = coords[1];
+                });
+            }
+        });
+    });
+
+    function geocodeLocation(address, callback) {
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    let firstResult = data[0];
+                    let coords = [parseFloat(firstResult.lat), parseFloat(firstResult.lon)];
+                    callback(coords);
+                } else {
+                    showError("Location not found: " + address);
+                }
+            })
+            .catch(err => {
+                showError("Error with geocoding service: " + err.message);
+            });
+    }
+
+    function showError(message) {
+        var errorContainer = document.getElementById("errorContainer");
+        var errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = message;
+        errorContainer.classList.remove("d-none");
+    }
+
+    function validateForm() {
+        var description = document.getElementById("Description").value;
+        var pickupLat = document.getElementById("PickupLatitude").value;
+        var pickupLng = document.getElementById("PickupLongitude").value;
+        var dropoffLat = document.getElementById("DropoffLatitude").value;
+        var dropoffLng = document.getElementById("DropoffLongitude").value;
+
+        if (!description || !pickupLat || !pickupLng || !dropoffLat || !dropoffLng) {
+            showError("All fields are required. Please fill in missing information.");
+            return false;
+        }
+
+        return true;
+    }
+</script>

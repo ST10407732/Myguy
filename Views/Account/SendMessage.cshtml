@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Send Message";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Display the task details (optional) -->
+<div class="task-details">
+    <p><strong>Task ID:</strong> @ViewData["TaskId"]</p>
+    <!-- You can add more task details here if needed -->
+</div>
+
+<!-- Message Form -->
+<form method="post" action="@Url.Action("SendMessage", "Account")">
+    <input type="hidden" name="taskId" value="@ViewData["TaskId"]" />
+
+    <!-- Message Content -->
+    <div class="form-group">
+        <label for="content">Message</label>
+        <textarea id="content" name="content" class="form-control" placeholder="Enter your message..." rows="4" required></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
+
+<!-- Feedback Message -->
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info mt-3">
+        @TempData["Message"]
+    </div>
+}
+
+<!-- Optional: Add a link back to the task's message view -->
+<a href="@Url.Action("ViewMessages", "Account", new { taskId = ViewData["TaskId"] })" class="btn btn-link mt-3">Back to Messages</a>
