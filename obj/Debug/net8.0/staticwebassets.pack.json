@@ -245,6 +245,14 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\2969d3a9-b2a4-4488-b6e5-57196f72d7c2_WhatsApp Image 2025-01-12 at 01.36.53.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\messages\\2969d3a9-b2a4-4488-b6e5-57196f72d7c2_WhatsApp Image 2025-01-12 at 01.36.53.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\afb33523-aac7-4ffb-9f0d-81b51f2a091b_WhatsApp Image 2025-01-12 at 01.37.57.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\messages\\afb33523-aac7-4ffb-9f0d-81b51f2a091b_WhatsApp Image 2025-01-12 at 01.37.57.jpeg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MYGUYY.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

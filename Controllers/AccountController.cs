@@ -9,12 +9,16 @@ using MYGUYY.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using Microsoft.Extensions.Hosting;
+using YourNamespace.ViewModels;
+using MYGUYY.Models.ViewModels;
 
 namespace MYGUYY.Controllers
 {
     public class AccountController : Controller
     {
         private readonly MYGUYYContext _context;
+        private readonly object _hostEnvironment;
 
         public AccountController(MYGUYYContext context)
         {
@@ -195,11 +199,10 @@ namespace MYGUYY.Controllers
             return View(tasks);
         }
 
-
         [HttpPost]
         [Authorize(Roles = "Client")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendMessageForClient(int taskId, string content)
+        public async Task<IActionResult> SendMessageForClient(int taskId, string content, IFormFile file)
         {
             var task = await _context.TaskRequests.FirstOrDefaultAsync(t => t.Id == taskId);
 
@@ -209,17 +212,49 @@ namespace MYGUYY.Controllers
                 return RedirectToAction("ClientTasks");
             }
 
-            if (string.IsNullOrWhiteSpace(content))
+            if (string.IsNullOrWhiteSpace(content) && file == null)
             {
-                TempData["Message"] = "Message content cannot be empty.";
+                TempData["Message"] = "Message content or file must be provided.";
                 return RedirectToAction("ViewMessages", new { taskId });
+            }
+
+            string filePath = null;
+            string fileType = null;
+
+            // Handle file upload if a file is provided
+            if (file != null)
+            {
+                // Validate file type
+                var allowedFileTypes = new[] { "image/jpeg", "image/png", "video/mp4", "video/avi" };
+                if (!allowedFileTypes.Contains(file.ContentType))
+                {
+                    TempData["Message"] = "Invalid file type. Only images (JPEG, PNG) and videos (MP4, AVI) are allowed.";
+                    return RedirectToAction("ViewMessages", new { taskId });
+                }
+
+                // Save the file
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads/messages");
+                Directory.CreateDirectory(uploadsFolder); // Ensure the folder exists
+
+                string uniqueFileName = $"{Guid.NewGuid()}_{file.FileName}";
+                filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                filePath = $"/uploads/messages/{uniqueFileName}"; // Save relative path for accessibility
+                fileType = file.ContentType;
             }
 
             var message = new Message
             {
                 TaskRequestId = taskId,
                 Content = content,
-                SentAt = DateTime.Now
+                SentAt = DateTime.Now,
+                FilePath = filePath, // Save file path
+                FileType = fileType  // Save file type
             };
 
             _context.Messages.Add(message);
@@ -251,6 +286,42 @@ namespace MYGUYY.Controllers
             ViewData["TaskId"] = taskId;
             return View(messages);
         }
+
+
+        //[HttpGet]
+        //[Authorize(Roles = "Client")]
+        //public async Task<IActionResult> ViewMessages(int taskId)
+        //{
+        //    // Fetch the task to verify ownership and existence
+        //    var task = await _context.TaskRequests.FirstOrDefaultAsync(t => t.Id == taskId);
+
+        //    if (task == null || task.ClientId != int.Parse(User.FindFirst("UserId").Value))
+        //    {
+        //        TempData["Message"] = task == null ? "Task not found." : "You are not authorized to view messages for this task.";
+        //        return RedirectToAction("ClientTasks");
+        //    }
+
+        //    // Retrieve messages for the task
+        //    var messages = await _context.Messages
+        //        .Where(m => m.TaskRequestId == taskId)
+        //        .OrderBy(m => m.SentAt)
+        //        .ToListAsync();
+
+        //    // Map to MessageViewModel
+        //    var viewModel = messages.Select(m => new MessageViewModel
+        //    {
+        //        Id = m.Id,
+        //        TaskRequestId = m.TaskRequestId,
+        //        Content = m.Content,
+        //        SentAt = m.SentAt,
+        //        FilePath = m.FilePath,
+        //        FileType = m.FileType
+        //    }).ToList();
+
+        //    // Pass taskId to the view for further actions
+        //    ViewData["TaskId"] = taskId;
+        //    return View(viewModel);
+        //}
 
         // Driver Features
         [HttpGet]
@@ -360,7 +431,7 @@ namespace MYGUYY.Controllers
         [HttpPost]
         [Authorize(Roles = "Driver")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendMessageForDriver(int taskId, string content)
+        public async Task<IActionResult> SendMessageForDriver(int taskId, string content, IFormFile file)
         {
             var task = await _context.TaskRequests.FirstOrDefaultAsync(t => t.Id == taskId);
 
@@ -370,26 +441,57 @@ namespace MYGUYY.Controllers
                 return RedirectToAction("TaskRequestsForDriver");
             }
 
-            if (string.IsNullOrWhiteSpace(content))
+            if (string.IsNullOrWhiteSpace(content) && file == null)
             {
-                TempData["Message"] = "Message content cannot be empty.";
+                TempData["Message"] = "Message content or file must be provided.";
                 return RedirectToAction("ViewMessagesForDriver", new { taskId });
+            }
+
+            string filePath = null;
+            string fileType = null;
+
+            // Handle file upload if a file is provided
+            if (file != null)
+            {
+                // Validate file type
+                var allowedFileTypes = new[] { "image/jpeg", "image/png", "video/mp4", "video/avi" };
+                if (!allowedFileTypes.Contains(file.ContentType))
+                {
+                    TempData["Message"] = "Invalid file type. Only images (JPEG, PNG) and videos (MP4, AVI) are allowed.";
+                    return RedirectToAction("ViewMessagesForDriver", new { taskId });
+                }
+
+                // Save the file
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads/messages");
+                Directory.CreateDirectory(uploadsFolder); // Ensure the folder exists
+
+                string uniqueFileName = $"{Guid.NewGuid()}_{file.FileName}";
+                filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                filePath = $"/uploads/messages/{uniqueFileName}"; // Save relative path for accessibility
+                fileType = file.ContentType;
             }
 
             var message = new Message
             {
                 TaskRequestId = taskId,
                 Content = content,
-                SentAt = DateTime.Now
+                SentAt = DateTime.Now,
+                FilePath = filePath, // Save file path
+                FileType = fileType  // Save file type
             };
 
             _context.Messages.Add(message);
             await _context.SaveChangesAsync();
 
             TempData["Message"] = "Message sent successfully.";
-            return RedirectToAction("ViewMessagesForDriver", new { taskId });  // Redirect to the ViewMessagesForDriver page
+            return RedirectToAction("ViewMessagesForDriver", new { taskId });
         }
-
 
         // Admin Features
         [HttpGet]

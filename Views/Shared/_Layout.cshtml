@@ -10,6 +10,8 @@
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7k8xy4pRdZSNlRL5YKjbIKkqo1jbsnVTELJ4Kk=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
 
 </head>
 <body>
@@ -88,6 +90,13 @@
         <p>&copy; 2024 MyGuy. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <body>
+        <div class="container">
+            @RenderBody()
+        </div>
+
+        @RenderSection("Scripts", required: false)
+    </body>
+
 </body>
 </html>

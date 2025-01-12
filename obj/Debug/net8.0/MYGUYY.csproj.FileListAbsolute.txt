@@ -169,3 +169,4 @@ C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\refint\MYGUYY.dll
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\MYGUYY.pdb
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\MYGUYY.genruntimeconfig.cache
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\ref\MYGUYY.dll
+C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\MYGUYY.sourcelink.json

@@ -8,10 +8,15 @@
     <h2 class="text-primary mb-3">Messages for Task @taskId</h2>
 
     <div class="message-form mb-4 p-4 shadow-sm bg-white rounded">
-        <form method="post" asp-action="SendMessageForClient" asp-route-taskId="@taskId">
+        <form method="post" asp-action="SendMessageForClient" asp-route-taskId="@taskId" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="content" class="font-weight-bold">New Message:</label>
-                <textarea id="content" name="content" class="form-control" rows="4" placeholder="Type your message..." required></textarea>
+                <textarea id="content" name="content" class="form-control" rows="4" placeholder="Type your message..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="file" class="font-weight-bold">Attach Media (Optional):</label>
+                <input type="file" id="file" name="file" class="form-control-file" />
+                <small class="form-text text-muted">Supported formats: JPEG, PNG, MP4, AVI.</small>
             </div>
             <button type="submit" class="btn btn-primary mt-2">Send</button>
         </form>
@@ -27,7 +32,26 @@
             {
                 <li class="list-group-item">
                     <strong>@message.SentAt.ToString("yyyy-MM-dd HH:mm"):</strong>
-                    <span class="ml-2">@message.Content</span>
+                    <div class="ml-2">
+                        @if (!string.IsNullOrWhiteSpace(message.Content))
+                        {
+                            <p>@message.Content</p>
+                        }
+                        @if (!string.IsNullOrEmpty(message.FilePath))
+                        {
+                            if (message.FileType.Contains("image"))
+                            {
+                                <img src="@message.FilePath" alt="Image" class="img-thumbnail" style="max-width: 200px;" />
+                            }
+                            else if (message.FileType.Contains("video"))
+                            {
+                                <video controls style="max-width: 100%; height: auto;">
+                                    <source src="@message.FilePath" type="@message.FileType" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            }
+                        }
+                    </div>
                 </li>
             }
         </ul>

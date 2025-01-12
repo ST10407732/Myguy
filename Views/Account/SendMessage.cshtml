@@ -10,14 +10,21 @@
     <!-- You can add more task details here if needed -->
 </div>
 
-<!-- Message Form -->
-<form method="post" action="@Url.Action("SendMessage", "Account")">
+<!-- Message Form with Media Upload -->
+<form method="post" action="@Url.Action("SendMessage", "Account")" enctype="multipart/form-data">
     <input type="hidden" name="taskId" value="@ViewData["TaskId"]" />
 
     <!-- Message Content -->
     <div class="form-group">
         <label for="content">Message</label>
         <textarea id="content" name="content" class="form-control" placeholder="Enter your message..." rows="4" required></textarea>
+    </div>
+
+    <!-- Media Upload -->
+    <div class="form-group">
+        <label for="file">Attach Media (Optional):</label>
+        <input type="file" id="file" name="file" class="form-control" />
+        <small class="text-muted">Allowed file types: JPG, PNG, MP4, AVI.</small>
     </div>
 
     <!-- Submit Button -->

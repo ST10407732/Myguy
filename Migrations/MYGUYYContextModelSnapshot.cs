@@ -35,6 +35,14 @@ namespace MYGUYY.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("SentAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -74,16 +82,16 @@ namespace MYGUYY.Migrations
                     b.Property<int?>("DriverId")
                         .HasColumnType("int");
 
-                    b.Property<double?>("DropoffLatitude")
+                    b.Property<double>("DropoffLatitude")
                         .HasColumnType("float");
 
-                    b.Property<double?>("DropoffLongitude")
+                    b.Property<double>("DropoffLongitude")
                         .HasColumnType("float");
 
-                    b.Property<double?>("PickupLatitude")
+                    b.Property<double>("PickupLatitude")
                         .HasColumnType("float");
 
-                    b.Property<double?>("PickupLongitude")
+                    b.Property<double>("PickupLongitude")
                         .HasColumnType("float");
 
                     b.Property<string>("Status")

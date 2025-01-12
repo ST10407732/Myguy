@@ -23,6 +23,21 @@
                         @message.SentAt.ToString("g")
                     </div>
                     <p class="message-content mt-2">@message.Content</p>
+
+                    @if (!string.IsNullOrEmpty(message.FilePath))
+                    {
+                        @if (message.FileType.StartsWith("image"))
+                        {
+                            <img src="@message.FilePath" alt="Image" style="max-width: 100%; height: auto;" />
+                        }
+                        else if (message.FileType.StartsWith("video"))
+                        {
+                            <video controls style="max-width: 100%; height: auto;">
+                                <source src="@message.FilePath" type="@message.FileType" />
+                                Your browser does not support the video tag.
+                            </video>
+                        }
+                    }
                 </div>
             }
         }
@@ -33,11 +48,20 @@
     </div>
 
     <h2 class="text-secondary">Send a Message</h2>
-    <form method="post" asp-action="ViewMessagesForDriver" asp-route-taskId="@taskId" class="shadow p-4 bg-white rounded">
+    <form method="post" asp-action="SendMessageForDriver" asp-route-taskId="@taskId" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
         @Html.AntiForgeryToken()
         <div class="form-group">
             <textarea id="content" name="content" class="form-control" rows="4" placeholder="Write your message here..." required></textarea>
         </div>
+
+        <div class="form-group">
+            <label for="file">Attach File (Optional):</label>
+            <input type="file" id="file" name="file" class="form-control" accept="image/*,video/*" />
+            <small class="form-text text-muted">
+                Supported formats: Images (JPEG, PNG), Videos (MP4, AVI).
+            </small>
+        </div>
+
         <button type="submit" class="btn btn-primary mt-2">Send Message</button>
     </form>
 

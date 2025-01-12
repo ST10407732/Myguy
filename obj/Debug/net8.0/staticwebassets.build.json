@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "f95Ado3reak2DjNRtdmvKGDVVjUr143rBy1hckrgKBk=",
+  "Hash": "NcoTMlEldsclPzf8rK9jW2Td+0T81F+yddpYyAt9/ZY=",
   "Source": "MYGUYY",
   "BasePath": "_content/MYGUYY",
   "Mode": "Default",
@@ -1193,6 +1193,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\2969d3a9-b2a4-4488-b6e5-57196f72d7c2_WhatsApp Image 2025-01-12 at 01.36.53.jpeg",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "uploads/messages/2969d3a9-b2a4-4488-b6e5-57196f72d7c2_WhatsApp Image 2025-01-12 at 01.36.53.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\messages\\2969d3a9-b2a4-4488-b6e5-57196f72d7c2_WhatsApp Image 2025-01-12 at 01.36.53.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\afb33523-aac7-4ffb-9f0d-81b51f2a091b_WhatsApp Image 2025-01-12 at 01.37.57.jpeg",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "uploads/messages/afb33523-aac7-4ffb-9f0d-81b51f2a091b_WhatsApp Image 2025-01-12 at 01.37.57.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\messages\\afb33523-aac7-4ffb-9f0d-81b51f2a091b_WhatsApp Image 2025-01-12 at 01.37.57.jpeg"
     }
   ]
 }
