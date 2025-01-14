@@ -82,14 +82,28 @@ namespace MYGUYY.Migrations
                     b.Property<int?>("DriverId")
                         .HasColumnType("int");
 
+                    b.Property<double?>("DriverLatitude")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("DriverLongitude")
+                        .HasColumnType("float");
+
                     b.Property<double>("DropoffLatitude")
                         .HasColumnType("float");
+
+                    b.Property<string>("DropoffLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("DropoffLongitude")
                         .HasColumnType("float");
 
                     b.Property<double>("PickupLatitude")
                         .HasColumnType("float");
+
+                    b.Property<string>("PickupLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("PickupLongitude")
                         .HasColumnType("float");

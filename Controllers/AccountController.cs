@@ -13,12 +13,88 @@ using Microsoft.Extensions.Hosting;
 using YourNamespace.ViewModels;
 using MYGUYY.Models.ViewModels;
 
+
 namespace MYGUYY.Controllers
 {
+    using Microsoft.AspNetCore.SignalR;
+
+    using Microsoft.AspNetCore.SignalR;
+    using MYGUYY.Models;
+    using System.Threading.Tasks;
+
+    namespace MyGuyy.Hubs
+    {
+        public class LocationHub : Hub
+        {
+            private readonly MYGUYYContext _context; // Database context
+
+            public LocationHub(MYGUYYContext context)
+            {
+                _context = context; // Initialize the database context
+            }
+
+            // Update driver location and notify clients in the task group
+            public async Task UpdateDriverLocation(int taskId, double latitude, double longitude)
+            {
+                var taskRequest = await _context.TaskRequests.FindAsync(taskId); // Fetch the task request
+                if (taskRequest != null)
+                {
+                    // Update driver's location in the database
+                    taskRequest.DriverLatitude = latitude;
+                    taskRequest.DriverLongitude = longitude;
+
+                    _context.TaskRequests.Update(taskRequest);
+                    await _context.SaveChangesAsync();
+
+                    // Notify clients in the task group about the updated location
+                    await Clients.Group(taskId.ToString()).SendAsync("ReceiveDriverLocation", new
+                    {
+                        Latitude = latitude,
+                        Longitude = longitude,
+                        DriverId = taskRequest.DriverId,
+                        TaskId = taskId
+                    });
+                }
+            }
+
+            // Add a client to a task group
+            public async Task JoinTaskGroup(int taskId)
+            {
+                string groupName = taskId.ToString(); // Use the task ID as the group name
+                await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+                await Clients.Group(groupName).SendAsync("Notify", $"A client has joined task group {groupName}.");
+            }
+
+            // Remove a client from a task group
+            public async Task LeaveTaskGroup(int taskId)
+            {
+                string groupName = taskId.ToString(); // Use the task ID as the group name
+                await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
+                await Clients.Group(groupName).SendAsync("Notify", $"A client has left task group {groupName}.");
+            }
+
+            // Handle client connection
+            public override async Task OnConnectedAsync()
+            {
+                await base.OnConnectedAsync();
+                await Clients.Caller.SendAsync("Connected", "You are now connected to the LocationHub.");
+            }
+
+            // Handle client disconnection
+            public override async Task OnDisconnectedAsync(Exception? exception)
+            {
+                await base.OnDisconnectedAsync(exception);
+                // Optionally log or handle disconnection events
+            }
+        }
+    }
+
+
     public class AccountController : Controller
     {
         private readonly MYGUYYContext _context;
         private readonly object _hostEnvironment;
+
 
         public AccountController(MYGUYYContext context)
         {
@@ -31,8 +107,21 @@ namespace MYGUYY.Controllers
         {
             return View();
         }
+        // GET: Render the registration page
+        [HttpGet]
+        public IActionResult DriverTasks()
+        {
+            return View();
+        }
 
-        // POST: Handle user registration
+        // GET: Render the registration page
+        public IActionResult TaskGroup()
+        {
+            // Set ViewData for title
+            ViewData["Title"] = "Task Groups";
+            return View();  // Return the view
+        }
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(string username, string password, string role)
@@ -124,28 +213,6 @@ namespace MYGUYY.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //[Authorize(Roles = "Client")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> CreateTask(TaskRequest taskRequest)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        // Set the additional properties that are not part of the form (e.g., ClientId, CreatedAt)
-        //        taskRequest.Status = "Pending";
-        //        taskRequest.ClientId = int.Parse(User.FindFirst("UserId").Value);
-        //        taskRequest.CreatedAt = DateTime.Now;
-
-        //        _context.TaskRequests.Add(taskRequest);
-        //        await _context.SaveChangesAsync();
-
-        //        TempData["Message"] = "Task created successfully.";
-        //        return RedirectToAction("ClientTasks");
-        //    }
-
-        //    // If validation fails, return the same view with validation errors
-        //    return View(taskRequest);
-        //}
         [HttpPost]
         [Authorize(Roles = "Client")]
         [ValidateAntiForgeryToken]
@@ -288,49 +355,16 @@ namespace MYGUYY.Controllers
         }
 
 
-        //[HttpGet]
-        //[Authorize(Roles = "Client")]
-        //public async Task<IActionResult> ViewMessages(int taskId)
-        //{
-        //    // Fetch the task to verify ownership and existence
-        //    var task = await _context.TaskRequests.FirstOrDefaultAsync(t => t.Id == taskId);
 
-        //    if (task == null || task.ClientId != int.Parse(User.FindFirst("UserId").Value))
-        //    {
-        //        TempData["Message"] = task == null ? "Task not found." : "You are not authorized to view messages for this task.";
-        //        return RedirectToAction("ClientTasks");
-        //    }
-
-        //    // Retrieve messages for the task
-        //    var messages = await _context.Messages
-        //        .Where(m => m.TaskRequestId == taskId)
-        //        .OrderBy(m => m.SentAt)
-        //        .ToListAsync();
-
-        //    // Map to MessageViewModel
-        //    var viewModel = messages.Select(m => new MessageViewModel
-        //    {
-        //        Id = m.Id,
-        //        TaskRequestId = m.TaskRequestId,
-        //        Content = m.Content,
-        //        SentAt = m.SentAt,
-        //        FilePath = m.FilePath,
-        //        FileType = m.FileType
-        //    }).ToList();
-
-        //    // Pass taskId to the view for further actions
-        //    ViewData["TaskId"] = taskId;
-        //    return View(viewModel);
-        //}
-
-        // Driver Features
         [HttpGet]
         [Authorize(Roles = "Driver")]
         public async Task<IActionResult> TaskRequestsForDriver()
         {
+            // Fetch both pending and accepted tasks for the driver
             var tasks = await _context.TaskRequests
-                .Where(task => task.DriverId == null && task.Status == "Pending")
+                .Where(task => (task.DriverId == null && task.Status == "Pending") || task.Status == "Accepted")
                 .Include(task => task.Client)
+                .Include(task => task.Driver)  // Optionally, include the Driver if you need that info
                 .ToListAsync();
 
             return View(tasks);
@@ -395,39 +429,7 @@ namespace MYGUYY.Controllers
             return View(messages); // Pass the list of messages to the view
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Driver")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ViewMessagesForDriver(int taskId, string content)
-        {
-            var task = await _context.TaskRequests.FirstOrDefaultAsync(t => t.Id == taskId);
-
-            if (task == null || task.DriverId != int.Parse(User.FindFirst("UserId").Value))
-            {
-                TempData["Message"] = task == null ? "Task not found." : "You are not authorized to send messages for this task.";
-                return RedirectToAction("TaskRequestsForDriver");
-            }
-
-            if (string.IsNullOrWhiteSpace(content))
-            {
-                TempData["Message"] = "Message content cannot be empty.";
-                return RedirectToAction("ViewMessagesForDriver", new { taskId });
-            }
-            var message = new Message
-            {
-                TaskRequestId = taskId,
-                Content = content,
-                SentAt = DateTime.Now
-            };
-
-
-
-            _context.Messages.Add(message);
-            await _context.SaveChangesAsync();
-
-            TempData["Message"] = "Message sent successfully.";
-            return RedirectToAction("ViewMessagesForDriver", new { taskId });
-        }
+       
         [HttpPost]
         [Authorize(Roles = "Driver")]
         [ValidateAntiForgeryToken]
@@ -526,5 +528,6 @@ namespace MYGUYY.Controllers
 
             return View(tasks);
         }
+
     }
 }

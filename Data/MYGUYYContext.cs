@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MYGUYY.Models;
+using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
 
 namespace MYGUYY.Data
 {
@@ -11,6 +13,7 @@ namespace MYGUYY.Data
         public DbSet<User> Users { get; set; }
         public DbSet<TaskRequest> TaskRequests { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public object Tasks { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

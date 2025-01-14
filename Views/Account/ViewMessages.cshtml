@@ -7,6 +7,7 @@
 <div class="container mt-4">
     <h2 class="text-primary mb-3">Messages for Task @taskId</h2>
 
+    <!-- Message Form -->
     <div class="message-form mb-4 p-4 shadow-sm bg-white rounded">
         <form method="post" asp-action="SendMessageForClient" asp-route-taskId="@taskId" enctype="multipart/form-data">
             <div class="form-group">
@@ -24,40 +25,131 @@
 
     <hr class="my-4" />
 
-    <h3 class="text-secondary mb-3">Message History</h3>
-    @if (Model.Count > 0)
-    {
-        <ul class="list-group">
-            @foreach (var message in Model)
-            {
-                <li class="list-group-item">
-                    <strong>@message.SentAt.ToString("yyyy-MM-dd HH:mm"):</strong>
-                    <div class="ml-2">
-                        @if (!string.IsNullOrWhiteSpace(message.Content))
-                        {
-                            <p>@message.Content</p>
-                        }
-                        @if (!string.IsNullOrEmpty(message.FilePath))
-                        {
-                            if (message.FileType.Contains("image"))
+    <!-- Message History -->
+    <div class="chat-container bg-white p-3 rounded shadow-sm">
+        <h3 class="text-secondary mb-3">Message History</h3>
+        @if (Model.Count > 0)
+        {
+            <div class="chat-box">
+                @foreach (var message in Model)
+                {
+                    <div>
+                        <span class="chat-time">@message.SentAt.ToString("yyyy-MM-dd HH:mm")</span>
+                        <div class="chat-content">
+                            @if (!string.IsNullOrWhiteSpace(message.Content))
                             {
-                                <img src="@message.FilePath" alt="Image" class="img-thumbnail" style="max-width: 200px;" />
+                                <p>@message.Content</p>
                             }
-                            else if (message.FileType.Contains("video"))
+                            @if (!string.IsNullOrEmpty(message.FilePath))
                             {
-                                <video controls style="max-width: 100%; height: auto;">
-                                    <source src="@message.FilePath" type="@message.FileType" />
-                                    Your browser does not support the video tag.
-                                </video>
+                                @if (message.FileType.Contains("image"))
+                                {
+                                    <img src="@message.FilePath" alt="Image" class="chat-media" />
+                                }
+                                else if (message.FileType.Contains("video"))
+                                {
+                                    <video controls class="chat-media">
+                                        <source src="@message.FilePath" type="@message.FileType" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                }
                             }
-                        }
+                        </div>
                     </div>
-                </li>
-            }
-        </ul>
-    }
-    else
-    {
-        <p class="text-muted">No messages yet.</p>
-    }
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No messages yet.</p>
+        }
+    </div>
 </div>
+
+<!-- WhatsApp-Inspired CSS -->
+<style>
+    body {
+        background-color: #eef3f9;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+    }
+
+    .message-form textarea {
+        resize: none;
+    }
+
+    .chat-container {
+        max-height: 500px;
+        overflow-y: auto;
+        border: 1px solid #d1d1d1;
+    }
+
+    .chat-box {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .chat-message {
+        max-width: 70%;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        position: relative;
+        word-wrap: break-word;
+        line-height: 1.5;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    /* Client Messages */
+    .chat-message.client-message {
+        align-self: flex-end;
+        background-color: #cfe2ff;
+        color: #084298;
+        margin-left: auto; /* Align client messages to the right */
+    }
+
+    /* Driver Messages */
+    .chat-message.driver-message {
+        align-self: flex-start;
+        background-color: #e2f7e1;
+        color: #27632a;
+        margin-right: auto; /* Align driver messages to the left */
+    }
+
+    .chat-time {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        font-size: 0.7rem;
+        color: #555;
+    }
+
+    .chat-content p {
+        margin: 0;
+    }
+
+    .chat-media {
+        max-width: 150px;
+        max-height: 100px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+  
+        .chat-message {
+            max-width: 90%;
+            font-size: 0.85rem;
+        }
+
+        .chat-media {
+            max-width: 120px;
+            max-height: 80px;
+        }
+    }
+</style>

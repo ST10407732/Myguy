@@ -34,8 +34,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDbGllbnRUYXNrcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/davyc/source/repos/MYGUYY/Views/Account/ConnectedClients.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25uZWN0ZWRDbGllbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/davyc/source/repos/MYGUYY/Views/Account/CreateTask.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGVUYXNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/davyc/source/repos/MYGUYY/Views/Account/DriverLocation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEcml2ZXJMb2NhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/davyc/source/repos/MYGUYY/Views/Account/DriverTasks.cshtml]
@@ -58,12 +66,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTZW5kTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/davyc/source/repos/MYGUYY/Views/Account/TaskDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxUYXNrRGV0YWlscy5jc2h0bWw=
+[C:/Users/davyc/source/repos/MYGUYY/Views/Account/TaskGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxUYXNrR3JvdXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/davyc/source/repos/MYGUYY/Views/Account/TaskRequestsForDriver.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxUYXNrUmVxdWVzdHNGb3JEcml2ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/davyc/source/repos/MYGUYY/Views/Account/TaskTracking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxUYXNrVHJhY2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/davyc/source/repos/MYGUYY/Views/Account/TrackDriver.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxUcmFja0RyaXZlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/davyc/source/repos/MYGUYY/Views/Account/ViewMessages.cshtml]

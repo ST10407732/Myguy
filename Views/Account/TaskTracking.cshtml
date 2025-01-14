@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Task Details";
+}
+
+<h1>Task Details</h1>
+
+<!-- Add your task details here -->
+<div id="map"></div> <!-- You can display a map here for the client to track the driver -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.6/signalr.js"></script>
+<script>
+    // SignalR connection setup
+    const connection = new signalR.HubConnectionBuilder().withUrl("/locationHub").build();
+
+    connection.on("ReceiveDriverLocation", function (data) {
+        console.log("Driver Location Update: ", data);
+        // Update the client's UI with the driver's new position on the map or show location
+        // Example: updateMap(data.driverLatitude, data.driverLongitude);
+    });
+
+    connection.start().then(function () {
+        console.log("SignalR connection established.");
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    // Function to update the driver's location
+    function sendLocationUpdate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                // Send the updated location to the server
+                fetch("/account/updatelocation", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        driverLatitude: latitude,
+                        driverLongitude: longitude
+                    })
+                }).then(response => {
+                    if (response.ok) {
+                        console.log('Location sent successfully');
+                    } else {
+                        console.error('Failed to send location');
+                    }
+                }).catch(error => {
+                    console.error('Error sending location:', error);
+                });
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    // Call this function every 5 seconds to update the location
+    setInterval(function () {
+        sendLocationUpdate();
+    }, 5000);  // Update every 5 seconds
+</script>

@@ -1,31 +1,166 @@
-﻿@* @model IEnumerable<MYGUYY.Models.TaskRequest>
-@{
-    ViewData["Title"] = "My Tasks";
+﻿@{
+    ViewBag.Title = "Driver Task Tracking";
 }
 
-<h2>My Tasks</h2>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Location</th>
-            <th>Payment</th>
-            <th>Created At</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var task in Model)
-        {
-            <tr>
-                <td>@task.Description</td>
-                <td>@task.Status</td>
-                <td>Lat: @task.Latitude, Lon: @task.Longitude</td>
-                <td>@task.PaymentAmount</td>
-                <td>@task.CreatedAt.ToString("g")</td>
-            </tr>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+<div class="container mt-4">
+    <h2 class="text-primary mb-4">@ViewBag.Title</h2>
+
+    <!-- Error Messages -->
+    <div id="errorContainer" class="alert alert-danger d-none" role="alert">
+        <span id="errorMessage"></span>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map" style="height: 500px; width: 100%;"></div>
+
+    <!-- Tracking Controls -->
+    <div class="mt-4">
+        <button class="btn btn-danger" id="stopTracking" style="display: none;">Stop Tracking</button>
+    </div>
+</div>
+
+<!-- External Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Initialize the map with a default center (e.g., 52.52, 13.4050 for Berlin)
+        const map = L.map('map').setView([52.52, 13.4050], 13); // Default view (Berlin)
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        let driverMarker = null;
+
+        // Initialize SignalR connection
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/locationHub")
+            .build();
+
+        // Log success or failure of the connection
+        connection.start()
+            .then(() => {
+                console.log('SignalR connection established');
+                alert('Connection established');
+            })
+            .catch(err => {
+                console.error('SignalR connection error: ', err);
+                alert('Failed to connect to SignalR hub');
+            });
+
+        // Start receiving location updates from SignalR
+        connection.on("ReceiveDriverLocation", (location) => {
+            const { Latitude, Longitude } = location;
+
+            // Update the driver marker
+            if (!driverMarker) {
+                driverMarker = L.marker([Latitude, Longitude], {
+                    icon: L.icon({
+                        iconUrl: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
+                        iconSize: [25, 40],
+                        iconAnchor: [12, 40]
+                    })
+                }).addTo(map)
+                    .bindPopup('Driver Location')
+                    .openPopup();
+            } else {
+                driverMarker.setLatLng([Latitude, Longitude]);
+            }
+
+            // Update map view to the driver’s current location
+            map.setView([Latitude, Longitude], 13); // Update map view to driver’s location
+        });
+
+        // Function to get current location using Geolocation API and send it to SignalR
+        function getLocationAndSend() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    // Send the location to SignalR
+                    connection.invoke("UpdateDriverLocation", 1, latitude, longitude)  // Assuming 1 is the taskId for testing
+                        .catch(err => console.error("Error sending location to server: ", err));
+
+                    // Update the map with the driver's location
+                    if (!driverMarker) {
+                        // Center the map on the driver's current location
+                        map.setView([latitude, longitude], 13);
+
+                        // Add the driver marker to the map
+                        driverMarker = L.marker([latitude, longitude], {
+                            icon: L.icon({
+                                iconUrl: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
+                                iconSize: [25, 40],
+                                iconAnchor: [12, 40]
+                            })
+                        }).addTo(map)
+                            .bindPopup('Driver Location')
+                            .openPopup();
+                    } else {
+                        driverMarker.setLatLng([latitude, longitude]);
+                    }
+                }, function (error) {
+                    console.error("Error getting geolocation: ", error);
+                    alert("Failed to get your current location. Please ensure location services are enabled.");
+                });
+            } else {
+                console.error("Geolocation is not supported by this browser.");
+                alert("Geolocation is not supported by this browser.");
+            }
         }
-    </tbody>
-</table>
- *@
+
+        // Call getLocationAndSend every 5 seconds to simulate movement
+        setInterval(getLocationAndSend, 5000); // Update every 5 seconds
+
+        // Show Stop Tracking button
+        document.getElementById("stopTracking").style.display = "inline-block";
+
+        // Stop tracking
+        document.getElementById("stopTracking").addEventListener("click", async () => {
+            await connection.invoke("LeaveTaskGroup", 1);  // Assuming 1 is the taskId for testing
+            connection.stop();
+            document.getElementById("stopTracking").style.display = "none";
+            alert("Tracking stopped.");
+        });
+    });
+</script>
+
+<!-- Styles for better appearance -->
+<style>
+    #map {
+        height: 500px;
+        width: 100%;
+        border: 1px solid #ccc; /* Add a border to the map for clarity */
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+</style>

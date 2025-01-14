@@ -1,0 +1,61 @@
+﻿@page
+@model dynamic
+@{
+    // Ensure ViewData["Title"] has a default value if it's not set in the controller
+    ViewData["Title"] = ViewData["Title"] ?? "Task Groups";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Update this based on your layout
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <label for="taskId">Enter Task ID:</label>
+    <input id="taskId" type="number" placeholder="Enter Task ID" />
+    <button id="joinGroup">Join Task Group</button>
+    <button id="leaveGroup">Leave Task Group</button>
+</div>
+
+<div id="messages">
+    <h3>Notifications:</h3>
+    <ul id="notificationList"></ul>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const hubConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/locationHub")
+            .build();
+
+        // Handle incoming notifications from SignalR
+        hubConnection.on("Notify", (message) => {
+            const notificationList = document.getElementById("notificationList");
+            const listItem = document.createElement("li");
+            listItem.textContent = message;
+            notificationList.appendChild(listItem);
+        });
+
+        // Join Task Group event handler
+        document.getElementById("joinGroup").addEventListener("click", async () => {
+            const taskId = document.getElementById("taskId").value;
+            if (taskId) {
+                await hubConnection.invoke("JoinTaskGroup", parseInt(taskId));  // Join the task group
+            } else {
+                alert("Please enter a Task ID.");
+            }
+        });
+
+        // Leave Task Group event handler
+        document.getElementById("leaveGroup").addEventListener("click", async () => {
+            const taskId = document.getElementById("taskId").value;
+            if (taskId) {
+                await hubConnection.invoke("LeaveTaskGroup", parseInt(taskId));  // Leave the task group
+            } else {
+                alert("Please enter a Task ID.");
+            }
+        });
+
+        // Start the SignalR connection
+        hubConnection.start().catch(err => console.error(err));
+    </script>
+}

@@ -1,70 +1,146 @@
-﻿@model IEnumerable<MYGUYY.Models.Message>
-
+﻿@model List<MYGUYY.Models.Message>
 @{
-    ViewData["Title"] = "Messages for Task";
+    ViewBag.Title = "Task Messages";
     var taskId = ViewData["TaskId"];
 }
 
 <div class="container mt-4">
-    <h1 class="text-primary mb-4">Messages for Task @taskId</h1>
+    <h2 class="text-primary mb-3">Messages for Task @taskId</h2>
 
-    @if (TempData["Message"] != null)
-    {
-        <div class="alert alert-success">@TempData["Message"]</div>
-    }
+    <!-- Message Form -->
+    <div class="message-form mb-4 p-4 shadow-sm bg-light rounded">
+        <form method="post" asp-action="SendMessageForDriver" asp-route-taskId="@taskId" enctype="multipart/form-data">
+            <div class="form-group mb-3">
+                <textarea id="content" name="content" class="form-control" rows="2" placeholder="Type your message..."></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <input type="file" id="file" name="file" class="form-control-file" />
+                <small class="form-text text-muted">Supported formats: JPEG, PNG, MP4, AVI.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
 
-    <div class="messages mb-4">
-        @if (Model != null && Model.Any())
+    <!-- Message History -->
+    <div class="chat-container bg-white p-3 rounded shadow-sm">
+        <h3 class="text-secondary mb-3">Message History</h3>
+        @if (Model.Count > 0)
         {
-            @foreach (var message in Model)
-            {
-                <div class="message bg-light p-3 mb-3 rounded shadow-sm">
-                    <div class="message-header font-weight-bold text-secondary">
-                        @message.SentAt.ToString("g")
+            <div class="chat-box">
+                @foreach (var message in Model)
+                {
+                  <div>  @* <div class="chat-message @(message.IsSender ? "sent" : "received")"> *@
+                        <span class="chat-time">@message.SentAt.ToString("HH:mm")</span>
+                        <div class="chat-content">
+                            @if (!string.IsNullOrWhiteSpace(message.Content))
+                            {
+                                <p>@message.Content</p>
+                            }
+                            @if (!string.IsNullOrEmpty(message.FilePath))
+                            {
+                                @if (message.FileType.Contains("image"))
+                                {
+                                    <img src="@message.FilePath" alt="Image" class="chat-media" />
+                                }
+                                else if (message.FileType.Contains("video"))
+                                {
+                                    <video controls class="chat-media">
+                                        <source src="@message.FilePath" type="@message.FileType" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                }
+                            }
+                        </div>
                     </div>
-                    <p class="message-content mt-2">@message.Content</p>
-
-                    @if (!string.IsNullOrEmpty(message.FilePath))
-                    {
-                        @if (message.FileType.StartsWith("image"))
-                        {
-                            <img src="@message.FilePath" alt="Image" style="max-width: 100%; height: auto;" />
-                        }
-                        else if (message.FileType.StartsWith("video"))
-                        {
-                            <video controls style="max-width: 100%; height: auto;">
-                                <source src="@message.FilePath" type="@message.FileType" />
-                                Your browser does not support the video tag.
-                            </video>
-                        }
-                    }
-                </div>
-            }
+                }
+            </div>
         }
         else
         {
             <p class="text-muted">No messages yet.</p>
         }
     </div>
-
-    <h2 class="text-secondary">Send a Message</h2>
-    <form method="post" asp-action="SendMessageForDriver" asp-route-taskId="@taskId" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            <textarea id="content" name="content" class="form-control" rows="4" placeholder="Write your message here..." required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="file">Attach File (Optional):</label>
-            <input type="file" id="file" name="file" class="form-control" accept="image/*,video/*" />
-            <small class="form-text text-muted">
-                Supported formats: Images (JPEG, PNG), Videos (MP4, AVI).
-            </small>
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-2">Send Message</button>
-    </form>
-
-    <hr class="my-4" />
-    <a href="@Url.Action("TaskRequestsForDriver", "Account")" class="btn btn-secondary">Back to Task Requests</a>
 </div>
+
+<!-- WhatsApp-Inspired CSS -->
+<style>
+    body {
+        background-color: #e5ddd5;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+    }
+
+    .message-form textarea {
+        resize: none;
+    }
+
+    .chat-container {
+        max-height: 500px;
+        overflow-y: auto;
+        border: 1px solid #d1d1d1;
+    }
+
+    .chat-box {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .chat-message {
+        max-width: 70%;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        position: relative;
+        word-wrap: break-word;
+        line-height: 1.5;
+    }
+
+    .chat-message.sent {
+        align-self: flex-end;
+        background-color: #d1f1c4;
+        color: #1b5e20;
+    }
+
+    .chat-message.received {
+        align-self: flex-start;
+        background-color: #ffffff;
+        color: #333;
+        border: 1px solid #e0e0e0;
+    }
+
+    .chat-time {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        font-size: 0.7rem;
+        color: #555;
+    }
+
+    .chat-content p {
+        margin: 0;
+    }
+
+    .chat-media {
+        max-width: 150px;
+        max-height: 100px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    /* Mobile Responsiveness */
+   
+        .chat-message {
+            max-width: 90%;
+            font-size: 0.85rem;
+        }
+
+        .chat-media {
+            max-width: 120px;
+            max-height: 80px;
+        }
+    }
+</style>

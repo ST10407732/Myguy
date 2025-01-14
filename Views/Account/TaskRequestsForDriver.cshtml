@@ -4,52 +4,161 @@
     ViewData["Title"] = "Task Requests for Driver";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container mt-4">
+    <h2 class="text-primary mb-4">@ViewData["Title"]</h2>
 
-<div>
-    <h4>Task Requests</h4>
-    @if (!Model.Any())
-    {
-        <p>No pending task requests.</p>
-    }
-    else
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Description</th>
-                    <th>Client</th>
-                    <th>Pickup Location</th>
-                    <th>Dropoff Location</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var task in Model)
-                {
+    <div class="task-list mb-4">
+        <h4 class="font-weight-bold">Task Requests</h4>
+
+        @if (!Model.Any())
+        {
+            <p class="text-muted">No pending or accepted task requests.</p>
+        }
+        else
+        {
+            <table class="table table-striped table-hover shadow-sm">
+                <thead class="thead-dark">
                     <tr>
-                        <td>@task.Description</td>
-                        <td>@task.Client.Username</td>
-                        <td>@task.PickupLatitude, @task.PickupLongitude</td>
-                        <td>@task.DropoffLatitude, @task.DropoffLongitude</td>
-                        <td>
-                            @if (task.Status == "Pending")
-                            {
-                                <form method="post" action="@Url.Action("AcceptTask", new { id = task.Id })">
-                                    <button type="submit" class="btn btn-primary">Accept</button>
-                                </form>
-                                <form method="post" action="@Url.Action("DeclineTask", new { id = task.Id })">
-                                    <button type="submit" class="btn btn-danger">Decline</button>
-                                </form>
-                            }
-                            else
-                            {
-                                <span>@task.Status</span>
-                            }
-                        </td>
+                        <th>Description</th>
+                        <th>Client</th>
+                        <th>Pickup Location</th>
+                        <th>Dropoff Location</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    }
+                </thead>
+                <tbody>
+                    @foreach (var task in Model)
+                    {
+                        <tr>
+                            <td>@task.Description</td>
+                            <td>@task.Client.Username</td>
+                            <td>
+                                @if (task.PickupLatitude != null && task.PickupLongitude != null)
+                                {
+                                    <a href="#" class="text-primary" data-lat="@task.PickupLatitude" data-lng="@task.PickupLongitude" onclick="showLocationOnMap(@task.PickupLatitude, @task.PickupLongitude, 'Pickup')">
+                                        @task.PickupLatitude, @task.PickupLongitude
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">No location available</span>
+                                }
+                            </td>
+                            <td>
+                                @if (task.DropoffLatitude != null && task.DropoffLongitude != null)
+                                {
+                                    <a href="#" class="text-primary" data-lat="@task.DropoffLatitude" data-lng="@task.DropoffLongitude" onclick="showLocationOnMap(@task.DropoffLatitude, @task.DropoffLongitude, 'Dropoff')">
+                                        @task.DropoffLatitude, @task.DropoffLongitude
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">No location available</span>
+                                }
+                            </td>
+                            <td>@task.Status</td>
+                            <td>
+                                @if (task.Status == "Pending")
+                                {
+                                    <div class="btn-group">
+                                        <form method="post" action="@Url.Action("AcceptTask", new { id = task.Id })">
+                                            <button type="submit" class="btn btn-success btn-sm">Accept</button>
+                                        </form>
+                                        <form method="post" action="@Url.Action("DeclineTask", new { id = task.Id })">
+                                            <button type="submit" class="btn btn-danger btn-sm">Decline</button>
+                                        </form>
+                                    </div>
+                                }
+                                else if (task.Status == "Accepted")
+                                {
+                                    <span class="badge badge-success">Task Accepted</span>
+                                }
+                                <div class="mt-2">
+                                    <a href="@Url.Action("ViewMessagesForDriver", "Account", new { taskId = task.Id })" class="btn btn-info btn-sm">View Messages</a>
+                                    <a href="@Url.Action("SendMessageForDriver", "Account", new { taskId = task.Id })" class="btn btn-primary btn-sm">Send Message</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    <div id="taskMap" style="height: 400px; width: 100%; display: none; border: 1px solid #ddd; border-radius: 8px;" class="shadow-sm mt-4"></div>
 </div>
+
+<!-- Leaflet and custom script for showing locations -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+<script>
+    let map;
+    let marker = null;
+
+    function showLocationOnMap(latitude, longitude, locationType) {
+        // Initialize map if not already created
+        if (!map) {
+            map = L.map('taskMap').setView([latitude, longitude], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+        }
+
+        // Remove the previous marker if it exists
+        if (marker) {
+            map.removeLayer(marker);
+        }
+
+        // Add a new marker and set the view
+        marker = L.marker([latitude, longitude]).addTo(map)
+            .bindPopup(locationType + " Location: " + latitude + ", " + longitude)
+            .openPopup();
+        map.setView([latitude, longitude], 13);
+
+        // Show the map
+        document.getElementById('taskMap').style.display = 'block';
+    }
+</script>
+
+<style>
+    /* Add spacing and improve table appearance */
+    .table {
+        margin-top: 20px;
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+    }
+
+        .table thead th {
+            background-color: #343a40;
+            color: white;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+    .task-list {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+    .btn-group form {
+        display: inline;
+    }
+
+    #taskMap {
+        margin-top: 20px;
+    }
+
+    a.text-primary {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>

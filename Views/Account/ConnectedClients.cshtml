@@ -1,0 +1,27 @@
+﻿@page
+@model dynamic
+@{
+    ViewData["Title"] = "Connected Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Update this based on your layout
+}
+
+<h2>Connected Clients</h2>
+<div id="connectionStatus">
+    <p>Status: <span id="status">Disconnected</span></p>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const hubConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/locationHub")
+            .build();
+
+        hubConnection.on("Connected", (message) => {
+            document.getElementById("status").innerText = "Connected";
+            console.log(message);
+        });
+
+        hubConnection.start().catch(err => console.error(err));
+    </script>
+}

@@ -14,4 +14,5 @@ public class User
 
     [Required]
     public string Role { get; set; }
+
 }

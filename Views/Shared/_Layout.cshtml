@@ -1,31 +1,156 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - MyGuy</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-xodZBNTC5n17Xt2Do+JcLrX54J2zY1u1RI+XaDJtk9A=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7k8xy4pRdZSNlRL5YKjbIKkqo1jbsnVTELJ4Kk=" crossorigin=""></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #1e3a8a; /* Rich navy blue */
+            --secondary-color: #2563eb; /* Bright medium blue */
+            --background-color: #f0f4ff; /* Soft light blue */
+            --text-color: #ffffff; /* White for dark backgrounds */
+            --form-background: #ffffff; /* White forms */
+            --font-color: #1f2937; /* Dark slate for text */
+            --hover-color: #3b82f6; /* Brighter blue for hover effects */
+            --input-border-color: #d1d5db; /* Neutral input borders */
+        }
 
+        body {
+            background-color: var(--background-color);
+            color: var(--font-color);
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav.navbar {
+            background-color: var(--primary-color);
+            padding: 0.8rem 1.2rem;
+        }
+
+        nav.navbar .navbar-brand,
+        nav.navbar .nav-link {
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        nav.navbar .nav-link:hover {
+            color: var(--hover-color);
+        }
+
+        .container {
+            padding: 1.5rem;
+        }
+
+        h2, h4 {
+            color: var(--primary-color);
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        form {
+            background-color: var(--form-background);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form .form-group label {
+            font-weight: bold;
+        }
+
+        form .form-group input,
+        form .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--input-border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        form .form-group input:focus,
+        form .form-group textarea:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        /*
+        */
+
+            nav.navbar .nav-link {
+                font-size: 0.9rem;
+            }
+
+            h2, h4 {
+                font-size: 1.2rem;
+            }
+
+            form {
+                padding: 1rem;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+
+            .container {
+                padding: 0.5rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MYGUYY</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-
                         @switch (User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value)
                         {
                             case "Admin":
@@ -33,33 +158,26 @@
                                     <a class="nav-link" asp-controller="Admin" asp-action="ManageTasks">Admin Dashboard</a>
                                 </li>
                                 break;
-
                             case "Driver":
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Account" asp-action="TaskRequestsForDriver">View Tasks</a>
+                                    <a class="nav-link" asp-controller="Account" asp-action="TaskRequestsForDriver">Tasks</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="DriverTasks">Track My Location</a>
                                 </li>
                                 break;
-
                             case "Client":
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Account" asp-action="ClientTasks">Your Tasks</a>
+                                    <a class="nav-link" asp-controller="Account" asp-action="DriverTasks">Track My Driver</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" asp-controller="Account" asp-action="CreateTask">Create Task</a>
                                 </li>
                                 break;
                         }
-
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
                         </li>
-                        @if (User.IsInRole("Driver"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-action="TaskRequestsForDriver" asp-controller="Account">Available Tasks</a>
-                            </li>
-                        }
-
                     }
                     else
                     {
@@ -68,35 +186,22 @@
                         </li>
                     }
                 </ul>
-                @if (TempData["Message"] != null)
-                {
-                    <div class="alert alert-info">@TempData["Message"]</div>
-                }
-                @if (User.IsInRole("Client"))
-                {
-                    <li><a asp-controller="Account" asp-action="ClientMap">Map</a></li>
-                }
-
-
             </div>
         </div>
     </nav>
 
+    <!-- Page Content -->
     <div class="container mt-4">
         @RenderBody()
     </div>
 
-    <footer class="text-center mt-5">
-        <p>&copy; 2024 MyGuy. All rights reserved.</p>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 MyGuy. All rights reserved.</p>
     </footer>
 
-    <body>
-        <div class="container">
-            @RenderBody()
-        </div>
-
-        @RenderSection("Scripts", required: false)
-    </body>
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
