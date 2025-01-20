@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Driver Task Tracking";
+    var taskId = ViewBag.TaskId; // Get the taskId dynamically, passed from the controller
 }
 
 <!-- Leaflet CSS -->
@@ -30,6 +31,10 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // Ensure taskId is passed correctly to the JavaScript variable
+        const taskId = @Html.Raw(Json.Serialize(ViewBag.TaskId));
+
+
         // Initialize the map with a default center (e.g., 52.52, 13.4050 for Berlin)
         const map = L.map('map').setView([52.52, 13.4050], 13); // Default view (Berlin)
 
@@ -39,7 +44,7 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        let driverMarker = null;
+        let driverMarker = null; // Marker for the driver location
 
         // Initialize SignalR connection
         const connection = new signalR.HubConnectionBuilder()
@@ -50,7 +55,8 @@
         connection.start()
             .then(() => {
                 console.log('SignalR connection established');
-                alert('Connection established');
+                connection.invoke("JoinTaskGroup", taskId)  // Join the group for this specific task
+                    .catch(err => console.error("Error joining task group: ", err));
             })
             .catch(err => {
                 console.error('SignalR connection error: ', err);
@@ -61,7 +67,7 @@
         connection.on("ReceiveDriverLocation", (location) => {
             const { Latitude, Longitude } = location;
 
-            // Update the driver marker
+            // Update the driver marker or create a new one if it doesn't exist
             if (!driverMarker) {
                 driverMarker = L.marker([Latitude, Longitude], {
                     icon: L.icon({
@@ -73,6 +79,7 @@
                     .bindPopup('Driver Location')
                     .openPopup();
             } else {
+                // Move the existing driver marker to the new location
                 driverMarker.setLatLng([Latitude, Longitude]);
             }
 
@@ -88,7 +95,7 @@
                     const longitude = position.coords.longitude;
 
                     // Send the location to SignalR
-                    connection.invoke("UpdateDriverLocation", 1, latitude, longitude)  // Assuming 1 is the taskId for testing
+                    connection.invoke("UpdateDriverLocation", taskId, latitude, longitude)  // Send the taskId for the correct task
                         .catch(err => console.error("Error sending location to server: ", err));
 
                     // Update the map with the driver's location
@@ -127,10 +134,15 @@
 
         // Stop tracking
         document.getElementById("stopTracking").addEventListener("click", async () => {
-            await connection.invoke("LeaveTaskGroup", 1);  // Assuming 1 is the taskId for testing
-            connection.stop();
-            document.getElementById("stopTracking").style.display = "none";
-            alert("Tracking stopped.");
+            try {
+                await connection.invoke("LeaveTaskGroup", taskId);  // Use taskId to leave the task group
+                connection.stop();
+                document.getElementById("stopTracking").style.display = "none";
+                alert("Tracking stopped.");
+            } catch (err) {
+                console.error("Error leaving task group: ", err);
+                alert("Error stopping tracking.");
+            }
         });
     });
 </script>

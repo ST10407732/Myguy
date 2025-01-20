@@ -13,8 +13,8 @@ namespace MYGUYY.Data
         public DbSet<User> Users { get; set; }
         public DbSet<TaskRequest> TaskRequests { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public object Tasks { get; internal set; }
-
+        public DbSet<Stop> Stops { get; set; }  // Added Stop DbSet
+        public DbSet<DriverProfile> DriverProfiles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configure User entity
@@ -37,7 +37,14 @@ namespace MYGUYY.Data
             // Configure TaskRequest entity
             modelBuilder.Entity<TaskRequest>()
                 .HasKey(tr => tr.Id); // Primary Key
+            modelBuilder.Entity<DriverProfile>()
+        .HasKey(dp => dp.Id);
 
+            modelBuilder.Entity<DriverProfile>()
+                .HasOne(dp => dp.User)
+                .WithOne()
+                .HasForeignKey<DriverProfile>(dp => dp.UserId)
+                .OnDelete(DeleteBehavior.Cascade); // Deleting a
             modelBuilder.Entity<TaskRequest>()
                 .Property(tr => tr.Description)
                 .IsRequired()
@@ -82,6 +89,28 @@ namespace MYGUYY.Data
                 .WithMany() // A task can have multiple messages
                 .HasForeignKey(m => m.TaskRequestId)
                 .OnDelete(DeleteBehavior.Restrict); // Prevent deletion if related
+
+            // Configure Stop entity (new addition)
+            modelBuilder.Entity<Stop>()
+                .HasKey(s => s.Id); // Primary Key
+
+            modelBuilder.Entity<Stop>()
+                .Property(s => s.Latitude)
+                .IsRequired();
+
+            modelBuilder.Entity<Stop>()
+                .Property(s => s.Longitude)
+                .IsRequired();
+
+            modelBuilder.Entity<Stop>()
+                .Property(s => s.Order)
+                .IsRequired();
+
+            modelBuilder.Entity<Stop>()
+                .HasOne(s => s.TaskRequest)
+                .WithMany(tr => tr.Stops) // A TaskRequest can have multiple Stops
+                .HasForeignKey(s => s.TaskRequestId)
+                .OnDelete(DeleteBehavior.Cascade); // Cascade delete behavior for stops if TaskRequest is deleted
         }
     }
 }

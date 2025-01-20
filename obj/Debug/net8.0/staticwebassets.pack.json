@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\MYGUYY.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\Images\\Home.png",
+      "PackagePath": "staticwebassets\\Images\\Home.png"
+    },
+    {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -245,6 +249,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4",
+      "PackagePath": "staticwebassets\\uploads\\messages\\00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4"
+    },
+    {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\10cc8a8e-8e76-4c53-be36-12bad016e86d_WhatsApp Image 2025-01-12 at 20.37.56.jpeg",
       "PackagePath": "staticwebassets\\uploads\\messages\\10cc8a8e-8e76-4c53-be36-12bad016e86d_WhatsApp Image 2025-01-12 at 20.37.56.jpeg"
     },
@@ -259,6 +267,10 @@
     {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\2c79335f-1f33-414c-b7f0-531ce16bb0b8_Photo_1707113761389.png",
       "PackagePath": "staticwebassets\\uploads\\messages\\2c79335f-1f33-414c-b7f0-531ce16bb0b8_Photo_1707113761389.png"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\32389f27-0d87-439f-9f64-d457316c52f2_WhatsApp Image 2025-01-14 at 09.40.42.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\messages\\32389f27-0d87-439f-9f64-d457316c52f2_WhatsApp Image 2025-01-14 at 09.40.42.jpeg"
     },
     {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\34881fef-a2f6-4bba-8e43-927e2adc720c_WhatsApp Image 2025-01-12 at 01.36.53 (2).jpeg",
@@ -293,6 +305,18 @@
       "PackagePath": "staticwebassets\\uploads\\messages\\4cd2f75c-d915-43f8-9ae3-9acb202a3cc0_IMG-20240826-WA0008.jpg"
     },
     {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\59e9b811-8b2a-4efe-99b7-af10bd179d25_WhatsApp Video 2025-01-12 at 01.38.41.mp4",
+      "PackagePath": "staticwebassets\\uploads\\messages\\59e9b811-8b2a-4efe-99b7-af10bd179d25_WhatsApp Video 2025-01-12 at 01.38.41.mp4"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\683a2c23-6f8f-4dee-8fdd-720a9c8974ce_WhatsApp Image 2025-01-14 at 13.29.53.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\messages\\683a2c23-6f8f-4dee-8fdd-720a9c8974ce_WhatsApp Image 2025-01-14 at 13.29.53.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\78a9e41f-c2e8-4dd6-8a9c-9291e2a1b6de_WhatsApp Image 2025-01-14 at 17.35.08.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\messages\\78a9e41f-c2e8-4dd6-8a9c-9291e2a1b6de_WhatsApp Image 2025-01-14 at 17.35.08.jpeg"
+    },
+    {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\79333d34-3497-4e6c-b806-65c9fcb28a33_WhatsApp Image 2025-01-04 at 21.03.28.jpeg",
       "PackagePath": "staticwebassets\\uploads\\messages\\79333d34-3497-4e6c-b806-65c9fcb28a33_WhatsApp Image 2025-01-04 at 21.03.28.jpeg"
     },
@@ -309,12 +333,28 @@
       "PackagePath": "staticwebassets\\uploads\\messages\\834512dc-6fa4-4467-8d5a-a25de1a8c285_WhatsApp Image 2025-01-12 at 20.37.56.jpeg"
     },
     {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\87ce5ee1-4fed-49a4-bbde-3f804dbc40ca_WhatsApp Image 2025-01-12 at 01.36.53 (1).jpeg",
+      "PackagePath": "staticwebassets\\uploads\\messages\\87ce5ee1-4fed-49a4-bbde-3f804dbc40ca_WhatsApp Image 2025-01-12 at 01.36.53 (1).jpeg"
+    },
+    {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\929a94b4-4f7d-43d9-99eb-0418f31c5ee0_WORSHIP_IN_SWAHILI_-_PST._VICTORIA_ORENZE_IN_KENYA.(144p).mp4",
       "PackagePath": "staticwebassets\\uploads\\messages\\929a94b4-4f7d-43d9-99eb-0418f31c5ee0_WORSHIP_IN_SWAHILI_-_PST._VICTORIA_ORENZE_IN_KENYA.(144p).mp4"
     },
     {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\9760fcf0-ede3-43ac-8963-afb11e9bea89_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
       "PackagePath": "staticwebassets\\uploads\\messages\\9760fcf0-ede3-43ac-8963-afb11e9bea89_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\9bbd76b8-d83d-4398-91e2-f51f98d58cb4_WhatsApp Video 2025-01-12 at 01.38.41.mp4",
+      "PackagePath": "staticwebassets\\uploads\\messages\\9bbd76b8-d83d-4398-91e2-f51f98d58cb4_WhatsApp Video 2025-01-12 at 01.38.41.mp4"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\9f07e306-3f71-45ee-9dbd-10745b10c6f1_WhatsApp Image 2025-01-14 at 17.35.08.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\messages\\9f07e306-3f71-45ee-9dbd-10745b10c6f1_WhatsApp Image 2025-01-14 at 17.35.08.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\a7197976-9719-4490-9e8f-28f6d3967166_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "PackagePath": "staticwebassets\\uploads\\messages\\a7197976-9719-4490-9e8f-28f6d3967166_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4"
     },
     {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\ab6ac405-785f-4e62-ae49-a93d947c4bc3_WhatsApp Image 2025-01-12 at 20.37.56.jpeg",
@@ -325,12 +365,24 @@
       "PackagePath": "staticwebassets\\uploads\\messages\\afb33523-aac7-4ffb-9f0d-81b51f2a091b_WhatsApp Image 2025-01-12 at 01.37.57.jpeg"
     },
     {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\ce9f2ad6-416f-4c19-929b-229318549584_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "PackagePath": "staticwebassets\\uploads\\messages\\ce9f2ad6-416f-4c19-929b-229318549584_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4"
+    },
+    {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\cea09587-c3ca-4711-a50f-39a58c22ffc3_Photo_1688927805595.png",
       "PackagePath": "staticwebassets\\uploads\\messages\\cea09587-c3ca-4711-a50f-39a58c22ffc3_Photo_1688927805595.png"
     },
     {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\d0dbe54a-2dbc-4b76-acd7-9002eeb11002_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "PackagePath": "staticwebassets\\uploads\\messages\\d0dbe54a-2dbc-4b76-acd7-9002eeb11002_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4"
+    },
+    {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\d4ca120a-d2bb-4e22-8e56-ec07ae047009_WhatsApp Image 2025-01-06 at 17.11.25.jpeg",
       "PackagePath": "staticwebassets\\uploads\\messages\\d4ca120a-d2bb-4e22-8e56-ec07ae047009_WhatsApp Image 2025-01-06 at 17.11.25.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\e493fc12-5eda-4222-b169-198aa6256706_WhatsApp Image 2025-01-14 at 09.40.42.jpg",
+      "PackagePath": "staticwebassets\\uploads\\messages\\e493fc12-5eda-4222-b169-198aa6256706_WhatsApp Image 2025-01-14 at 09.40.42.jpg"
     },
     {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\e7307a7b-2e4c-43bf-96c9-52213e2795d5_WhatsApp Image 2025-01-12 at 01.36.53 (1).jpeg",
@@ -339,6 +391,14 @@
     {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\ed1dc398-fdaf-4fb9-bff7-c4ee23d93504_WhatsApp Image 2025-01-12 at 01.36.53 (1).jpeg",
       "PackagePath": "staticwebassets\\uploads\\messages\\ed1dc398-fdaf-4fb9-bff7-c4ee23d93504_WhatsApp Image 2025-01-12 at 01.36.53 (1).jpeg"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "PackagePath": "staticwebassets\\uploads\\messages\\ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4"
+    },
+    {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\ff07b907-62d4-45dd-8757-691615354747_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "PackagePath": "staticwebassets\\uploads\\messages\\ff07b907-62d4-45dd-8757-691615354747_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MYGUYY.Microsoft.AspNetCore.StaticWebAssets.props",

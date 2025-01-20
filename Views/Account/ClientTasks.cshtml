@@ -24,7 +24,14 @@
         <tr>
             <th>Description</th>
             <th>Status</th>
+            <th>Vehicle Type</th>
+            <th>Recommended Cost</th>
+            <th>Client</th>
+            <th>Pickup Location (Lat, Long)</th>
+            <th>Dropoff Location (Lat, Long)</th>
+            <th>Stops</th>
             <th>Created At</th>
+            <th>Agreement Code</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -34,7 +41,28 @@
             <tr>
                 <td>@task.Description</td>
                 <td>@task.Status</td>
+                <td>@task.VehicleType</td>
+                <td>R@(@task.RecommendedCost.ToString("F2"))</td>
+                <td>@task.Client ?? "Unknown"</td>
+                <td>@task.PickupLatitude, @task.PickupLongitude</td>
+                <td>@task.DropoffLatitude, @task.DropoffLongitude</td>
+                <td>
+                    @if (task.Stops != null && task.Stops.Count > 0)
+                    {
+                        <ul>
+                            @foreach (var stop in task.Stops)
+                            {
+                                <li>@stop.Latitude, @stop.Longitude</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span>No Stops</span>
+                    }
+                </td>
                 <td>@task.CreatedAt.ToString("MM/dd/yyyy HH:mm")</td>
+                <td>@task.ConfirmationCode</td>
                 <td>
                     @if (task.Status == "Pending")
                     {
@@ -43,6 +71,16 @@
                     else if (task.Status == "Accepted")
                     {
                         <a href="@Url.Action("ViewMessages", "Account", new { taskId = task.Id })" class="btn btn-secondary">View Messages</a>
+
+                        <!-- Display Track My Driver button only if the task has been accepted -->
+                        @if (task.DriverId != null)
+                        {
+                            <a href="@Url.Action("TrackDriver", "Account", new { taskId = task.Id })" class="btn btn-info">Track My Driver</a>
+                        }
+                        else
+                        {
+                            <span class="badge badge-warning">Driver Not Assigned</span>
+                        }
                     }
                     else
                     {
@@ -53,109 +91,3 @@
         }
     </tbody>
 </table>
-
-<h3>Map View</h3>
-
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-
-<div id="map" style="height: 500px; width: 100%;"></div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const map = L.map('map').setView([-25.7479, 28.2293], 13); // Default to Pretoria
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        let driverMarker = null;
-
-        const connection = new signalR.HubConnectionBuilder()
-            .withUrl("/locationHub")
-            .build();
-
-        document.getElementById("startTracking")?.addEventListener("click", async () => {
-            const taskId = document.getElementById("taskId").value;
-            if (!taskId) {
-                alert("Please enter a Task ID.");
-                return;
-            }
-
-            await connection.start();
-            await connection.invoke("JoinTaskGroup", taskId);
-
-            // Fetch task details (pickup and dropoff locations)
-            fetch(`/Task/GetTaskDetails/${taskId}`)
-                .then(response => response.json())
-                .then(task => {
-                    if (task) {
-                        if (task.pickupLatitude && task.pickupLongitude) {
-                            L.marker([task.pickupLatitude, task.pickupLongitude]).addTo(map)
-                                .bindPopup('Pickup Location: ' + task.pickupLocation)
-                                .openPopup();
-                        }
-
-                        if (task.dropoffLatitude && task.dropoffLongitude) {
-                            L.marker([task.dropoffLatitude, task.dropoffLongitude]).addTo(map)
-                                .bindPopup('Dropoff Location: ' + task.dropoffLocation)
-                                .openPopup();
-                        }
-
-                        map.fitBounds([
-                            [task.pickupLatitude, task.pickupLongitude],
-                            [task.dropoffLatitude, task.dropoffLongitude]
-                        ]);
-                    }
-                })
-                .catch(err => alert("Failed to fetch task details: " + err.message));
-
-            connection.on("ReceiveDriverLocation", (location) => {
-                const { Latitude, Longitude } = location;
-
-                if (!driverMarker) {
-                    driverMarker = L.marker([Latitude, Longitude], {
-                        icon: L.icon({
-                            iconUrl: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
-                            iconSize: [25, 40],
-                            iconAnchor: [12, 40]
-                        })
-                    }).addTo(map)
-                        .bindPopup('Driver Location');
-                } else {
-                    driverMarker.setLatLng([Latitude, Longitude]);
-                }
-
-                map.setView([Latitude, Longitude]);
-            });
-
-            alert("Tracking started!");
-        });
-    });
-</script>
-
-<!-- Styles for better appearance -->
-<style>
-    #map {
-        height: 500px;
-        width: 100%;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-        button:hover {
-            background-color: #45a049;
-        }
-</style>

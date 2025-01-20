@@ -22,6 +22,50 @@ namespace MYGUYY.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("MYGUYY.Models.DriverProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("IDDocumentPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LicenseDocumentPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LicenseExpiry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LicenseNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("VehicleRegistration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VehicleType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("DriverProfiles");
+                });
+
             modelBuilder.Entity("MYGUYY.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -58,6 +102,33 @@ namespace MYGUYY.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("MYGUYY.Models.Stop", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TaskRequestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskRequestId");
+
+                    b.ToTable("Stops");
+                });
+
             modelBuilder.Entity("MYGUYY.Models.TaskRequest", b =>
                 {
                     b.Property<int>("Id")
@@ -66,8 +137,23 @@ namespace MYGUYY.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("AcceptedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("AmountCollected")
+                        .HasColumnType("float");
+
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ConfirmationCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ConfirmedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Cost")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -78,6 +164,9 @@ namespace MYGUYY.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("DriverConfirmationCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DriverId")
                         .HasColumnType("int");
@@ -91,27 +180,29 @@ namespace MYGUYY.Migrations
                     b.Property<double>("DropoffLatitude")
                         .HasColumnType("float");
 
-                    b.Property<string>("DropoffLocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("DropoffLongitude")
                         .HasColumnType("float");
+
+                    b.Property<bool>("IsAgreementConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<double>("PickupLatitude")
                         .HasColumnType("float");
 
-                    b.Property<string>("PickupLocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("PickupLongitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("RecommendedCost")
                         .HasColumnType("float");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VehicleType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -149,12 +240,34 @@ namespace MYGUYY.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("MYGUYY.Models.DriverProfile", b =>
+                {
+                    b.HasOne("User", "User")
+                        .WithOne()
+                        .HasForeignKey("MYGUYY.Models.DriverProfile", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MYGUYY.Models.Message", b =>
                 {
                     b.HasOne("MYGUYY.Models.TaskRequest", "TaskRequest")
                         .WithMany()
                         .HasForeignKey("TaskRequestId")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TaskRequest");
+                });
+
+            modelBuilder.Entity("MYGUYY.Models.Stop", b =>
+                {
+                    b.HasOne("MYGUYY.Models.TaskRequest", "TaskRequest")
+                        .WithMany("Stops")
+                        .HasForeignKey("TaskRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("TaskRequest");
@@ -176,6 +289,11 @@ namespace MYGUYY.Migrations
                     b.Navigation("Client");
 
                     b.Navigation("Driver");
+                });
+
+            modelBuilder.Entity("MYGUYY.Models.TaskRequest", b =>
+                {
+                    b.Navigation("Stops");
                 });
 #pragma warning restore 612, 618
         }

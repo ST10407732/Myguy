@@ -26,12 +26,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\davyc\source\repos\MYGUYY
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/davyc/source/repos/MYGUYY/Views/Account/AgreementForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZ3JlZW1lbnRGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/davyc/source/repos/MYGUYY/Views/Account/ClientMap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDbGllbnRNYXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/davyc/source/repos/MYGUYY/Views/Account/ClientTasks.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDbGllbnRUYXNrcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/davyc/source/repos/MYGUYY/Views/Account/ConfirmAgreement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtQWdyZWVtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/davyc/source/repos/MYGUYY/Views/Account/ConnectedClients.cshtml]

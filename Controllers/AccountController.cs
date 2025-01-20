@@ -108,11 +108,47 @@ namespace MYGUYY.Controllers
             return View();
         }
         // GET: Render the registration page
-        [HttpGet]
+
         public IActionResult DriverTasks()
         {
-            return View();
+            // Retrieve the driver's ID from the logged-in user's claims
+            var driverId = int.Parse(User.FindFirst("UserId")?.Value);
+
+            // Check if the driverId is valid
+            if (driverId <= 0)
+            {
+                // Handle invalid driverId (e.g., redirect or show an error message)
+                return RedirectToAction("Index", "Home"); // Or show an error view
+            }
+
+            // Fetch tasks assigned to the driver that are not completed
+            var tasks = _context.TaskRequests
+                                .Where(t => t.DriverId == driverId && t.Status != "Completed")
+                                .OrderBy(t => t.CreatedAt) // Optional: Sort tasks by creation date
+                                .ToList();
+
+            // Handle case where no tasks are found
+            if (tasks == null || tasks.Count == 0)
+            {
+                ViewBag.Message = "You have no active tasks at the moment.";
+            }
+
+            return View(tasks); // Return a view with the list of tasks assigned to the driver
         }
+        public IActionResult TrackDriver(int taskId)
+        {
+            var taskRequest = _context.TaskRequests
+                .Include(t => t.Driver)
+                .FirstOrDefault(t => t.Id == taskId);
+
+            if (taskRequest == null)
+            {
+                return NotFound();
+            }
+
+            return View(taskRequest); // Pass the task request to the view
+        }
+
 
         // GET: Render the registration page
         public IActionResult TaskGroup()
@@ -121,7 +157,7 @@ namespace MYGUYY.Controllers
             ViewData["Title"] = "Task Groups";
             return View();  // Return the view
         }
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(string username, string password, string role)
@@ -213,29 +249,138 @@ namespace MYGUYY.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [Authorize(Roles = "Client")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateTask(string Description, double pickupLatitude, double pickupLongitude, double dropoffLatitude, double dropoffLongitude)
+        public async Task<IActionResult> CreateTask(TaskRequest taskRequest, List<Stop> stops)
         {
-            var task = new TaskRequest
+            try
             {
-                Description = Description,
-                Status = "Pending",
-                ClientId = int.Parse(User.FindFirst("UserId").Value),
-                CreatedAt = DateTime.Now,
-                PickupLatitude = pickupLatitude,
-                PickupLongitude = pickupLongitude,
-                DropoffLatitude = dropoffLatitude,
-                DropoffLongitude = dropoffLongitude
-            };
+                // Set ClientId and other properties as before
+                taskRequest.ClientId = int.Parse(User.FindFirst("UserId")?.Value ?? "0");
+                taskRequest.Status = string.IsNullOrEmpty(taskRequest.Status) ? "Pending" : taskRequest.Status;
+                taskRequest.DriverId = taskRequest.DriverId ?? null;
 
-            _context.TaskRequests.Add(task);
-            await _context.SaveChangesAsync();
+                // Validate fields
+                if (string.IsNullOrWhiteSpace(taskRequest.Description))
+                {
+                    ModelState.AddModelError("Description", "Task description is required.");
+                }
+                if (taskRequest.PickupLatitude == 0 || taskRequest.PickupLongitude == 0)
+                {
+                    ModelState.AddModelError("PickupLocation", "Pick-up location is invalid.");
+                }
+                if (taskRequest.DropoffLatitude == 0 || taskRequest.DropoffLongitude == 0)
+                {
+                    ModelState.AddModelError("DropoffLocation", "Drop-off location is invalid.");
+                }
+                if (stops != null && stops.Any(s => s.Latitude == 0 || s.Longitude == 0))
+                {
+                    ModelState.AddModelError("Stops", "All stops must have valid coordinates.");
+                }
 
-            TempData["Message"] = "Task created successfully.";
-            return RedirectToAction("ClientTasks");
+                // Handle invalid stops and return to view with errors if any
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.ValidationErrors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)).ToList();
+                    return View(taskRequest);
+                }
+
+                // Generate a unique confirmation code
+                taskRequest.ConfirmationCode = GenerateUniqueConfirmationCode();
+
+                // Add Stops
+                taskRequest.Stops = stops?.Select((s, index) => new Stop
+                {
+                    Latitude = s.Latitude,
+                    Longitude = s.Longitude,
+                    Order = index + 1
+                }).ToList();
+
+                // Calculate cost (using helper method)
+                double totalDistance = CalculateTotalDistance(taskRequest.PickupLatitude, taskRequest.PickupLongitude, taskRequest.DropoffLatitude, taskRequest.DropoffLongitude, stops);
+                double cost = totalDistance * GetRateForVehicle(taskRequest.VehicleType);
+
+                // Add cost to the task
+                taskRequest.Cost = cost;
+
+                // Save task to the database
+                taskRequest.CreatedAt = DateTime.Now;
+                _context.TaskRequests.Add(taskRequest);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = "Task created successfully with stops.";
+                return RedirectToAction("ClientTasks");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "An error occurred while creating the task. Please try again later.";
+                return RedirectToAction("ClientTasks");
+            }
         }
+
+        // Helper methods to calculate total distance
+        private double CalculateTotalDistance(double pickupLat, double pickupLng, double dropoffLat, double dropoffLng, List<Stop> stops)
+        {
+            double totalDistance = 0;
+
+            // Calculate distance from pickup to first stop (if stops exist)
+            if (stops != null && stops.Any())
+            {
+                totalDistance += CalculateDistance(pickupLat, pickupLng, stops.First().Latitude, stops.First().Longitude);
+            }
+
+            // Calculate distance between stops
+            for (int i = 0; i < stops.Count - 1; i++)
+            {
+                totalDistance += CalculateDistance(stops[i].Latitude, stops[i].Longitude, stops[i + 1].Latitude, stops[i + 1].Longitude);
+            }
+
+            // Calculate distance from last stop to dropoff
+            if (stops != null && stops.Any())
+            {
+                totalDistance += CalculateDistance(stops.Last().Latitude, stops.Last().Longitude, dropoffLat, dropoffLng);
+            }
+
+            return totalDistance;
+        }
+
+        // Helper method to calculate distance between two points in kilometers
+        private double CalculateDistance(double lat1, double lon1, double lat2, double lon2)
+        {
+            const double R = 6371; // Radius of the Earth in km
+            double dLat = (lat2 - lat1) * Math.PI / 180;
+            double dLon = (lon2 - lon1) * Math.PI / 180;
+
+            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                       Math.Cos(lat1 * Math.PI / 180) * Math.Cos(lat2 * Math.PI / 180) *
+                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            double distance = R * c;
+
+            return distance; // Returns distance in kilometers
+        }
+
+        // Get rate for vehicle type
+        private double GetRateForVehicle(string vehicleType)
+        {
+            switch (vehicleType)
+            {
+                case "Bike": return 1.0; // Rate per km for bike
+                case "Car": return 1.5; // Rate per km for car
+                case "Van": return 2.0; // Rate per km for van
+                default: return 1.0;
+            }
+        }
+
+        // Helper method to generate a unique confirmation code
+        private string GenerateUniqueConfirmationCode()
+        {
+            return Guid.NewGuid().ToString("N").Substring(0, 8); // Example: 8-character unique code
+        }
+
+
         [HttpGet]
         [Authorize(Roles = "Client")]
         public async Task<IActionResult> ClientTasks()
@@ -353,7 +498,7 @@ namespace MYGUYY.Controllers
             ViewData["TaskId"] = taskId;
             return View(messages);
         }
-
+       
 
 
         [HttpGet]
@@ -370,6 +515,25 @@ namespace MYGUYY.Controllers
             return View(tasks);
         }
 
+        //[HttpPost]
+        //[Authorize(Roles = "Driver")]
+        //public async Task<IActionResult> AcceptTask(int id)
+        //{
+        //    var task = await _context.TaskRequests.FirstOrDefaultAsync(t => t.Id == id);
+
+        //    if (task == null || task.DriverId != null || task.Status != "Pending")
+        //    {
+        //        TempData["Message"] = task == null ? "Task not found." : "Task already accepted or invalid status.";
+        //        return RedirectToAction("TaskRequestsForDriver");
+        //    }
+
+        //    task.DriverId = int.Parse(User.FindFirst("UserId").Value);
+        //    task.Status = "Accepted";
+        //    await _context.SaveChangesAsync();
+
+        //    TempData["Message"] = "Task accepted.";
+        //    return RedirectToAction("ViewMessagesForDriver", new { taskId = task.Id });
+        //}
         [HttpPost]
         [Authorize(Roles = "Driver")]
         public async Task<IActionResult> AcceptTask(int id)
@@ -387,7 +551,7 @@ namespace MYGUYY.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Message"] = "Task accepted.";
-            return RedirectToAction("ViewMessagesForDriver", new { taskId = task.Id });
+            return RedirectToAction("AgreementForm", new { taskId = task.Id });
         }
 
         [HttpPost]
@@ -402,7 +566,7 @@ namespace MYGUYY.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToAction("TaskRequestsForDriver");
+            return RedirectToAction("AgreementForm");
         }
 
         [HttpGet]
@@ -428,8 +592,8 @@ namespace MYGUYY.Controllers
             ViewData["TaskId"] = taskId;
             return View(messages); // Pass the list of messages to the view
         }
+      
 
-       
         [HttpPost]
         [Authorize(Roles = "Driver")]
         [ValidateAntiForgeryToken]
@@ -495,6 +659,101 @@ namespace MYGUYY.Controllers
             return RedirectToAction("ViewMessagesForDriver", new { taskId });
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Driver")]
+        public async Task<IActionResult> AgreementForm(int taskId)
+        {
+            var driverId = int.Parse(User.FindFirst("UserId").Value);
+
+            var task = await _context.TaskRequests
+                .Include(t => t.Client) // Include client info for display
+                .FirstOrDefaultAsync(t => t.Id == taskId && t.DriverId == driverId && t.Status == "Accepted");
+
+            if (task == null)
+            {
+                return NotFound("Task not found or not assigned to you.");
+            }
+
+            return View(task);
+        }
+        [HttpPost]
+        public IActionResult ConfirmAgreement(TaskRequest model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Handle invalid model state
+                ViewBag.ErrorMessage = "Please ensure all fields are filled correctly.";
+                return View(model);
+            }
+
+            // Fetch the task from the database
+            var task = _context.TaskRequests
+                .FirstOrDefault(t => t.Id == model.Id);
+
+            if (task == null)
+            {
+                ViewBag.ErrorMessage = "Task not found.";
+                return View(model);
+            }
+
+            // Validate the confirmation code
+            if (model.ConfirmationCode != task.ConfirmationCode)
+            {
+                ViewBag.ErrorMessage = "The confirmation code does not match. Please try again.";
+                return View(model);
+            }
+
+            // Ensure the collected amount is greater than or equal to the recommended cost
+            if (model.AmountCollected < task.RecommendedCost)
+            {
+                ViewBag.ErrorMessage = $"The amount collected cannot be less than the recommended cost of R{task.RecommendedCost}.";
+                return View(model);
+            }
+
+            // Update the task details
+            task.AmountCollected = model.AmountCollected;
+            task.Status = "Confirmed"; // Mark the task as confirmed
+            task.StartedAt = DateTime.Now; // Record the confirmation time
+
+            _context.SaveChanges();
+
+            TempData["SuccessMessage"] = "Agreement successfully confirmed.";
+            return RedirectToAction("TaskDetails", new { id = task.Id });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Driver")]
+        public IActionResult StartTrip(int taskId)
+        {
+            var driverId = int.Parse(User.FindFirst("UserId").Value);
+
+            var task = _context.TaskRequests.FirstOrDefault(t => t.Id == taskId && t.DriverId == driverId && t.Status == "Confirmed");
+
+            if (task == null)
+            {
+                ViewBag.ErrorMessage = "Task not found or not assigned to you.";
+                return View();
+            }
+
+            // Assuming that the task's status is updated when the trip starts
+            task.Status = "In Progress"; // Update task status
+            task.StartedAt = DateTime.Now; // Set the start time of the trip
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "An error occurred while starting the trip. Please try again.";
+                return View();
+            }
+
+            TempData["SuccessMessage"] = "Trip started successfully.";
+            return RedirectToAction("DriverTasks"); // Redirect to DriverTasks page
+        }
+
+
         // Admin Features
         [HttpGet]
         [Authorize(Roles = "Admin")]
@@ -527,6 +786,36 @@ namespace MYGUYY.Controllers
             ViewBag.Search = search;
 
             return View(tasks);
+        }
+        // POST: Admin/DeleteUser
+        // POST: Admin/DeleteTask
+        // POST: Admin/UpdateTaskStatus
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult UpdateTaskStatus(int id, string status)
+        {
+            var task = _context.TaskRequests.Find(id);
+            if (task != null)
+            {
+                task.Status = status;
+                _context.SaveChanges(); // Save the status update to the database
+            }
+
+            return RedirectToAction("ManageTasks"); // Redirect back to the tasks page
+        }
+        // POST: Admin/DeleteTask
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteTask(int id)
+        {
+            var task = _context.TaskRequests.Find(id);
+            if (task != null)
+            {
+                _context.TaskRequests.Remove(task);
+                _context.SaveChanges(); // Commit the changes to the database
+            }
+
+            return RedirectToAction("ManageTasks"); // Redirect back to the tasks page
         }
 
     }

@@ -23,7 +23,7 @@
                 // Validate the coordinates
                 if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180)
                 {
-                    throw new ArgumentException("Invalid coordinates.");
+                    throw new ArgumentOutOfRangeException("Invalid coordinates.");
                 }
 
                 var taskRequest = await _context.TaskRequests.FindAsync(taskId); // Fetch the task request

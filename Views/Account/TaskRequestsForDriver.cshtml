@@ -24,6 +24,9 @@
                         <th>Pickup Location</th>
                         <th>Dropoff Location</th>
                         <th>Status</th>
+                        <th>Vehicle Type</th>
+                        <th>Recommended Cost</th>
+                        <th>Cashup Amount</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -34,30 +37,21 @@
                             <td>@task.Description</td>
                             <td>@task.Client.Username</td>
                             <td>
-                                @if (task.PickupLatitude != null && task.PickupLongitude != null)
-                                {
-                                    <a href="#" class="text-primary" data-lat="@task.PickupLatitude" data-lng="@task.PickupLongitude" onclick="showLocationOnMap(@task.PickupLatitude, @task.PickupLongitude, 'Pickup')">
-                                        @task.PickupLatitude, @task.PickupLongitude
-                                    </a>
-                                }
-                                else
-                                {
-                                    <span class="text-muted">No location available</span>
-                                }
+                                <span class="pickup-address text-muted">Loading...</span>
+                                <script>
+                                    reverseGeocodeLeaflet(@task.PickupLatitude, @task.PickupLongitude, '.pickup-address');
+                                </script>
                             </td>
                             <td>
-                                @if (task.DropoffLatitude != null && task.DropoffLongitude != null)
-                                {
-                                    <a href="#" class="text-primary" data-lat="@task.DropoffLatitude" data-lng="@task.DropoffLongitude" onclick="showLocationOnMap(@task.DropoffLatitude, @task.DropoffLongitude, 'Dropoff')">
-                                        @task.DropoffLatitude, @task.DropoffLongitude
-                                    </a>
-                                }
-                                else
-                                {
-                                    <span class="text-muted">No location available</span>
-                                }
+                                <span class="dropoff-address text-muted">Loading...</span>
+                                <script>
+                                    reverseGeocodeLeaflet(@task.DropoffLatitude, @task.DropoffLongitude, '.dropoff-address');
+                                </script>
                             </td>
                             <td>@task.Status</td>
+                            <td>@task.VehicleType</td>
+                            <td>R@(@task.RecommendedCost.ToString("F2"))</td>
+                            <td>R@(task.RecommendedCost * 0.05)</td> <!-- Cashup Amount Calculation -->
                             <td>
                                 @if (task.Status == "Pending")
                                 {
@@ -97,8 +91,30 @@
     let map;
     let marker = null;
 
+    function reverseGeocodeLeaflet(lat, lng, selector) {
+        if (!lat || !lng) {
+            document.querySelector(selector).textContent = "No location available";
+            return;
+        }
+
+        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.display_name) {
+                    document.querySelector(selector).textContent = data.display_name;
+                } else {
+                    document.querySelector(selector).textContent = "Address not found";
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching address:", error);
+                document.querySelector(selector).textContent = "Error fetching address";
+            });
+    }
+
     function showLocationOnMap(latitude, longitude, locationType) {
-        // Initialize map if not already created
         if (!map) {
             map = L.map('taskMap').setView([latitude, longitude], 13);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -107,24 +123,36 @@
             }).addTo(map);
         }
 
-        // Remove the previous marker if it exists
         if (marker) {
             map.removeLayer(marker);
         }
 
-        // Add a new marker and set the view
         marker = L.marker([latitude, longitude]).addTo(map)
-            .bindPopup(locationType + " Location: " + latitude + ", " + longitude)
+            .bindPopup(`${locationType} Location: Loading address...`)
             .openPopup();
-        map.setView([latitude, longitude], 13);
 
-        // Show the map
+        // Fetch and display the address
+        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.display_name) {
+                    marker.bindPopup(`${locationType} Location: ${data.display_name}`).openPopup();
+                } else {
+                    marker.bindPopup(`${locationType} Location: Address not found`).openPopup();
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching address:", error);
+                marker.bindPopup(`${locationType} Location: Error fetching address`).openPopup();
+            });
+
+        map.setView([latitude, longitude], 13);
         document.getElementById('taskMap').style.display = 'block';
     }
 </script>
 
 <style>
-    /* Add spacing and improve table appearance */
     .table {
         margin-top: 20px;
         border-collapse: separate;

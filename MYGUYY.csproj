@@ -19,9 +19,13 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="IMAGES\" />
+    <Folder Include="NewFolder\" />
     <Folder Include="Views\Client\" />
     <Folder Include="Views\Driver\" />
     <Folder Include="Views\Messaging\" />
+    <Folder Include="wwwroot\NewFolder1\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
   <ItemGroup>

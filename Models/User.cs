@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MYGUYY.Models;
+using System.ComponentModel.DataAnnotations;
 
 public class User
 {
@@ -14,5 +15,7 @@ public class User
 
     [Required]
     public string Role { get; set; }
+   
+
 
 }

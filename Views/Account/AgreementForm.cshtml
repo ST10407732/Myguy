@@ -1,0 +1,100 @@
+﻿@model MYGUYY.Models.TaskRequest
+
+@{
+    ViewData["Title"] = "Agreement Form";
+}
+
+<h2>Agreement Form</h2>
+
+<form asp-action="ConfirmAgreement" method="post" id="confirmAgreementForm">
+    <div>
+        <label>Description:</label>
+        <p>@Model.Description</p>
+    </div>
+
+    <div>
+        <label>Client Name:</label>
+        <p>@Model.Client.Username</p>
+    </div>
+
+    <div>
+        <label>Pickup Location:</label>
+        <p>Latitude: @Model.PickupLatitude, Longitude: @Model.PickupLongitude</p>
+    </div>
+
+    <div>
+        <label>Dropoff Location:</label>
+        <p>Latitude: @Model.DropoffLatitude, Longitude: @Model.DropoffLongitude</p>
+    </div>
+
+    <div>
+        <label>Vehicle Type:</label>
+        <p>@Model.VehicleType</p>
+    </div>
+
+    <div>
+        <label>Recommended Cost:</label>
+        <p>R @Model.RecommendedCost</p> <!-- Displaying the recommended cost value -->
+    </div>
+
+    <div>
+        <label>Enter Amount Collected from Customer:</label>
+        <input type="number" asp-for="AmountCollected" class="form-control" step="0.01" required id="amountCollected" />
+        <span asp-validation-for="AmountCollected" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Enter Confirmation Code:</label>
+        <input type="text" asp-for="ConfirmationCode" class="form-control" required id="confirmationCode" />
+        <span asp-validation-for="ConfirmationCode" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Confirm Agreement</button>
+    </div>
+</form>
+
+<!-- Display error message if any -->
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<!-- Display success message if any -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<script>
+    // JavaScript to ensure the confirmation code input field is empty when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        var confirmationCodeInput = document.getElementById("confirmationCode");
+        confirmationCodeInput.value = ""; // Ensure the field is empty initially
+    });
+
+    // JavaScript for client-side validation of the confirmation code and amount collected
+    document.getElementById("confirmAgreementForm").addEventListener("submit", function (event) {
+        var enteredCode = document.getElementById("confirmationCode").value;
+        var storedCode = '@Model.ConfirmationCode';  // Don't display confirmation code to the user
+        var amountCollected = parseFloat(document.getElementById("amountCollected").value);
+        var recommendedCost = parseFloat('@Model.RecommendedCost'); // Get recommended cost from the model
+
+        // Validate confirmation code
+        if (enteredCode !== storedCode) {
+            event.preventDefault(); // Prevent form submission
+            alert("The confirmation code does not match the expected value.");
+            return; // Stop further execution
+        }
+
+        // Validate amount collected is not less than the recommended cost
+        if (isNaN(amountCollected) || amountCollected < recommendedCost) {
+            event.preventDefault(); // Prevent form submission
+            alert("The amount collected cannot be less than the recommended cost.");
+        }
+    });
+</script>

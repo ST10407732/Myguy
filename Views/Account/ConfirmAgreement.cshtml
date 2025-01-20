@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Agreement Confirmed";
+}
+
+<h2>Agreement Confirmed</h2>
+
+<p>Your agreement has been successfully confirmed. You can now start the trip.</p>
+
+<form asp-action="DriverTasks" method="post">
+    <div>
+        <button type="submit" class="btn btn-success">Start Trip</button>
+    </div>
+</form>
+
+<!-- Display error message if any -->
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<!-- Display success message if any -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
