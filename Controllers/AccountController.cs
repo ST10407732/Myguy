@@ -12,6 +12,7 @@ using System;
 using Microsoft.Extensions.Hosting;
 using YourNamespace.ViewModels;
 using MYGUYY.Models.ViewModels;
+using MYGUYY.Services;
 
 
 namespace MYGUYY.Controllers
@@ -19,7 +20,11 @@ namespace MYGUYY.Controllers
     using Microsoft.AspNetCore.SignalR;
 
     using Microsoft.AspNetCore.SignalR;
+    using Microsoft.Extensions.Options;
+    using Microsoft.Win32;
     using MYGUYY.Models;
+    using System.Net.Mail;
+    using System.Net;
     using System.Threading.Tasks;
 
     namespace MyGuyy.Hubs
@@ -88,27 +93,21 @@ namespace MYGUYY.Controllers
             }
         }
     }
-
-
     public class AccountController : Controller
     {
         private readonly MYGUYYContext _context;
-        private readonly object _hostEnvironment;
+        private readonly IHubContext<NotificationHub> _hubContext;
+        private readonly EmailService _emailService;
 
-
-        public AccountController(MYGUYYContext context)
+        // Combine all dependencies into one constructor
+        public AccountController(MYGUYYContext context, IHubContext<NotificationHub> hubContext, EmailService emailService)
         {
             _context = context;
+            _hubContext = hubContext;
+            _emailService = emailService;
         }
 
-        // GET: Render the registration page
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
-        // GET: Render the registration page
-
+        // Send verification email
         public IActionResult DriverTasks()
         {
             // Retrieve the driver's ID from the logged-in user's claims

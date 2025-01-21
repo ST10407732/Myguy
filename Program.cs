@@ -1,11 +1,15 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using MYGUYY.Data; // Adjust based on your project namespace
 using MYGUYY.Hubs; // Include the namespace for your SignalR hubs
+using MYGUYY.Models;
+using MYGUYY.Services; // Include EmailService namespace
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<EmailService>();
 
-// Configure services
+// Configure services BEFORE calling Build()
 builder.Services.AddControllersWithViews(); // MVC
 builder.Services.AddRazorPages(); // Razor Pages
 builder.Services.AddSignalR(); // Add SignalR services
@@ -15,7 +19,7 @@ var connectionString = builder.Configuration.GetConnectionString("MYGUYYYS");
 builder.Services.AddDbContext<MYGUYYContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Configure authentication and authorization
+// Add authentication and authorization services
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -24,7 +28,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Account/AccessDenied"; // Path to the access denied page
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(); // Add authorization services
+
+// Register the EmailService for email-related functionality
+builder.Services.AddScoped<EmailService>();
+
+// Configure email settings (from appsettings.json)
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
 var app = builder.Build();
 
@@ -32,7 +42,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error"); // Redirect to error page in production
-    app.UseHsts(); // Enable HSTS
+    app.UseHsts(); // Enable HTTP Strict Transport Security (HSTS)
 }
 
 app.UseHttpsRedirection(); // Redirect HTTP to HTTPS
@@ -45,9 +55,10 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Map SignalR hubs
-app.MapHub<MessageHub>("/messageHub");
-app.MapHub<LocationHub>("/locationHub"); // Map SignalR hubs for real-time communication
+// Map SignalR hubs for real-time communication
+app.MapHub<MessageHub>("/messageHub"); // Chat/MessageHub
+app.MapHub<LocationHub>("/locationHub"); // Location tracking (if used)
+app.MapHub<NotificationHub>("/notificationHub"); // Notifications
 
 // Map default route for controllers
 app.MapControllerRoute(

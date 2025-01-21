@@ -18,7 +18,9 @@ C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\MYGUYY.pdb
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Humanizer.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\MailKit.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Microsoft.Build.Locator.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -53,6 +55,7 @@ C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Microsoft.IdentityModel.Prot
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\MimeKit.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.ClientModel.dll
@@ -71,6 +74,7 @@ C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.IO.Pipelines.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.Memory.Data.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.Security.Permissions.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\System.Text.Encodings.Web.dll
@@ -151,6 +155,7 @@ C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\runtimes\win\lib\net6.0\Micr
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
@@ -170,3 +175,7 @@ C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\refint\MYGUYY.dll
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\MYGUYY.pdb
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\MYGUYY.genruntimeconfig.cache
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\ref\MYGUYY.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Debug\net8.0\MYGUYY.staticwebassets.endpoints.json
+C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\staticwebassets\msbuild.MYGUYY.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

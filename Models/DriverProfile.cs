@@ -7,8 +7,8 @@ namespace MYGUYY.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public int UserId { get; set; } // Foreign key to User
+        //[Required]
+        //public int UserId { get; set; } // Foreign key to User
 
         [Required]
         [StringLength(50)]
@@ -29,6 +29,6 @@ namespace MYGUYY.Models
 
         public bool IsVerified { get; set; } = false;
 
-        public User User { get; set; } // Navigation property
+       
     }
 }

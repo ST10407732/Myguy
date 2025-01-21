@@ -47,9 +47,6 @@ namespace MYGUYY.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("VehicleRegistration")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -59,9 +56,6 @@ namespace MYGUYY.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("DriverProfiles");
                 });
@@ -162,8 +156,8 @@ namespace MYGUYY.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("DriverConfirmationCode")
                         .HasColumnType("nvarchar(max)");
@@ -221,6 +215,16 @@ namespace MYGUYY.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -238,17 +242,6 @@ namespace MYGUYY.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("MYGUYY.Models.DriverProfile", b =>
-                {
-                    b.HasOne("User", "User")
-                        .WithOne()
-                        .HasForeignKey("MYGUYY.Models.DriverProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MYGUYY.Models.Message", b =>

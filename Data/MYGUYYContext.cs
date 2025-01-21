@@ -40,15 +40,15 @@ namespace MYGUYY.Data
             modelBuilder.Entity<DriverProfile>()
         .HasKey(dp => dp.Id);
 
-            modelBuilder.Entity<DriverProfile>()
-                .HasOne(dp => dp.User)
-                .WithOne()
-                .HasForeignKey<DriverProfile>(dp => dp.UserId)
-                .OnDelete(DeleteBehavior.Cascade); // Deleting a
-            modelBuilder.Entity<TaskRequest>()
-                .Property(tr => tr.Description)
-                .IsRequired()
-                .HasMaxLength(500);
+            //modelBuilder.Entity<DriverProfile>()
+            //    .HasOne(dp => dp.User)
+            //    .WithOne()
+            //    .HasForeignKey<DriverProfile>(dp => dp.UserId)
+            //    .OnDelete(DeleteBehavior.Cascade); // Deleting a
+            //modelBuilder.Entity<TaskRequest>()
+            //    .Property(tr => tr.Description)
+            //    .IsRequired()
+            //    .HasMaxLength(500);
 
             modelBuilder.Entity<TaskRequest>()
                 .Property(tr => tr.Status)
