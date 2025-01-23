@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aLRp8631yK9h/Y7qF7xE7Vx1lZAX+4Y1rxwBTMBuNSA=",
+  "Hash": "OcyA+sV1RGQ9lrAsKD7q5arbiiYrZpLuRMNPQXtw9go=",
   "Source": "MYGUYY",
   "BasePath": "_content/MYGUYY",
   "Mode": "Default",
@@ -1361,6 +1361,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\messages\\00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4"
     },
     {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\02a7292c-878b-4008-b185-7e4dd18bdb5d_WhatsApp Image 2025-01-20 at 12.49.46.jpeg",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "uploads/messages/02a7292c-878b-4008-b185-7e4dd18bdb5d_WhatsApp Image 2025-01-20 at 12.49.46#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vabojmydyo",
+      "Integrity": "yUUSTgWNjlvU4EZc7OWvZ7oA7KAgIKqtwfJJRppox7U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\messages\\02a7292c-878b-4008-b185-7e4dd18bdb5d_WhatsApp Image 2025-01-20 at 12.49.46.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\10cc8a8e-8e76-4c53-be36-12bad016e86d_WhatsApp Image 2025-01-12 at 20.37.56.jpeg",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
@@ -1823,6 +1844,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\messages\\929a94b4-4f7d-43d9-99eb-0418f31c5ee0_WORSHIP_IN_SWAHILI_-_PST._VICTORIA_ORENZE_IN_KENYA.(144p).mp4"
     },
     {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\939e3355-b9b3-4169-8ce7-0cd715aa9784_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "uploads/messages/939e3355-b9b3-4169-8ce7-0cd715aa9784_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2)#[.{fingerprint}]?.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "v6kw6av7um",
+      "Integrity": "Nwx4eSk/4zcDh/BZXq69KmtUQijAb4jIJTPDI/IvymY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\messages\\939e3355-b9b3-4169-8ce7-0cd715aa9784_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4"
+    },
+    {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\9760fcf0-ede3-43ac-8963-afb11e9bea89_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
@@ -1947,6 +1989,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\messages\\afb33523-aac7-4ffb-9f0d-81b51f2a091b_WhatsApp Image 2025-01-12 at 01.37.57.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\b5732913-11e9-4bef-9ebc-db9dac752e6a_WhatsApp Video 2025-01-18 at 06.59.49.mp4",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "uploads/messages/b5732913-11e9-4bef-9ebc-db9dac752e6a_WhatsApp Video 2025-01-18 at 06.59.49#[.{fingerprint}]?.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rc6sl5yklx",
+      "Integrity": "K5iZjHr736tohWR/OfVeH+u97wIoPlFYxittZNaN/fU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\messages\\b5732913-11e9-4bef-9ebc-db9dac752e6a_WhatsApp Video 2025-01-18 at 06.59.49.mp4"
     },
     {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\ce9f2ad6-416f-4c19-929b-229318549584_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
@@ -7185,7 +7248,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 21 Jan 2025 00:12:42 GMT"
+          "Value": "Thu, 23 Jan 2025 00:04:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7230,7 +7293,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 21 Jan 2025 00:12:42 GMT"
+          "Value": "Thu, 23 Jan 2025 00:04:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7275,7 +7338,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 21 Jan 2025 00:12:42 GMT"
+          "Value": "Thu, 23 Jan 2025 00:04:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7312,7 +7375,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 21 Jan 2025 00:12:42 GMT"
+          "Value": "Thu, 23 Jan 2025 00:04:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7405,6 +7468,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-K5iZjHr736tohWR/OfVeH+u97wIoPlFYxittZNaN/fU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/messages/02a7292c-878b-4008-b185-7e4dd18bdb5d_WhatsApp Image 2025-01-20 at 12.49.46.jpeg",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\02a7292c-878b-4008-b185-7e4dd18bdb5d_WhatsApp Image 2025-01-20 at 12.49.46.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "441707"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yUUSTgWNjlvU4EZc7OWvZ7oA7KAgIKqtwfJJRppox7U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 21 Jan 2025 16:29:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yUUSTgWNjlvU4EZc7OWvZ7oA7KAgIKqtwfJJRppox7U="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/messages/02a7292c-878b-4008-b185-7e4dd18bdb5d_WhatsApp Image 2025-01-20 at 12.49.46.vabojmydyo.jpeg",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\02a7292c-878b-4008-b185-7e4dd18bdb5d_WhatsApp Image 2025-01-20 at 12.49.46.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "441707"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yUUSTgWNjlvU4EZc7OWvZ7oA7KAgIKqtwfJJRppox7U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 21 Jan 2025 16:29:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vabojmydyo"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/messages/02a7292c-878b-4008-b185-7e4dd18bdb5d_WhatsApp Image 2025-01-20 at 12.49.46.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yUUSTgWNjlvU4EZc7OWvZ7oA7KAgIKqtwfJJRppox7U="
         }
       ]
     },
@@ -9213,6 +9358,88 @@
       ]
     },
     {
+      "Route": "uploads/messages/939e3355-b9b3-4169-8ce7-0cd715aa9784_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\939e3355-b9b3-4169-8ce7-0cd715aa9784_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13881949"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Nwx4eSk/4zcDh/BZXq69KmtUQijAb4jIJTPDI/IvymY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 07:52:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Nwx4eSk/4zcDh/BZXq69KmtUQijAb4jIJTPDI/IvymY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/messages/939e3355-b9b3-4169-8ce7-0cd715aa9784_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).v6kw6av7um.mp4",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\939e3355-b9b3-4169-8ce7-0cd715aa9784_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13881949"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Nwx4eSk/4zcDh/BZXq69KmtUQijAb4jIJTPDI/IvymY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 07:52:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "v6kw6av7um"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/messages/939e3355-b9b3-4169-8ce7-0cd715aa9784_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Nwx4eSk/4zcDh/BZXq69KmtUQijAb4jIJTPDI/IvymY="
+        }
+      ]
+    },
+    {
       "Route": "uploads/messages/9760fcf0-ede3-43ac-8963-afb11e9bea89_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
       "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\9760fcf0-ede3-43ac-8963-afb11e9bea89_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
       "Selectors": [],
@@ -9701,6 +9928,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Sn5e26pnCB4JyA29eo0MJxCOaittSuWG5Esy2QTTJ4o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/messages/b5732913-11e9-4bef-9ebc-db9dac752e6a_WhatsApp Video 2025-01-18 at 06.59.49.mp4",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\b5732913-11e9-4bef-9ebc-db9dac752e6a_WhatsApp Video 2025-01-18 at 06.59.49.mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "837004"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K5iZjHr736tohWR/OfVeH+u97wIoPlFYxittZNaN/fU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 21 Jan 2025 16:33:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-K5iZjHr736tohWR/OfVeH+u97wIoPlFYxittZNaN/fU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/messages/b5732913-11e9-4bef-9ebc-db9dac752e6a_WhatsApp Video 2025-01-18 at 06.59.49.rc6sl5yklx.mp4",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\b5732913-11e9-4bef-9ebc-db9dac752e6a_WhatsApp Video 2025-01-18 at 06.59.49.mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "837004"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K5iZjHr736tohWR/OfVeH+u97wIoPlFYxittZNaN/fU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 21 Jan 2025 16:33:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rc6sl5yklx"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/messages/b5732913-11e9-4bef-9ebc-db9dac752e6a_WhatsApp Video 2025-01-18 at 06.59.49.mp4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-K5iZjHr736tohWR/OfVeH+u97wIoPlFYxittZNaN/fU="
         }
       ]
     },

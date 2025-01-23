@@ -7,8 +7,33 @@
 <div class="container mt-4">
     <h2 class="text-primary mb-4">@ViewData["Title"]</h2>
 
+    <div id="notificationArea" class="mb-4">
+       
+    </div>
+
     <div class="task-list mb-4">
         <h4 class="font-weight-bold">Task Requests</h4>
+        @{
+            var notifications = ViewBag.Notifications as List<MYGUYY.Models.Notification>;
+        }
+
+        @if (notifications != null && notifications.Any())
+        {
+            <p>Notifications Count: @notifications.Count</p>
+
+            <ul>
+                @foreach (var notification in notifications)
+                {
+                    <li>
+                        @notification.Message - <span class="text-muted">@notification.CreatedAt.ToString("g")</span>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-warning">No notifications available.</p>
+        }
 
         @if (!Model.Any())
         {
@@ -35,7 +60,7 @@
                     {
                         <tr>
                             <td>@task.Description</td>
-                            <td>@task.Client.Username</td>
+                            <td>@task.Client?.Username</td>
                             <td>
                                 <span class="pickup-address text-muted">Loading...</span>
                                 <script>
@@ -51,7 +76,7 @@
                             <td>@task.Status</td>
                             <td>@task.VehicleType</td>
                             <td>R@(@task.RecommendedCost.ToString("F2"))</td>
-                            <td>R@(task.RecommendedCost * 0.05)</td> <!-- Cashup Amount Calculation -->
+                            <td>R@((@task.RecommendedCost * 0.05).ToString("F2"))</td> <!-- Cashup Amount Calculation -->
                             <td>
                                 @if (task.Status == "Pending")
                                 {
@@ -83,11 +108,45 @@
     <div id="taskMap" style="height: 400px; width: 100%; display: none; border: 1px solid #ddd; border-radius: 8px;" class="shadow-sm mt-4"></div>
 </div>
 
+<!-- Add the Toast container for notifications -->
+<div id="toastContainer"></div>
+
 <!-- Leaflet and custom script for showing locations -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.0/signalr.min.js"></script>
 
 <script>
+    // SignalR connection and map logic
+
+    // Establish a connection to the SignalR hub
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/notificationHub") // Ensure this matches the hub's URL
+        .build();
+
+    // Start the connection
+    connection.start()
+        .then(() => console.log("SignalR connected"))
+        .catch(err => console.error("SignalR connection failed: ", err));
+
+    // Listen for notifications
+    connection.on("ReceiveNotification", function(message) {
+        // Display the notification using a Toast message
+        showToastNotification(message);
+    });
+
+    function showToastNotification(message) {
+        const toastContainer = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.classList.add('toast');
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
+
+        setTimeout(() => {
+            toast.remove();
+        }, 5000);
+    }
+
     let map;
     let marker = null;
 
@@ -188,5 +247,14 @@
     a.text-primary {
         text-decoration: underline;
         cursor: pointer;
+    }
+
+    .toast {
+        background-color: #28a745;
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 14px;
     }
 </style>

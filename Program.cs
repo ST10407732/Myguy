@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using MYGUYY.Data; // Adjust based on your project namespace
 using MYGUYY.Hubs; // Include the namespace for your SignalR hubs
 using MYGUYY.Models;
@@ -8,6 +7,7 @@ using MYGUYY.Services; // Include EmailService namespace
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<Notification>(); // Add the NotificationService to handle storing and sending notifications
 
 // Configure services BEFORE calling Build()
 builder.Services.AddControllersWithViews(); // MVC
@@ -33,8 +33,17 @@ builder.Services.AddAuthorization(); // Add authorization services
 // Register the EmailService for email-related functionality
 builder.Services.AddScoped<EmailService>();
 
+// Register NotificationService for handling notifications
+builder.Services.AddScoped<Notification>();
+
 // Configure email settings (from appsettings.json)
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
 
 var app = builder.Build();
 
@@ -48,12 +57,14 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection(); // Redirect HTTP to HTTPS
 app.UseStaticFiles(); // Serve static files (wwwroot)
 
-// Routing middleware
 app.UseRouting();
 
 // Authentication and Authorization middleware
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Enable CORS
+app.UseCors("AllowAll");
 
 // Map SignalR hubs for real-time communication
 app.MapHub<MessageHub>("/messageHub"); // Chat/MessageHub

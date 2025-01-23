@@ -10,6 +10,7 @@ namespace MYGUYY.Data
         public MYGUYYContext(DbContextOptions<MYGUYYContext> options) : base(options) { }
 
         // DbSets for the models used in AccountController
+        public DbSet<Notification> Notifications { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<TaskRequest> TaskRequests { get; set; }
         public DbSet<Message> Messages { get; set; }

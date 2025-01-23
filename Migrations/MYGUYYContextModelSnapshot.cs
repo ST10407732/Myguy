@@ -96,6 +96,37 @@ namespace MYGUYY.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("MYGUYY.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("MYGUYY.Models.Stop", b =>
                 {
                     b.Property<int>("Id")
@@ -255,6 +286,17 @@ namespace MYGUYY.Migrations
                     b.Navigation("TaskRequest");
                 });
 
+            modelBuilder.Entity("MYGUYY.Models.Notification", b =>
+                {
+                    b.HasOne("User", "User")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MYGUYY.Models.Stop", b =>
                 {
                     b.HasOne("MYGUYY.Models.TaskRequest", "TaskRequest")
@@ -287,6 +329,11 @@ namespace MYGUYY.Migrations
             modelBuilder.Entity("MYGUYY.Models.TaskRequest", b =>
                 {
                     b.Navigation("Stops");
+                });
+
+            modelBuilder.Entity("User", b =>
+                {
+                    b.Navigation("Notifications");
                 });
 #pragma warning restore 612, 618
         }

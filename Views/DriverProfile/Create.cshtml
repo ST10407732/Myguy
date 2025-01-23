@@ -49,3 +49,109 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+<script async defer
+       
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let map, pickupMarker, dropoffMarker;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -25.746111, lng: 28.188056 },
+            zoom: 12
+        });
+
+        let pickupInput = document.getElementById('PickupLocation');
+        let dropoffInput = document.getElementById('DropoffLocation');
+
+        let pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
+        let dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
+
+        pickupAutocomplete.addListener('place_changed', function () {
+            let place = pickupAutocomplete.getPlace();
+            if (place.geometry) {
+                if (pickupMarker) pickupMarker.setMap(null);
+                pickupMarker = new google.maps.Marker({
+                    position: place.geometry.location,
+                    map: map,
+                    title: 'Pick-up Location'
+                });
+                document.getElementById('PickupLatitude').value = place.geometry.location.lat();
+                document.getElementById('PickupLongitude').value = place.geometry.location.lng();
+                map.setCenter(place.geometry.location);
+            }
+        });
+
+        dropoffAutocomplete.addListener('place_changed', function () {
+            let place = dropoffAutocomplete.getPlace();
+            if (place.geometry) {
+                if (dropoffMarker) dropoffMarker.setMap(null);
+                dropoffMarker = new google.maps.Marker({
+                    position: place.geometry.location,
+                    map: map,
+                    title: 'Drop-off Location'
+                });
+                document.getElementById('DropoffLatitude').value = place.geometry.location.lat();
+                document.getElementById('DropoffLongitude').value = place.geometry.location.lng();
+                map.setCenter(place.geometry.location);
+            }
+        });
+    }
+
+    // Distance calculation function using Google Maps API
+    function calculateDistance(origin, destination, callback) {
+        const service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+            {
+                origins: [origin],
+                destinations: [destination],
+                travelMode: google.maps.TravelMode.DRIVING
+            },
+            function (response, status) {
+                if (status === google.maps.DistanceMatrixStatus.OK) {
+                    const distance = response.rows[0].elements[0].distance.value / 1000; // Convert to km
+                    callback(distance);
+                } else {
+                    showError("Error calculating distance: " + status);
+                }
+            }
+        );
+    }
+
+    function showError(message) {
+        document.getElementById("errorMessage").textContent = message;
+        document.getElementById("errorContainer").classList.remove("d-none");
+    }
+
+    function recalculateCost() {
+        const pickupLat = parseFloat(document.getElementById("PickupLatitude").value);
+        const pickupLng = parseFloat(document.getElementById("PickupLongitude").value);
+        const dropoffLat = parseFloat(document.getElementById("DropoffLatitude").value);
+        const dropoffLng = parseFloat(document.getElementById("DropoffLongitude").value);
+
+        if (isNaN(pickupLat) || isNaN(pickupLng) || isNaN(dropoffLat) || isNaN(dropoffLng)) {
+            showError("Please enter valid locations.");
+            return;
+        }
+
+        const vehicleType = document.getElementById("vehicleType").value;
+        const costPerKmBase = 10;
+        const vehicleMultipliers = { Bike: 0.8, Car: 1.2, Van: 1.5 };
+        const vehicleMultiplier = vehicleMultipliers[vehicleType] || 1;
+
+        const origin = new google.maps.LatLng(pickupLat, pickupLng);
+        const destination = new google.maps.LatLng(dropoffLat, dropoffLng);
+
+        calculateDistance(origin, destination, function (distance) {
+            const cost = distance * costPerKmBase * vehicleMultiplier;
+            document.getElementById("recommendedCost").value = `R${cost.toFixed(2)}`;
+            document.getElementById("RecommendedCost").value = cost.toFixed(2);
+        });
+    }
+
+    document.getElementById("calculateCost").addEventListener("click", recalculateCost);
+
+    window.initMap = initMap;
+});
+</script>

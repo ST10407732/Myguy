@@ -3,12 +3,6 @@
     var taskId = ViewBag.TaskId; // Get the taskId dynamically, passed from the controller
 }
 
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-
 <div class="container mt-4">
     <h2 class="text-primary mb-4">@ViewBag.Title</h2>
 
@@ -26,36 +20,33 @@
     </div>
 </div>
 
-<!-- External Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions&callback=initMap" async defer></script>
 
 <script>
+    let map, directionsService, directionsRenderer, driverMarker, clientMarker;
+    let taskId = @Html.Raw(Json.Serialize(ViewBag.TaskId));
+
     document.addEventListener("DOMContentLoaded", function () {
-        // Ensure taskId is passed correctly to the JavaScript variable
-        const taskId = @Html.Raw(Json.Serialize(ViewBag.TaskId));
+        // Initialize Google Maps
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 52.52, lng: 13.4050 }, // Default view (Berlin)
+            zoom: 13
+        });
 
-
-        // Initialize the map with a default center (e.g., 52.52, 13.4050 for Berlin)
-        const map = L.map('map').setView([52.52, 13.4050], 13); // Default view (Berlin)
-
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        let driverMarker = null; // Marker for the driver location
+        // Initialize the Directions service and renderer
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
         // Initialize SignalR connection
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/locationHub")
             .build();
 
-        // Log success or failure of the connection
         connection.start()
             .then(() => {
                 console.log('SignalR connection established');
-                connection.invoke("JoinTaskGroup", taskId)  // Join the group for this specific task
+                connection.invoke("JoinTaskGroup", taskId) // Join the task group for this specific task
                     .catch(err => console.error("Error joining task group: ", err));
             })
             .catch(err => {
@@ -63,59 +54,72 @@
                 alert('Failed to connect to SignalR hub');
             });
 
-        // Start receiving location updates from SignalR
+        // Receive driver's location updates from SignalR
         connection.on("ReceiveDriverLocation", (location) => {
             const { Latitude, Longitude } = location;
+            console.log('Received driver location from SignalR:', Latitude, Longitude);
 
-            // Update the driver marker or create a new one if it doesn't exist
             if (!driverMarker) {
-                driverMarker = L.marker([Latitude, Longitude], {
-                    icon: L.icon({
-                        iconUrl: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
-                        iconSize: [25, 40],
-                        iconAnchor: [12, 40]
-                    })
-                }).addTo(map)
-                    .bindPopup('Driver Location')
-                    .openPopup();
+                driverMarker = new google.maps.Marker({
+                    position: { lat: Latitude, lng: Longitude },
+                    map: map,
+                    title: 'Driver Location',
+                    icon: {
+                        url: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
+                        scaledSize: new google.maps.Size(30, 50)
+                    }
+                });
             } else {
-                // Move the existing driver marker to the new location
-                driverMarker.setLatLng([Latitude, Longitude]);
+                driverMarker.setPosition({ lat: Latitude, lng: Longitude });
             }
 
-            // Update map view to the driver’s current location
-            map.setView([Latitude, Longitude], 13); // Update map view to driver’s location
+            map.setCenter({ lat: Latitude, lng: Longitude }); // Update map to driver’s location
+            if (clientMarker) {
+                displayRoute(driverMarker.getPosition(), clientMarker.getPosition());
+            }
         });
 
-        // Function to get current location using Geolocation API and send it to SignalR
+        // Get current location using Geolocation API
         function getLocationAndSend() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
+                    console.log('Geolocation received:', latitude, longitude);
 
-                    // Send the location to SignalR
-                    connection.invoke("UpdateDriverLocation", taskId, latitude, longitude)  // Send the taskId for the correct task
+                    // Send location to SignalR
+                    connection.invoke("UpdateDriverLocation", taskId, latitude, longitude)
                         .catch(err => console.error("Error sending location to server: ", err));
 
-                    // Update the map with the driver's location
                     if (!driverMarker) {
-                        // Center the map on the driver's current location
-                        map.setView([latitude, longitude], 13);
-
-                        // Add the driver marker to the map
-                        driverMarker = L.marker([latitude, longitude], {
-                            icon: L.icon({
-                                iconUrl: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
-                                iconSize: [25, 40],
-                                iconAnchor: [12, 40]
-                            })
-                        }).addTo(map)
-                            .bindPopup('Driver Location')
-                            .openPopup();
+                        map.setCenter({ lat: latitude, lng: longitude });
+                        driverMarker = new google.maps.Marker({
+                            position: { lat: latitude, lng: longitude },
+                            map: map,
+                            title: 'Driver Location',
+                            icon: {
+                                url: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
+                                scaledSize: new google.maps.Size(30, 50)
+                            }
+                        });
                     } else {
-                        driverMarker.setLatLng([latitude, longitude]);
+                        driverMarker.setPosition({ lat: latitude, lng: longitude });
                     }
+
+                    // Set client location if not already set
+                    if (!clientMarker) {
+                        clientMarker = new google.maps.Marker({
+                            position: { lat: 52.52, lng: 13.4050 }, // Set this to the task's client location
+                            map: map,
+                            title: 'Client Location',
+                            icon: {
+                                url: 'https://cdn-icons-png.flaticon.com/512/1048/1048323.png',
+                                scaledSize: new google.maps.Size(30, 50)
+                            }
+                        });
+                    }
+                    // Display route from driver to client
+                    displayRoute(driverMarker.getPosition(), clientMarker.getPosition());
                 }, function (error) {
                     console.error("Error getting geolocation: ", error);
                     alert("Failed to get your current location. Please ensure location services are enabled.");
@@ -126,7 +130,22 @@
             }
         }
 
-        // Call getLocationAndSend every 5 seconds to simulate movement
+        // Function to display directions between driver and client
+        function displayRoute(driverLocation, clientLocation) {
+            directionsService.route({
+                origin: driverLocation,
+                destination: clientLocation,
+                travelMode: google.maps.TravelMode.DRIVING // You can change this to WALKING or BICYCLING
+            }, function (response, status) {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsRenderer.setDirections(response);
+                } else {
+                    alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+
+        // Get location every 5 seconds
         setInterval(getLocationAndSend, 5000); // Update every 5 seconds
 
         // Show Stop Tracking button
@@ -135,7 +154,7 @@
         // Stop tracking
         document.getElementById("stopTracking").addEventListener("click", async () => {
             try {
-                await connection.invoke("LeaveTaskGroup", taskId);  // Use taskId to leave the task group
+                await connection.invoke("LeaveTaskGroup", taskId); // Use taskId to leave the task group
                 connection.stop();
                 document.getElementById("stopTracking").style.display = "none";
                 alert("Tracking stopped.");
@@ -152,7 +171,7 @@
     #map {
         height: 500px;
         width: 100%;
-        border: 1px solid #ccc; /* Add a border to the map for clarity */
+        border: 1px solid #ccc;
     }
 
     button {
@@ -176,3 +195,4 @@
             background-color: #c82333;
         }
 </style>
+

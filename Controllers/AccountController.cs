@@ -248,7 +248,6 @@ namespace MYGUYY.Controllers
         {
             return View();
         }
-
         [HttpPost]
         [Authorize(Roles = "Client")]
         [ValidateAntiForgeryToken]
@@ -279,17 +278,17 @@ namespace MYGUYY.Controllers
                     ModelState.AddModelError("Stops", "All stops must have valid coordinates.");
                 }
 
-                // Handle invalid stops and return to view with errors if any
                 if (!ModelState.IsValid)
                 {
+                    // Collect validation errors and return to view
                     ViewBag.ValidationErrors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)).ToList();
                     return View(taskRequest);
                 }
 
-                // Generate a unique confirmation code
+                // Generate a unique confirmation code for the task
                 taskRequest.ConfirmationCode = GenerateUniqueConfirmationCode();
 
-                // Add Stops
+                // Add stops to the task
                 taskRequest.Stops = stops?.Select((s, index) => new Stop
                 {
                     Latitude = s.Latitude,
@@ -297,27 +296,75 @@ namespace MYGUYY.Controllers
                     Order = index + 1
                 }).ToList();
 
-                // Calculate cost (using helper method)
+                // Calculate task cost using helper methods
                 double totalDistance = CalculateTotalDistance(taskRequest.PickupLatitude, taskRequest.PickupLongitude, taskRequest.DropoffLatitude, taskRequest.DropoffLongitude, stops);
                 double cost = totalDistance * GetRateForVehicle(taskRequest.VehicleType);
 
-                // Add cost to the task
                 taskRequest.Cost = cost;
-
-                // Save task to the database
                 taskRequest.CreatedAt = DateTime.Now;
+
+                // Save the task to the database
                 _context.TaskRequests.Add(taskRequest);
                 await _context.SaveChangesAsync();
 
-                TempData["Message"] = "Task created successfully with stops.";
+                // Create notification message
+                string notificationMessage = $"A new task has been created: {taskRequest.Description}";
+
+                // Save notifications for all users (drivers and clients)
+                var users = await _context.Users.Where(u => u.Role == "Driver" || u.Role == "Client").ToListAsync();
+                List<Notification> notifications = new List<Notification>();
+
+                foreach (var user in users)
+                {
+                    notifications.Add(new Notification
+                    {
+                        UserId = user.Id,  // Using UserId instead of DriverId
+                        Message = notificationMessage,
+                        IsRead = false,
+                        CreatedAt = DateTime.Now,
+                        TaskId = taskRequest.Id
+                    });
+                }
+
+                // Attempt to save notifications
+                _context.Notifications.AddRange(notifications);
+                var notificationSaveResult = await _context.SaveChangesAsync();
+
+                // Check if notifications were successfully saved
+                if (notificationSaveResult == 0)
+                {
+                    ModelState.AddModelError(string.Empty, "Task was created, but notifications could not be saved.");
+                    return View(taskRequest);
+                }
+
+                // Attempt to send notifications via SignalR (updated for UserId)
+                try
+                {
+                    await _hubContext.Clients.All.SendAsync("ReceiveNotification", notificationMessage);
+                    // If notifications are sent successfully, show a success message
+                    TempData["Notification"] = "Task created successfully. All users (drivers and clients) have been notified.";
+                }
+                catch (Exception ex)
+                {
+                    // If SignalR fails, show an error message for the real-time notifications
+                    ModelState.AddModelError(string.Empty, "Task was created, but real-time notifications failed to send.");
+                    TempData["Error"] = "Task was created, but real-time notifications could not be sent.";
+                    return View(taskRequest);
+                }
+
+                // Successfully created task and sent notifications
                 return RedirectToAction("ClientTasks");
             }
             catch (Exception ex)
             {
+                // Log the exception for debugging purposes (optional)
+                // _logger.LogError(ex, "Error creating task");
+
                 TempData["Error"] = "An error occurred while creating the task. Please try again later.";
                 return RedirectToAction("ClientTasks");
             }
         }
+
 
         // Helper methods to calculate total distance
         private double CalculateTotalDistance(double pickupLat, double pickupLng, double dropoffLat, double dropoffLng, List<Stop> stops)
@@ -497,24 +544,47 @@ namespace MYGUYY.Controllers
             ViewData["TaskId"] = taskId;
             return View(messages);
         }
-       
-
-
-        [HttpGet]
         [Authorize(Roles = "Driver")]
         public async Task<IActionResult> TaskRequestsForDriver()
         {
-            // Fetch both pending and accepted tasks for the driver
-            var tasks = await _context.TaskRequests
-                .Where(task => (task.DriverId == null && task.Status == "Pending") || task.Status == "Accepted")
-                .Include(task => task.Client)
-                .Include(task => task.Driver)  // Optionally, include the Driver if you need that info
-                .ToListAsync();
+            try
+            {
+                var driverId = int.Parse(User.FindFirst("UserId")?.Value ?? "0");
 
-            return View(tasks);
+                if (driverId == 0)
+                {
+                    TempData["Error"] = "Invalid driver ID.";
+                    return RedirectToAction("Index", "Home");
+                }
+
+                // Fetch unread notifications for the logged-in driver (where IsRead is false)
+                var unreadNotifications = await _context.Notifications
+                    .Where(n => n.UserId == driverId && !n.IsRead) // Ensure notifications are unread
+                    .OrderByDescending(n => n.CreatedAt) // Order by the latest notification
+                    .ToListAsync();
+
+                // Passing the unread notifications to the view
+                ViewBag.Notifications = unreadNotifications;
+
+                // Fetching task requests for the driver (Pending or Accepted tasks)
+                var tasks = await _context.TaskRequests
+                    .Where(t => t.DriverId == driverId || t.Status == "Pending") // Filter tasks for the driver
+                    .Include(t => t.Client) // Include client details
+                    .ToListAsync();
+
+                return View(tasks);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                _logger.LogError(ex, "An error occurred while fetching task requests for driver.");
+
+                TempData["Error"] = "An error occurred while fetching task requests.";
+                return RedirectToAction("Index", "Home");
+            }
         }
 
-        //[HttpPost]
+
         //[Authorize(Roles = "Driver")]
         //public async Task<IActionResult> AcceptTask(int id)
         //{

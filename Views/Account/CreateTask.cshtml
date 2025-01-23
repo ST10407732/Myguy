@@ -2,16 +2,10 @@
     ViewBag.Title = "Create New Task";
 }
 
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
 <div class="container mt-4">
     <h2 class="text-success mb-4">@ViewBag.Title</h2>
 
-    <!-- Display Validation Errors -->
     @if (ViewBag.ValidationErrors != null && ViewBag.ValidationErrors.Count > 0)
     {
         <div class="alert alert-danger">
@@ -24,16 +18,16 @@
         </div>
     }
 
-    <!-- Error Messages (Client-Side) -->
     <div id="errorContainer" class="alert alert-danger d-none" role="alert">
         <span id="errorMessage"></span>
     </div>
 
     @model TaskRequest
 
-    <!-- Form -->
+    <button id="showStreetView">Show Street View</button>
+    <button id="getCurrentLocation">Get Current Location</button>
+    <button id="calculateDirections">Show Directions</button>
     <form asp-action="CreateTask" method="post" onsubmit="return validateForm();">
-        <!-- Map -->
         <div id="map" style="height: 400px; width: 100%;" class="mb-4"></div>
 
         <div class="form-group">
@@ -50,44 +44,35 @@
             </select>
         </div>
 
-        <!-- Pickup Location -->
         <div class="form-group">
             <label for="PickupLocation">Pick-up Location</label>
             <input id="PickupLocation" class="form-control" type="text" placeholder="Enter pick-up location" required />
         </div>
-        <input asp-for="PickupLatitude" id="PickupLatitude" class="form-control" type="hidden" />
-        <input asp-for="PickupLongitude" id="PickupLongitude" class="form-control" type="hidden" />
+        <input asp-for="PickupLatitude" id="PickupLatitude" type="hidden" />
+        <input asp-for="PickupLongitude" id="PickupLongitude" type="hidden" />
 
-        <!-- Dropoff Location -->
         <div class="form-group">
             <label for="DropoffLocation">Drop-off Location</label>
             <input id="DropoffLocation" class="form-control" type="text" placeholder="Enter drop-off location" required />
         </div>
-        <input asp-for="DropoffLatitude" id="DropoffLatitude" class="form-control" type="hidden" />
-        <input asp-for="DropoffLongitude" id="DropoffLongitude" class="form-control" type="hidden" />
+        <input asp-for="DropoffLatitude" id="DropoffLatitude" type="hidden" />
+        <input asp-for="DropoffLongitude" id="DropoffLongitude" type="hidden" />
 
-        <!-- Stops Section -->
-        <!-- Stops Section -->
+
         <div class="form-group">
             <label for="Stops">Stops (Optional)</label>
             <div id="stopsContainer"></div>
             <button type="button" class="btn btn-secondary mt-2" id="addStop">Add Stop</button>
         </div>
+
         <div class="form-group">
             <label for="recommendedCost">Recommended Cost</label>
             <input id="recommendedCost" class="form-control" type="text" readonly />
         </div>
-
-        <!-- Hidden Field for RecommendedCost -->
-        <input asp-for="RecommendedCost" id="RecommendedCost" class="form-control" type="hidden" />
-
-        <!-- Confirmation Code -->
-        <div class="form-group">
-            <label asp-for="ConfirmationCode" class="control-label">Confirmation Code</label>
-            <input asp-for="ConfirmationCode" class="form-control" readonly />
-            <span asp-validation-for="ConfirmationCode" class="text-danger"></span>
-        </div>
-
+        <input asp-for="RecommendedCost" id="RecommendedCost" type="hidden" />
+        <button type="button" class="btn btn-secondary mt-3" id="findLocations">Find Locations</button>
+        <button type="button" id="calculateCost" class="btn btn-info">Calculate Cost</button>
+        <button type="submit" class="btn btn-primary mt-3">Create Task</button>
         <!-- Is Agreement Confirmed -->
         <div class="form-group">
             <label asp-for="IsAgreementConfirmed" class="control-label">Agreement Confirmed</label>
@@ -98,162 +83,184 @@
             <span asp-validation-for="IsAgreementConfirmed" class="text-danger"></span>
         </div>
 
-        <button type="button" id="calculateCost" class="btn btn-info">Calculate Cost</button>
-        <button type="button" class="btn btn-secondary mt-3" id="findLocations">Find Locations</button>
-        <button type="submit" class="btn btn-primary mt-3">Create Task</button>
     </form>
 </div>
+<!-- SignalR -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions&callback=initMap" async defer></script>
+    
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let map = L.map('map').setView([51.505, -0.09], 13);
+    let map, streetView, directionsService, directionsRenderer, pickupMarker, dropoffMarker, stopMarkers = [];
+    const rates = { bike: 10, car: 20, van: 30 };
 
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        let pickupMarker = null;
-        let dropoffMarker = null;
-        let stopMarkers = [];
-
-        const costPerKmBase = 10; // Base cost per km in Rands
-        const vehicleMultipliers = { Bike: 0.8, Car: 1.2, Van: 1.5 }; // Multiplier for each vehicle type
-
-        // Geocoding function
-        function geocodeLocation(address, callback) {
-            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data && data.length > 0) {
-                        const coords = [parseFloat(data[0].lat), parseFloat(data[0].lon)];
-                        callback(coords);
-                    } else {
-                        showError("Location not found: " + address);
-                    }
-                })
-                .catch(err => {
-                    showError("Error with geocoding service: " + err.message);
-                });
-        }
-
-        // Distance calculation function
-        function calculateDistance(lat1, lon1, lat2, lon2) {
-            const R = 6371; // Radius of the Earth in kilometers
-            const dLat = (lat2 - lat1) * Math.PI / 180;
-            const dLon = (lon2 - lon1) * Math.PI / 180;
-
-            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            return R * c; // Distance in kilometers
-        }
-
-        // Error handling
-        function showError(message) {
-            const errorContainer = document.getElementById("errorContainer");
-            const errorMessage = document.getElementById("errorMessage");
-            errorMessage.textContent = message;
-            errorContainer.classList.remove("d-none");
-        }
-
-        function clearError() {
-            const errorContainer = document.getElementById("errorContainer");
-            const errorMessage = document.getElementById("errorMessage");
-            errorMessage.textContent = "";
-            errorContainer.classList.add("d-none");
-        }
-
-        // Recalculate cost function
-        function recalculateCost() {
-            const pickupLat = parseFloat(document.getElementById("PickupLatitude").value);
-            const pickupLng = parseFloat(document.getElementById("PickupLongitude").value);
-            const dropoffLat = parseFloat(document.getElementById("DropoffLatitude").value);
-            const dropoffLng = parseFloat(document.getElementById("DropoffLongitude").value);
-
-            if (isNaN(pickupLat) || isNaN(pickupLng) || isNaN(dropoffLat) || isNaN(dropoffLng)) {
-                showError("Please ensure all locations have valid coordinates before calculating cost.");
-                return;
-            }
-
-            const vehicleType = document.getElementById("vehicleType").value;
-            const vehicleMultiplier = vehicleMultipliers[vehicleType] || 1;
-
-            let totalDistance = calculateDistance(pickupLat, pickupLng, dropoffLat, dropoffLng);
-
-            // Add distances for stops
-            document.querySelectorAll(".stop-lat").forEach((stopLatInput, index) => {
-                const stopLat = parseFloat(stopLatInput.value);
-                const stopLng = parseFloat(document.querySelector(`.stop-lng[data-index="${index}"]`).value);
-
-                if (!isNaN(stopLat) && !isNaN(stopLng)) {
-                    totalDistance += calculateDistance(pickupLat, pickupLng, stopLat, stopLng);
-                }
-            });
-
-            const cost = totalDistance * costPerKmBase * vehicleMultiplier;
-            document.getElementById("recommendedCost").value = `R${cost.toFixed(2)}`;
-
-            // Set the hidden field to send the cost to the server
-            document.getElementById("RecommendedCost").value = cost.toFixed(2);
-        }
-
-        // Handle location geocoding and marker placement
-        document.getElementById("findLocations").addEventListener("click", function () {
-            let pickupLocation = document.getElementById("PickupLocation").value;
-            let dropoffLocation = document.getElementById("DropoffLocation").value;
-
-            // Geocode the pickup location
-            if (pickupLocation) {
-                geocodeLocation(pickupLocation, function (coords) {
-                    if (pickupMarker) map.removeLayer(pickupMarker);
-                    pickupMarker = L.marker(coords).addTo(map)
-                        .bindPopup('Pick-up location: ' + pickupLocation)
-                        .openPopup();
-                    map.setView(coords, 13);
-                    document.getElementById("PickupLatitude").value = coords[0];
-                    document.getElementById("PickupLongitude").value = coords[1];
-                });
-            }
-
-            // Geocode the dropoff location
-            if (dropoffLocation) {
-                geocodeLocation(dropoffLocation, function (coords) {
-                    if (dropoffMarker) map.removeLayer(dropoffMarker);
-                    dropoffMarker = L.marker(coords).addTo(map)
-                        .bindPopup('Drop-off location: ' + dropoffLocation)
-                        .openPopup();
-                    document.getElementById("DropoffLatitude").value = coords[0];
-                    document.getElementById("DropoffLongitude").value = coords[1];
-                });
-            }
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -25.746111, lng: 28.188056 },
+            zoom: 12
         });
 
-        // Add dynamic stops
-        document.getElementById("addStop").addEventListener("click", function () {
-            const stopsContainer = document.getElementById("stopsContainer");
-            const stopIndex = stopsContainer.children.length;
-
-            const stopGroup = document.createElement("div");
-            stopGroup.classList.add("input-group", "mb-2");
-            stopGroup.innerHTML = `
-        <input type="text" class="form-control stop-input" placeholder="Enter stop location" data-index="${stopIndex}" />
-        <input type="hidden" class="stop-lat" data-index="${stopIndex}" />
-        <input type="hidden" class="stop-lng" data-index="${stopIndex}" />
-        <button type="button" class="btn btn-danger btn-sm remove-stop">Remove</button>
-                `;
-            stopsContainer.appendChild(stopGroup);
-
-            stopGroup.querySelector(".remove-stop").addEventListener("click", function () {
-                stopGroup.remove();
-                recalculateCost();
-            });
+        streetView = new google.maps.StreetViewPanorama(document.getElementById('street-view'), {
+            position: { lat: -25.746111, lng: 28.188056 },
+            pov: { heading: 165, pitch: 0 },
+            zoom: 1
         });
+        map.setStreetView(streetView);
 
-        // Handle cost calculation
-        document.getElementById("calculateCost").addEventListener("click", recalculateCost);
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+
+        let pickupInput = document.getElementById('PickupLocation');
+        let dropoffInput = document.getElementById('DropoffLocation');
+
+        let pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
+        let dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
+
+        // Handle pickup location selection
+        pickupAutocomplete.addListener('place_changed', function () {
+            let place = pickupAutocomplete.getPlace();
+            if (place.geometry) {
+                if (pickupMarker) pickupMarker.setMap(null);
+                pickupMarker = new google.maps.Marker({
+                    position: place.geometry.location,
+                    map: map,
+                    title: 'Pick-up Location'
+                });
+                document.getElementById('PickupLatitude').value = place.geometry.location.lat();
+                document.getElementById('PickupLongitude').value = place.geometry.location.lng();
+                map.setCenter(place.geometry.location);
+                streetView.setPosition(place.geometry.location);
+            }
+        });
+            document.getElementById('showStreetView').addEventListener('click', function () {
+        if (streetView.getVisible()) {
+            streetView.setVisible(false);
+        } else {
+            streetView.setVisible(true);
+        }
     });
+        // Handle drop-off location selection
+        dropoffAutocomplete.addListener('place_changed', function () {
+            let place = dropoffAutocomplete.getPlace();
+            if (place.geometry) {
+                if (dropoffMarker) dropoffMarker.setMap(null);
+                dropoffMarker = new google.maps.Marker({
+                    position: place.geometry.location,
+                    map: map,
+                    title: 'Drop-off Location'
+                });
+                document.getElementById('DropoffLatitude').value = place.geometry.location.lat();
+                document.getElementById('DropoffLongitude').value = place.geometry.location.lng();
+                map.setCenter(place.geometry.location);
+                streetView.setPosition(place.geometry.location);
+            }
+        });
+    }
+
+    // Add stop functionality
+    document.getElementById('addStop').addEventListener('click', function () {
+        let stopInput = document.createElement('input');
+        stopInput.type = 'text';
+        stopInput.className = 'form-control mt-2';
+        stopInput.placeholder = 'Enter stop location';
+        document.getElementById('stopsContainer').appendChild(stopInput);
+
+        let stopAutocomplete = new google.maps.places.Autocomplete(stopInput);
+        stopAutocomplete.addListener('place_changed', function () {
+            let place = stopAutocomplete.getPlace();
+            if (place.geometry) {
+                let stopMarker = new google.maps.Marker({
+                    position: place.geometry.location,
+                    map: map,
+                    title: 'Stop Location'
+                });
+                stopMarkers.push(stopMarker);
+            }
+        });
+
+        // Add remove button for this stop
+        let removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'btn btn-danger mt-2 removeStop';
+        removeButton.innerText = 'Remove Stop';
+        document.getElementById('stopsContainer').appendChild(removeButton);
+
+        // Remove the stop and the button
+        removeButton.addEventListener('click', function () {
+            stopInput.remove();
+            removeButton.remove();
+            stopMarkers.pop(); // Remove the last stop marker
+        });
+    });
+
+    // Calculate route and recommended cost
+    document.getElementById('calculateDirections').addEventListener('click', function () {
+        if (!pickupMarker || !dropoffMarker) {
+            alert("Please enter valid pickup and drop-off locations.");
+            return;
+        }
+
+        let waypoints = stopMarkers.map(marker => ({ location: marker.getPosition(), stopover: true }));
+
+        directionsService.route({
+            origin: pickupMarker.getPosition(),
+            destination: dropoffMarker.getPosition(),
+            waypoints: waypoints,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function (response, status) {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(response);
+                updateRecommendedCost(response);
+            } else {
+                alert('Directions request failed due to ' + status);
+            }
+        });
+    });
+
+    // Calculate cost based on stops and vehicle type
+    document.getElementById('calculateCost').addEventListener('click', function () {
+        if (!pickupMarker || !dropoffMarker) {
+            alert("Please enter valid pickup and drop-off locations.");
+            return;
+        }
+
+        let waypoints = stopMarkers.map(marker => marker.getPosition());
+        let totalDistance = 0;
+        let locations = [pickupMarker.getPosition(), ...waypoints, dropoffMarker.getPosition()];
+
+        for (let i = 0; i < locations.length - 1; i++) {
+            totalDistance += google.maps.geometry.spherical.computeDistanceBetween(locations[i], locations[i + 1]) / 1000; // Convert to KM
+        }
+
+        let vehicleType = document.getElementById('vehicleType').value.toLowerCase();
+        if (!rates[vehicleType]) {
+            alert("Please select a valid vehicle type.");
+            return;
+        }
+
+        let cost = totalDistance * rates[vehicleType];
+        document.getElementById('recommendedCost').value = `R ${cost.toFixed(2)}`;
+        document.getElementById('RecommendedCost').value = cost.toFixed(2);
+    });
+
+    // Update recommended cost from Google Maps response
+    function updateRecommendedCost(response) {
+        let vehicleType = document.getElementById('vehicleType').value.toLowerCase();
+        if (!rates[vehicleType]) return;
+
+        let totalDistance = 0;
+        if (response) {
+            let legs = response.routes[0].legs;
+            for (let i = 0; i < legs.length; i++) {
+                totalDistance += legs[i].distance.value / 1000; // Convert to KM
+            }
+        }
+
+        let cost = totalDistance * rates[vehicleType];
+        document.getElementById('recommendedCost').value = `R ${cost.toFixed(2)}`;
+        document.getElementById('RecommendedCost').value = cost.toFixed(2);
+    }
+
+    window.initMap = initMap;
 </script>
+

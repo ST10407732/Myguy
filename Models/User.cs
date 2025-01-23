@@ -24,4 +24,8 @@ public class User
     public bool IsVerified { get; set; } = false;  // Default value for email verification
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;  // Default value for account creation date
+
+    // Navigation property for notifications
+    public ICollection<Notification> Notifications { get; set; }
 }
+

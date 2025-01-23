@@ -4,7 +4,7 @@
 
 <h1>Task Details</h1>
 
-<!-- Map for client to track driver -->
+<!-- Google Map for client to track driver -->
 <div id="map"></div>
 
 <!-- Loading Spinner -->
@@ -25,106 +25,101 @@
 
 <!-- External Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.6/signalr.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
 
 <script>
-    let trackingTimeout;
+    let map, driverMarker, trackingTimeout;
 
-    // Show the loading spinner when trying to track the driver
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -25.746111, lng: 28.188056 }, // Default location (Pretoria)
+            zoom: 13
+        });
+    }
+
     function showLoading() {
-        document.getElementById("loadingSpinner").style.display = "block";  // Show the spinner
-        document.getElementById("progressBar").style.width = "0%"; // Reset progress bar
-        document.querySelector(".progress").style.display = "block";  // Show the progress bar
-        // Set timeout to display error if location can't be fetched in 10 seconds
-        trackingTimeout = setTimeout(function () {
-            document.getElementById("loadingSpinner").style.display = "none";  // Hide the spinner
-            document.getElementById("errorMessage").style.display = "block";  // Show error message
-        }, 10000);  // 10 seconds timeout
+        document.getElementById("loadingSpinner").style.display = "block";
+        document.getElementById("progressBar").style.width = "0%";
+        document.querySelector(".progress").style.display = "block";
+        trackingTimeout = setTimeout(() => {
+            document.getElementById("loadingSpinner").style.display = "none";
+            document.getElementById("errorMessage").style.display = "block";
+        }, 10000);
     }
 
-    // Hide the loading spinner and error message
     function hideLoading() {
-        clearTimeout(trackingTimeout);  // Clear the timeout if location is found
-        document.getElementById("loadingSpinner").style.display = "none";  // Hide the spinner
-        document.getElementById("errorMessage").style.display = "none";  // Hide the error message
-        document.querySelector(".progress").style.display = "none";  // Hide the progress bar
+        clearTimeout(trackingTimeout);
+        document.getElementById("loadingSpinner").style.display = "none";
+        document.getElementById("errorMessage").style.display = "none";
+        document.querySelector(".progress").style.display = "none";
     }
 
-    // Update progress bar while waiting for updates
     function updateProgressBar(progress) {
         document.getElementById("progressBar").style.width = progress + "%";
     }
 
-    // SignalR connection setup
     const connection = new signalR.HubConnectionBuilder().withUrl("/locationHub").build();
 
-    // Listen for location updates from SignalR
     connection.on("ReceiveDriverLocation", function (data) {
         console.log("Driver Location Update: ", data);
-
-        // Hide loading spinner once we receive the driver's location
         hideLoading();
-        // Update map or location display here
-        // Example: updateMap(data.driverLatitude, data.driverLongitude);
+        updateMap(data.driverLatitude, data.driverLongitude);
     });
 
-    // Start SignalR connection
-    connection.start().then(function () {
+    connection.start().then(() => {
         console.log("SignalR connection established.");
-        updateProgressBar(50);  // 50% progress while connecting to SignalR
-    }).catch(function (err) {
-        return console.error(err.toString());
-    });
+        updateProgressBar(50);
+    }).catch(err => console.error(err.toString()));
 
-    // Function to update the driver's location
     function sendLocationUpdate() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
+            navigator.geolocation.getCurrentPosition(position => {
                 const latitude = position.coords.latitude;
                 const longitude = position.coords.longitude;
-
-                // Show loading spinner until location is sent
                 showLoading();
-
-                // Send the updated location to the server
                 fetch("/account/updatelocation", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        driverLatitude: latitude,
-                        driverLongitude: longitude
-                    })
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ driverLatitude: latitude, driverLongitude: longitude })
                 }).then(response => {
                     if (response.ok) {
                         console.log('Location sent successfully');
-                        updateProgressBar(100);  // Update progress bar to 100% after sending location
+                        updateProgressBar(100);
                     } else {
                         console.error('Failed to send location');
-                        updateProgressBar(0);  // Reset progress if failed
+                        updateProgressBar(0);
                     }
                 }).catch(error => {
                     console.error('Error sending location:', error);
-                    updateProgressBar(0);  // Reset progress if error
+                    updateProgressBar(0);
                 });
-            }, function () {
+            }, () => {
                 console.error("Unable to retrieve your location.");
                 hideLoading();
-                document.getElementById("errorMessage").style.display = "block";  // Show error if location cannot be retrieved
+                document.getElementById("errorMessage").style.display = "block";
             });
         } else {
             alert("Geolocation is not supported by this browser.");
         }
     }
 
-    // Call this function every 5 seconds to update the location
-    setInterval(function () {
-        sendLocationUpdate();
-    }, 5000);  // Update every 5 seconds
+    function updateMap(lat, lng) {
+        const location = new google.maps.LatLng(lat, lng);
+        if (!driverMarker) {
+            driverMarker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: "Driver Location"
+            });
+        } else {
+            driverMarker.setPosition(location);
+        }
+        map.setCenter(location);
+    }
+
+    setInterval(sendLocationUpdate, 5000);
 </script>
 
-<!-- Styles for the progress bar and spinner -->
 <style>
     #map {
         height: 500px;
@@ -132,7 +127,6 @@
         border: 1px solid #ccc;
     }
 
-    /* Loading Spinner */
     .loading-spinner {
         display: flex;
         justify-content: center;
@@ -143,15 +137,14 @@
     }
 
     .spinner {
-        border: 8px solid #f3f3f3; /* Light grey */
-        border-top: 8px solid #3498db; /* Blue */
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
         border-radius: 50%;
         width: 50px;
         height: 50px;
-        animation: spin 2s linear infinite; /* Continuous animation */
+        animation: spin 2s linear infinite;
     }
 
-    /* Progress Bar */
     .progress {
         margin-top: 20px;
         height: 20px;
@@ -162,10 +155,21 @@
         height: 100%;
     }
 
-    /* Error Message */
     #errorMessage {
         color: red;
         font-size: 16px;
         text-align: center;
+    }
+/* 
+
+ *
+    {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+
     }
 </style>
