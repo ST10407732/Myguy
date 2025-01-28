@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\Images\\Home.png"
     },
     {
+      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\Videos\\SOFTLIFE.mp4",
+      "PackagePath": "staticwebassets\\Videos\\SOFTLIFE.mp4"
+    },
+    {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

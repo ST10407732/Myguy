@@ -37,8 +37,9 @@ namespace MYGUYY.Models
 
         [Range(-180, 180, ErrorMessage = "Longitude must be between -180 and 180.")]
         public double? DriverLongitude { get; set; } // Driver's current longitude
-
-        [Required]
+        //public double? CurrentLatitude { get; set; }
+        //public double? CurrentLongitude { get; set; }
+        //[Required]
         public DateTime CreatedAt { get; set; } // Task creation timestamp
 
         public DateTime? AcceptedAt { get; set; } // Timestamp when the driver accepts the task

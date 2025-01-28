@@ -8,13 +8,15 @@
     <h2 class="text-primary mb-4">@ViewData["Title"]</h2>
 
     <div id="notificationArea" class="mb-4">
-       
     </div>
 
     <div class="task-list mb-4">
-        <h4 class="font-weight-bold">Task Requests</h4>
+        <h4 class="font-weight-bold">Recent Task Requests</h4>
+
         @{
             var notifications = ViewBag.Notifications as List<MYGUYY.Models.Notification>;
+            var recentTasks = Model.Where(t => t.Status == "Pending" || t.Status == "Accepted");
+            var historicalTasks = Model.Where(t => t.Status == "Completed" || t.Status == "Cancelled");
         }
 
         @if (notifications != null && notifications.Any())
@@ -35,7 +37,7 @@
             <p class="text-warning">No notifications available.</p>
         }
 
-        @if (!Model.Any())
+        @if (!recentTasks.Any())
         {
             <p class="text-muted">No pending or accepted task requests.</p>
         }
@@ -56,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var task in Model)
+                    @foreach (var task in recentTasks)
                     {
                         <tr>
                             <td>@task.Description</td>
@@ -103,6 +105,61 @@
                 </tbody>
             </table>
         }
+
+        <button id="toggleHistoryBtn" class="btn btn-secondary mt-3" onclick="toggleHistory()">Show History</button>
+
+        <div id="historySection" style="display:none;">
+            <h4 class="font-weight-bold mt-4">Task History</h4>
+
+            @if (!historicalTasks.Any())
+            {
+                <p class="text-muted">No task history available.</p>
+            }
+            else
+            {
+                <table class="table table-striped table-hover shadow-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Description</th>
+                            <th>Client</th>
+                            <th>Pickup Location</th>
+                            <th>Dropoff Location</th>
+                            <th>Status</th>
+                            <th>Vehicle Type</th>
+                            <th>Recommended Cost</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var task in historicalTasks)
+                        {
+                            <tr>
+                                <td>@task.Description</td>
+                                <td>@task.Client?.Username</td>
+                                <td>
+                                    <span class="pickup-address text-muted">Loading...</span>
+                                    <script>
+                                        reverseGeocodeLeaflet(@task.PickupLatitude, @task.PickupLongitude, '.pickup-address');
+                                    </script>
+                                </td>
+                                <td>
+                                    <span class="dropoff-address text-muted">Loading...</span>
+                                    <script>
+                                        reverseGeocodeLeaflet(@task.DropoffLatitude, @task.DropoffLongitude, '.dropoff-address');
+                                    </script>
+                                </td>
+                                <td>@task.Status</td>
+                                <td>@task.VehicleType</td>
+                                <td>R@(@task.RecommendedCost.ToString("F2"))</td>
+                                <td>
+                                    <a href="@Url.Action("ViewMessagesForDriver", "Account", new { taskId = task.Id })" class="btn btn-info btn-sm">View Messages</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
     </div>
 
     <div id="taskMap" style="height: 400px; width: 100%; display: none; border: 1px solid #ddd; border-radius: 8px;" class="shadow-sm mt-4"></div>
@@ -208,6 +265,19 @@
 
         map.setView([latitude, longitude], 13);
         document.getElementById('taskMap').style.display = 'block';
+    }
+
+    function toggleHistory() {
+        const historySection = document.getElementById('historySection');
+        const toggleBtn = document.getElementById('toggleHistoryBtn');
+
+        if (historySection.style.display === 'none') {
+            historySection.style.display = 'block';
+            toggleBtn.textContent = 'Hide History';
+        } else {
+            historySection.style.display = 'none';
+            toggleBtn.textContent = 'Show History';
+        }
     }
 </script>
 

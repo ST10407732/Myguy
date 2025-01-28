@@ -1,115 +1,150 @@
-﻿@model MYGUYY.Models.TaskRequest
-@{
-    ViewData["Title"] = "Track Driver Location";
-}
+﻿<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #87CEEB; /* Sky Blue */
+        color: #343a40;
+        overflow-x: hidden;
+    }
 
-<h2>Track Driver Location</h2>
+    .nav-bar {
+        background: #343a40;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-<div class="container mt-4">
-    <!-- Map Container -->
-    <div id="map" style="height: 500px; width: 100%; position: relative;"></div>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+        text-align: center;
+    }
 
-    <!-- Tracking Controls -->
-    <div class="mt-4">
-        <button class="btn btn-danger" id="stopTracking" style="display: none;">Stop Tracking</button>
+    .content-box {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .video-container {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-background {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        border: none;
+        border-radius: 30px;
+        padding: 12px 20px;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .btn-info:hover {
+            background: #138496;
+            transform: scale(1.05);
+        }
+
+    input, select {
+        border-radius: 30px;
+        padding: 12px;
+        border: 1px solid #ced4da;
+        transition: all 0.3s ease-in-out;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+        input:focus, select:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+    .footer {
+        background: #343a40;
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .content-box {
+        width: 45%;
+    }
+
+    .video-container {
+        width: 45%;
+        max-height: 400px; /* Adjust video height to match form */
+    }
+
+    }
+</style>
+
+<div class="nav-bar">
+    MYGUYY - Your Errand Management System
+</div>
+
+<div class="container">
+    <div class="video-container">
+        <video autoplay loop muted class="video-background">
+            <source src="/Videos/SOFTLIFE.mp4" type="video/mp4">
+        </video>
     </div>
+    <div class="content-box">
+        <h1 class="mb-4 text-info">Welcome to MYGUYY</h1>
 
-    <!-- Error Message -->
-    <div id="errorMessage" style="display: none; color: red;">
-        <p>Driver can't be tracked. Please try again later.</p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="alert alert-success">
+                <h3 class="mb-3">Hello, @User.Identity.Name!</h3>
+                <p>You are logged in as: <span class="badge badge-info">@User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value</span></p>
+                <p><a asp-controller="Account" asp-action="Logout" class="btn btn-danger btn-block">Logout</a></p>
+            </div>
+        }
+        else
+        {
+            <p class="lead">Please <a asp-controller="Account" asp-action="Login" class="text-info">Login</a> or register below:</p>
+            <form asp-action="Register" method="post" asp-controller="Home">
+                <input type="text" name="username" class="form-control" placeholder="Username" required />
+                <input type="email" name="email" class="form-control" placeholder="Email" required />
+                <input type="password" name="password" class="form-control" placeholder="Password" required />
+                <select name="role" class="form-control" required>
+                    <option value="" disabled selected>Select Role</option>
+                    <option value="Client">Client</option>
+                    <option value="Driver">Driver</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <button type="submit" class="btn btn-info mt-3">Register</button>
+            </form>
+        }
     </div>
 </div>
 
-<!-- External Libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places&callback=initMap" async defer></script>
-
-<!-- Load Google Maps API -->
+<div class="footer">
+    &copy; 2025 MYGUYY - All Rights Reserved
+</div>
 
 <script>
-    function initMap() {
-        // Initialize the map centered at a default location
-        const map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: -25.7479, lng: 28.2293 }, // Default location (Pretoria)
-            zoom: 13
-        });
-
-        let driverMarker = null;
-
-        // SignalR connection setup
-        const connection = new signalR.HubConnectionBuilder()
-            .withUrl("/locationHub")
-            .build();
-
-        connection.start()
-            .then(() => {
-                console.log('Connected to SignalR');
-                connection.invoke("JoinTaskGroup", @Model.Id)
-                    .catch(err => console.error("Error joining group", err));
-            })
-            .catch(err => {
-                console.error('Connection failed', err);
-                document.getElementById("errorMessage").style.display = "block";
-            });
-
-        connection.on("ReceiveDriverLocation", (location) => {
-            const { Latitude, Longitude } = location;
-
-            if (!driverMarker) {
-                driverMarker = new google.maps.Marker({
-                    position: { lat: Latitude, lng: Longitude },
-                    map: map,
-                    icon: 'https://maps.google.com/mapfiles/kml/shapes/truck.png',
-                    title: 'Driver Location'
-                });
-            } else {
-                driverMarker.setPosition({ lat: Latitude, lng: Longitude });
-            }
-
-            map.setCenter({ lat: Latitude, lng: Longitude });
-        });
-
-        document.getElementById("stopTracking").addEventListener("click", async () => {
-            try {
-                await connection.invoke("LeaveTaskGroup", @Model.Id);
-                connection.stop();
-                document.getElementById("stopTracking").style.display = "none";
-                alert("Tracking stopped.");
-            } catch (err) {
-                console.error("Error stopping tracking", err);
-                alert("Error stopping tracking.");
-            }
-        });
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector(".content-box").style.opacity = "1";
+    });
 </script>
-
-<!-- Styles for better appearance -->
-<style>
-    #map {
-        height: 500px;
-        width: 100%;
-        border: 1px solid #ccc;
-        position: relative;
-    }
-
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-    .btn-danger {
-        background-color: #dc3545;
-    }
-
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-</style>

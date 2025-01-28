@@ -29,6 +29,6 @@ namespace MYGUYY.Models
 
         public bool IsVerified { get; set; } = false;
 
-       
+
     }
 }

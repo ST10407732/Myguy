@@ -21,10 +21,13 @@
 
 <!-- Include Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<!-- Include Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var map = L.map('map').setView([51.505, -0.09], 13); // Default coordinates for map center
+        // Initialize the map with a default center
+        var map = L.map('map').setView([-29.8587, 31.0218], 13); // Default: Durban, South Africa
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -32,33 +35,58 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
+        // Variables to hold markers and addresses
         var pickupMarker = null;
         var dropoffMarker = null;
 
-        // Add event listener for map clicks to select locations
+        // Function to fetch address using Nominatim API
+        function fetchAddress(lat, lng, callback) {
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.display_name) {
+                        callback(data.display_name);
+                    } else {
+                        callback("Address not found");
+                    }
+                })
+                .catch(() => callback("Error fetching address"));
+        }
+
+        // Handle map clicks to set pickup/dropoff locations
         map.on('click', function (e) {
             var lat = e.latlng.lat;
             var lng = e.latlng.lng;
 
-            // If the pick-up marker is not set, set it
+            // Set pickup location
             if (!pickupMarker) {
-                pickupMarker = L.marker([lat, lng]).addTo(map)
-                    .bindPopup('Pick-up location')
-                    .openPopup();
+                fetchAddress(lat, lng, function (address) {
+                    pickupMarker = L.marker([lat, lng]).addTo(map)
+                        .bindPopup(`Pick-up location: ${address}`)
+                        .openPopup();
 
-                // Set hidden input fields for the pick-up location
-                document.getElementById("PickupLatitude").value = lat;
-                document.getElementById("PickupLongitude").value = lng;
+                    // Store coordinates and address in hidden fields
+                    document.getElementById("PickupLatitude").value = lat;
+                    document.getElementById("PickupLongitude").value = lng;
+                    document.getElementById("PickupAddress").value = address;
+
+                    console.log("Pickup Address:", address); // Debugging
+                });
             }
-            // If pick-up is already set, set the drop-off marker
+            // Set dropoff location
             else if (!dropoffMarker) {
-                dropoffMarker = L.marker([lat, lng]).addTo(map)
-                    .bindPopup('Drop-off location')
-                    .openPopup();
+                fetchAddress(lat, lng, function (address) {
+                    dropoffMarker = L.marker([lat, lng]).addTo(map)
+                        .bindPopup(`Drop-off location: ${address}`)
+                        .openPopup();
 
-                // Set hidden input fields for the drop-off location
-                document.getElementById("DropoffLatitude").value = lat;
-                document.getElementById("DropoffLongitude").value = lng;
+                    // Store coordinates and address in hidden fields
+                    document.getElementById("DropoffLatitude").value = lat;
+                    document.getElementById("DropoffLongitude").value = lng;
+                    document.getElementById("DropoffAddress").value = address;
+
+                    console.log("Dropoff Address:", address); // Debugging
+                });
             }
         });
     });

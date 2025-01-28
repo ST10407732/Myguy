@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         calculateDistance(origin, destination, function (distance) {
             const cost = distance * costPerKmBase * vehicleMultiplier;
-            document.getElementById("recommendedCost").value = `R${cost.toFixed(2)}`;
+            // document.getElementById("recommendedCost").value = `R${cost.toFixed(2)}`;
             document.getElementById("RecommendedCost").value = cost.toFixed(2);
         });
     }

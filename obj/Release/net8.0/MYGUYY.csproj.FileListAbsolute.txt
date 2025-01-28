@@ -1,6 +1,7 @@
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\appsettings.Development.json
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\appsettings.json
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\MYGUYY.staticwebassets.runtime.json
+C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\MYGUYY.staticwebassets.endpoints.json
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\MYGUYY.exe
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\MYGUYY.deps.json
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\MYGUYY.runtimeconfig.json
@@ -9,7 +10,9 @@ C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\MYGUYY.pdb
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Azure.Core.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Azure.Identity.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\BCrypt.Net-Next.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\BouncyCastle.Cryptography.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Humanizer.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\MailKit.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Microsoft.Build.Locator.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Microsoft.CodeAnalysis.dll
@@ -44,6 +47,7 @@ C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Microsoft.IdentityModel.Pr
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\MimeKit.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Mono.TextTemplating.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\Newtonsoft.Json.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.ClientModel.dll
@@ -62,6 +66,7 @@ C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.IO.Pipelines.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.Memory.Data.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.Runtime.Caching.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.Security.Permissions.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\System.Text.Encodings.Web.dll
@@ -142,6 +147,7 @@ C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\runtimes\win\lib\net6.0\Mi
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\davyc\source\repos\MYGUYY\bin\Release\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
@@ -154,16 +160,19 @@ C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.MvcApplicationParts
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.RazorAssemblyInfo.cache
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.RazorAssemblyInfo.cs
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.sourcelink.json
+C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\bundle\MYGUYY.styles.css
+C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\projectbundle\MYGUYY.bundle.scp.css
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets.build.json
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets.development.json
+C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets.build.endpoints.json
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets\msbuild.MYGUYY.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets\msbuild.MYGUYY.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets\msbuild.build.MYGUYY.props
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets\msbuild.buildMultiTargeting.MYGUYY.props
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets\msbuild.buildTransitive.MYGUYY.props
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets.pack.json
-C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\bundle\MYGUYY.styles.css
-C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\projectbundle\MYGUYY.bundle.scp.css
+C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.csproj.Up2Date
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.dll
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\refint\MYGUYY.dll

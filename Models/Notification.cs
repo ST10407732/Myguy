@@ -18,7 +18,7 @@ namespace MYGUYY.Models
 
         public int TaskId { get; set; }
 
-        // Navigation property to link to User
+        //Navigation property to link to User
         public User User { get; set; }
     }
 }

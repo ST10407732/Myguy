@@ -1,93 +1,229 @@
 ﻿@model IEnumerable<MYGUYY.Models.TaskRequest>
 @{
     ViewData["Title"] = "Client Tasks";
+    var taskRequests = Model.OrderByDescending(t => t.CreatedAt).ToList();
+    var recentTask = taskRequests.FirstOrDefault();
 }
 
 <h2>Client Tasks</h2>
 
-@if (ViewBag.TaskSummaries != null)
+@if (recentTask != null)
 {
-    <div class="task-summary">
-        <h4>Task Summary:</h4>
-        <ul>
-            <li>Total Tasks: @ViewBag.TaskSummaries.Total</li>
-            <li>Pending Tasks: @ViewBag.TaskSummaries.Pending</li>
-            <li>Accepted Tasks: @ViewBag.TaskSummaries.Accepted</li>
-            <li>Completed Tasks: @ViewBag.TaskSummaries.Completed</li>
-            <li>Declined Tasks: @ViewBag.TaskSummaries.Declined</li>
-        </ul>
+    <div class="alert alert-success text-center font-weight-bold" style="font-size: 36px; color: #28a745; text-transform: uppercase; letter-spacing: 2px;">
+        Your Task Has Been Successfully Submitted!<br />
+        <span style="font-size: 40px;">PLEASE WAIT, WE ARE NOW SEARCHING FOR YOUR GUY.</span>
+    </div>
+
+    <div class="task-details border p-3 mb-3">
+        <h4>Task Details:</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Description:</strong></td>
+                    <td>@recentTask.Description</td>
+                </tr>
+                <tr>
+                    <td><strong>Status:</strong></td>
+                    <td><span class="text-uppercase font-weight-bold @(@recentTask.Status == "Accepted" ? "text-success" : "text-danger")">@recentTask.Status</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Vehicle Type:</strong></td>
+                    <td>@recentTask.VehicleType</td>
+                </tr>
+                <tr>
+                    <td><strong>Cost:</strong></td>
+                    <td id="recommendedCostDisplay"
+                        data-cost="@recentTask.RecommendedCost">
+                        R @recentTask.RecommendedCost.ToString("F2")
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Pickup Location:</strong></td>
+                    <td><span class="pickup-location" data-lat="@recentTask.PickupLatitude" data-lng="@recentTask.PickupLongitude">Loading...</span></td>
+                    <td><img id="pickupMap" src="" alt="Pickup Location" style="width: 200px; height: 150px;" /></td>
+                </tr>
+                <tr>
+                    <td><strong>Dropoff Location:</strong></td>
+                    <td><span class="dropoff-location" data-lat="@recentTask.DropoffLatitude" data-lng="@recentTask.DropoffLongitude">Loading...</span></td>
+                    <td><img id="dropoffMap" src="" alt="Dropoff Location" style="width: 200px; height: 150px;" /></td>
+                </tr>
+                <tr>
+                    <td><strong>Created At:</strong></td>
+                    <td>@recentTask.CreatedAt.ToString("MM/dd/yyyy HH:mm")</td>
+                </tr>
+                <tr>
+                    <td><strong>Agreement Code:</strong></td>
+                    <td>@recentTask.ConfirmationCode</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Vehicle Type</th>
-            <th>Recommended Cost</th>
-            <th>Client</th>
-            <th>Pickup Location (Lat, Long)</th>
-            <th>Dropoff Location (Lat, Long)</th>
-            <th>Stops</th>
-            <th>Created At</th>
-            <th>Agreement Code</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var task in Model)
-        {
-            <tr>
-                <td>@task.Description</td>
-                <td>@task.Status</td>
-                <td>@task.VehicleType</td>
-                <td>R@(@task.RecommendedCost.ToString("F2"))</td>
-                <td>@task.Client ?? "Unknown"</td>
-                <td>@task.PickupLatitude, @task.PickupLongitude</td>
-                <td>@task.DropoffLatitude, @task.DropoffLongitude</td>
-                <td>
-                    @if (task.Stops != null && task.Stops.Count > 0)
-                    {
-                        <ul>
-                            @foreach (var stop in task.Stops)
-                            {
-                                <li>@stop.Latitude, @stop.Longitude</li>
-                            }
-                        </ul>
-                    }
-                    else
-                    {
-                        <span>No Stops</span>
-                    }
-                </td>
-                <td>@task.CreatedAt.ToString("MM/dd/yyyy HH:mm")</td>
-                <td>@task.ConfirmationCode</td>
-                <td>
-                    @if (task.Status == "Pending")
-                    {
-                        <a href="@Url.Action("SendMessageForClient", "Account", new { taskId = task.Id })" class="btn btn-primary">Send Message</a>
-                    }
-                    else if (task.Status == "Accepted")
-                    {
-                        <a href="@Url.Action("ViewMessages", "Account", new { taskId = task.Id })" class="btn btn-secondary">View Messages</a>
+@if (recentTask != null && recentTask.Status == "Accepted")
+{
+    <div class="alert alert-info text-center font-weight-bold">
+        TASK ACCEPTED BY DRIVER!<br />
+        Driver Details: @recentTask.Driver?.Username (@recentTask.Driver?.Email)
+        <a href="@Url.Action("TrackDriver", "Account", new { taskId = recentTask.Id })" class="btn btn-info mt-2">Track My Driver</a>
+        <a href="@Url.Action("ViewMessages", "Account", new { taskId = recentTask.Id })" class="btn btn-secondary mt-2">View Messages</a>
+    </div>
 
-                        <!-- Display Track My Driver button only if the task has been accepted -->
-                        @if (task.DriverId != null)
+    <!-- View Directions button only when task is accepted -->
+    <a asp-action="Directions" asp-route-id="@recentTask.Id" class="btn btn-primary mt-3">View Directions</a>
+}
+
+@if (recentTask == null)
+{
+    <p>No task found.</p>
+}
+
+<!-- Button to show task history -->
+<button id="toggleHistory" class="btn btn-primary">Show Previous Tasks</button>
+
+<!-- Task history section -->
+<div id="taskHistory" class="d-none mt-4">
+    <h4>Past Task Requests:</h4>
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Vehicle Type</th>
+                <th>Recommended Cost</th>
+                <th>Client</th>
+                <th>Pickup Location</th>
+                <th>Dropoff Location</th>
+                <th>Stops</th>
+                <th>Created At</th>
+                <th>Agreement Code</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in taskRequests.Skip(1))
+            {
+                <tr class="@(task.Status == "Accepted" ? "table-success" : "table-warning")">
+                    <td>@task.Description</td>
+                    <td class="text-uppercase font-weight-bold @(@task.Status == "Accepted" ? "text-success" : "text-danger")">@task.Status</td>
+                    <td>@task.VehicleType</td>
+                    <td id="recommendedCostDisplay"
+                        data-cost="@recentTask.RecommendedCost">
+                        R @recentTask.RecommendedCost.ToString("F2")
+                    </td>
+                    <td>@task.Client?.Username ?? "Unknown"</td>
+                    <td><span class="pickup-location" data-lat="@task.PickupLatitude" data-lng="@task.PickupLongitude">Loading...</span></td>
+                    <td><span class="dropoff-location" data-lat="@task.DropoffLatitude" data-lng="@task.DropoffLongitude">Loading...</span></td>
+                    <td>
+                        @if (task.Stops != null && task.Stops.Count > 0)
                         {
-                            <a href="@Url.Action("TrackDriver", "Account", new { taskId = task.Id })" class="btn btn-info">Track My Driver</a>
+                            <ul>
+                                @foreach (var stop in task.Stops)
+                                {
+                                    <li>@stop.Latitude, @stop.Longitude</li>
+                                }
+                            </ul>
                         }
                         else
                         {
-                            <span class="badge badge-warning">Driver Not Assigned</span>
+                            <span>No Stops</span>
                         }
-                    }
-                    else
-                    {
-                        <span class="badge badge-secondary">No Action</span>
-                    }
-                </td>
-            </tr>
+                    </td>
+                    <td>@task.CreatedAt.ToString("MM/dd/yyyy HH:mm")</td>
+                    <td>@task.ConfirmationCode</td>
+                    <td>
+                        @if (task.Status == "Pending")
+                        {
+                            <a href="@Url.Action("SendMessageForClient", "Account", new { taskId = task.Id })" class="btn btn-primary">Send Message</a>
+                        }
+                        else if (task.Status == "Accepted")
+                        {
+                            <a href="@Url.Action("ViewMessages", "Account", new { taskId = task.Id })" class="btn btn-secondary">View Messages</a>
+
+                            @if (task.DriverId != null)
+                            {
+                                <a href="@Url.Action("TrackDriver", "Account", new { taskId = task.Id })" class="btn btn-info">Track My Driver</a>
+                            }
+                            else
+                            {
+                                <span class="badge badge-warning">Driver Not Assigned</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="badge badge-secondary">No Action</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    const rates = { bike: 10, car: 20, van: 30 };
+    let map, directionsService, directionsRenderer, pickupMarker, dropoffMarker, stopMarkers = [];
+
+    function calculateCost() {
+        // Get the cost value from the element attribute
+        var costElement = document.getElementById('recommendedCostDisplay');
+        var cost = parseFloat(costElement.getAttribute('data-cost')) || 0;
+
+        // Update the display with the exact cost from the database
+        costElement.innerHTML = `R ${cost.toFixed(2)}`;
+    }
+
+    // Toggle the task history visibility
+    document.getElementById("toggleHistory").addEventListener("click", function () {
+        var historySection = document.getElementById("taskHistory");
+        historySection.classList.toggle("d-none");
+        this.textContent = historySection.classList.contains("d-none") ? "Show Previous Tasks" : "Hide Previous Tasks";
+    });
+
+    function reverseGeocode(lat, lng, element, mapElement) {
+        if (isNaN(lat) || isNaN(lng)) {
+            element.textContent = "Invalid coordinates";
+            return;
         }
-    </tbody>
-</table>
+        element.textContent = "Loading...";
+
+        const googleMapsAPIUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM`;
+
+        fetch(googleMapsAPIUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.results.length > 0) {
+                    element.textContent = data.results[0].formatted_address;
+                } else {
+                    element.textContent = "Address not found";
+                }
+                const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng}&key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM`;
+                mapElement.src = staticMapUrl;
+            })
+            .catch(error => {
+                console.error("Error fetching address:", error);
+                element.textContent = "Error fetching address";
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const pickupLocation = document.querySelector('.pickup-location');
+        const dropoffLocation = document.querySelector('.dropoff-location');
+
+        if (pickupLocation && dropoffLocation) {
+            const pickupLat = pickupLocation.dataset.lat;
+            const pickupLng = pickupLocation.dataset.lng;
+            const dropoffLat = dropoffLocation.dataset.lat;
+            const dropoffLng = dropoffLocation.dataset.lng;
+
+            reverseGeocode(pickupLat, pickupLng, pickupLocation, document.getElementById('pickupMap'));
+            reverseGeocode(dropoffLat, dropoffLng, dropoffLocation, document.getElementById('dropoffMap'));
+        }
+    });
+</script>

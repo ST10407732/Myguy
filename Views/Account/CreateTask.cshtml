@@ -1,266 +1,247 @@
-﻿@{
-    ViewBag.Title = "Create New Task";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Task</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions,geometry&callback=initMap" async defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+@model TaskRequest
+<y class="bg-gray-100">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 h-screen">
+        <!-- Form Section -->
+        <div class="bg-white p-6 lg:col-span-1 overflow-y-auto">
+            <h1 class="text-2xl font-bold text-green-600 mb-4">Create New Task</h1>
+
+            <form id="taskForm" asp-action="CreateTask" method="post" onsubmit="return validateForm();">
+                <div class="mb-4">
+                    <label for="Description" class="block font-medium text-gray-700">Task Description</label>
+                    <textarea asp-for="Description" id="Description" class="w-full border-gray-300 rounded-md p-2" required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="vehicleType" class="block font-medium text-gray-700">Select Vehicle Type</label>
+                    <input type="hidden" id="VehicleTypeHidden" name="VehicleType" value="" />
+
+                    <select asp-for="VehicleType" id="vehicleType" class="w-full border-gray-300 rounded-md p-2" required>
+                        <option value="Bike">Bike</option>
+                        <option value="Car">Car</option>
+                        <option value="Van">Van</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="PickupLocation" class="block font-medium text-gray-700">Pick-up Location</label>
+                    <input id="PickupLocation" class="w-full border-gray-300 rounded-md p-2" type="text" placeholder="Enter pick-up location" required />
+                    <input asp-for="PickupLatitude" id="PickupLatitude" type="hidden" />
+                    <input asp-for="PickupLongitude" id="PickupLongitude" type="hidden" />
+                </div>
+
+                <div class="mb-4">
+                    <label for="DropoffLocation" class="block font-medium text-gray-700">Drop-off Location</label>
+                    <input id="DropoffLocation" class="w-full border-gray-300 rounded-md p-2" type="text" placeholder="Enter drop-off location" required />
+                    <input asp-for="DropoffLatitude" id="DropoffLatitude" type="hidden" />
+                    <input asp-for="DropoffLongitude" id="DropoffLongitude" type="hidden" />
+                </div>
+
+                <div class="mb-4">
+                    <label for="Stops" class="block font-medium text-gray-700">Stops (Optional)</label>
+                    <div id="stopsContainer" class="space-y-2"></div>
+                    <button type="button" class="mt-2 bg-gray-500 text-white py-1 px-2 rounded hover:bg-gray-600" id="addStop">Add Stop</button>
+                </div>
 
 
-<div class="container mt-4">
-    <h2 class="text-success mb-4">@ViewBag.Title</h2>
 
-    @if (ViewBag.ValidationErrors != null && ViewBag.ValidationErrors.Count > 0)
-    {
-        <div class="alert alert-danger">
-            <ul>
-                @foreach (var error in ViewBag.ValidationErrors)
-                {
-                    <li>@error</li>
-                }
-            </ul>
+                <div class="mb-4">
+                    <label for="recommendedCost" class="block font-medium text-gray-700">YOUR COST WILL APPEAR HERE...</label>
+                    <input id="recommendedCost" class="w-full border-gray-300 rounded-md p-2" type="text" readonly />
+                    <input type="hidden" id="RecommendedCost" name="RecommendedCost" />
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="IsAgreementConfirmed" class="block font-medium text-gray-700">Agreement Confirmed</label>
+                    <select asp-for="IsAgreementConfirmed" class="w-full border-gray-300 rounded-md p-2">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+
+                <div class="flex space-x-2">
+                    <button type="button" id="calculateCost" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Calculate Cost</button>
+                    <button type="submit" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Create Task</button>
+                </div>
+            </form>
         </div>
-    }
 
-    <div id="errorContainer" class="alert alert-danger d-none" role="alert">
-        <span id="errorMessage"></span>
+        <!-- Map Section -->
+        <div id="map" class="lg:col-span-3 h-full relative">
+            <!-- Spinner -->
+            <div id="loadingSpinner" class="hidden absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                <div class="spinner-border animate-spin w-12 h-12 border-4 border-t-blue-500 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+    <div id="map" class="lg:col-span-3 h-full relative">
+        <!-- Spinner -->
+        <div id="loadingSpinner" class="hidden absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+            <div class="spinner-border animate-spin w-12 h-12 border-4 border-t-blue-500 rounded-full"></div>
+        </div>
     </div>
 
-    @model TaskRequest
+    <!-- SignalR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 
-    <button id="showStreetView">Show Street View</button>
-    <button id="getCurrentLocation">Get Current Location</button>
-    <button id="calculateDirections">Show Directions</button>
-    <form asp-action="CreateTask" method="post" onsubmit="return validateForm();">
-        <div id="map" style="height: 400px; width: 100%;" class="mb-4"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions&callback=initMap" async defer></script>
 
-        <div class="form-group">
-            <label for="Description">Task Description</label>
-            <textarea asp-for="Description" id="Description" class="form-control" required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="vehicleType">Select Vehicle Type</label>
-            <select asp-for="VehicleType" id="vehicleType" class="form-control" required>
-                <option value="Bike">Bike</option>
-                <option value="Car">Car</option>
-                <option value="Van">Van</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="PickupLocation">Pick-up Location</label>
-            <input id="PickupLocation" class="form-control" type="text" placeholder="Enter pick-up location" required />
-        </div>
-        <input asp-for="PickupLatitude" id="PickupLatitude" type="hidden" />
-        <input asp-for="PickupLongitude" id="PickupLongitude" type="hidden" />
-
-        <div class="form-group">
-            <label for="DropoffLocation">Drop-off Location</label>
-            <input id="DropoffLocation" class="form-control" type="text" placeholder="Enter drop-off location" required />
-        </div>
-        <input asp-for="DropoffLatitude" id="DropoffLatitude" type="hidden" />
-        <input asp-for="DropoffLongitude" id="DropoffLongitude" type="hidden" />
-
-
-        <div class="form-group">
-            <label for="Stops">Stops (Optional)</label>
-            <div id="stopsContainer"></div>
-            <button type="button" class="btn btn-secondary mt-2" id="addStop">Add Stop</button>
-        </div>
-
-        <div class="form-group">
-            <label for="recommendedCost">Recommended Cost</label>
-            <input id="recommendedCost" class="form-control" type="text" readonly />
-        </div>
-        <input asp-for="RecommendedCost" id="RecommendedCost" type="hidden" />
-        <button type="button" class="btn btn-secondary mt-3" id="findLocations">Find Locations</button>
-        <button type="button" id="calculateCost" class="btn btn-info">Calculate Cost</button>
-        <button type="submit" class="btn btn-primary mt-3">Create Task</button>
-        <!-- Is Agreement Confirmed -->
-        <div class="form-group">
-            <label asp-for="IsAgreementConfirmed" class="control-label">Agreement Confirmed</label>
-            <select asp-for="IsAgreementConfirmed" class="form-control">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <span asp-validation-for="IsAgreementConfirmed" class="text-danger"></span>
-        </div>
-
-    </form>
-</div>
-<!-- SignalR -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions&callback=initMap" async defer></script>
-    
-<script>
-    let map, streetView, directionsService, directionsRenderer, pickupMarker, dropoffMarker, stopMarkers = [];
-    const rates = { bike: 10, car: 20, van: 30 };
-
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: -25.746111, lng: 28.188056 },
-            zoom: 12
+    <script>
+                document.getElementById('vehicleType').addEventListener('change', function () {
+            document.getElementById('VehicleTypeHidden').value = this.value;
+            updateCostAndDirections();
         });
 
-        streetView = new google.maps.StreetViewPanorama(document.getElementById('street-view'), {
-            position: { lat: -25.746111, lng: 28.188056 },
-            pov: { heading: 165, pitch: 0 },
-            zoom: 1
+        const rates = { bike: 10, car: 20, van: 30 };
+        let map, directionsService, directionsRenderer, pickupMarker, dropoffMarker, stopMarkers = [];
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -25.746111, lng: 28.188056 },
+                zoom: 12,
+                disableDefaultUI: true,
+                zoomControl: true,
+                streetViewControl: false,
+                mapTypeControl: false
+            });
+
+            directionsService = new google.maps.DirectionsService();
+            directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+
+            // Autocomplete setup for pickup and dropoff
+            const pickupAutocomplete = new google.maps.places.Autocomplete(document.getElementById('PickupLocation'));
+            const dropoffAutocomplete = new google.maps.places.Autocomplete(document.getElementById('DropoffLocation'));
+
+            // Pickup marker setup
+            pickupAutocomplete.addListener('place_changed', function () {
+                const place = pickupAutocomplete.getPlace();
+                if (place.geometry) {
+                    if (pickupMarker) pickupMarker.setMap(null);
+                    pickupMarker = new google.maps.Marker({
+                        position: place.geometry.location,
+                        map: map,
+                        title: 'Pick-up Location'
+                    });
+                    document.getElementById('PickupLatitude').value = place.geometry.location.lat();
+                    document.getElementById('PickupLongitude').value = place.geometry.location.lng();
+                    map.setCenter(place.geometry.location);
+                    updateCostAndDirections();
+                }
+            });
+
+            // Dropoff marker setup
+            dropoffAutocomplete.addListener('place_changed', function () {
+                const place = dropoffAutocomplete.getPlace();
+                if (place.geometry) {
+                    if (dropoffMarker) dropoffMarker.setMap(null);
+                    dropoffMarker = new google.maps.Marker({
+                        position: place.geometry.location,
+                        map: map,
+                        title: 'Drop-off Location'
+                    });
+                    document.getElementById('DropoffLatitude').value = place.geometry.location.lat();
+                    document.getElementById('DropoffLongitude').value = place.geometry.location.lng();
+                    map.setCenter(place.geometry.location);
+                    updateCostAndDirections();
+                }
+            });
+        }
+
+        // Add stop functionality
+        document.getElementById('addStop').addEventListener('click', function () {
+            const stopInput = document.createElement('input');
+            stopInput.type = 'text';
+            stopInput.className = 'form-control mt-2';
+            stopInput.placeholder = 'Enter stop location';
+            document.getElementById('stopsContainer').appendChild(stopInput);
+
+            const stopAutocomplete = new google.maps.places.Autocomplete(stopInput);
+            stopAutocomplete.addListener('place_changed', function () {
+                const place = stopAutocomplete.getPlace();
+                if (place.geometry) {
+                    const stopMarker = new google.maps.Marker({
+                        position: place.geometry.location,
+                        map: map,
+                        title: 'Stop Location'
+                    });
+                    stopMarkers.push(stopMarker);
+                    updateCostAndDirections();
+                }
+            });
         });
-        map.setStreetView(streetView);
 
-        directionsService = new google.maps.DirectionsService();
-        directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+        // Update cost and directions based on selected vehicle type and waypoints
+        function updateCostAndDirections() {
+            if (!pickupMarker || !dropoffMarker) return;
 
-        let pickupInput = document.getElementById('PickupLocation');
-        let dropoffInput = document.getElementById('DropoffLocation');
+            const waypoints = stopMarkers.map(marker => marker.getPosition());
+            let totalDistance = 0;
+            const locations = [pickupMarker.getPosition(), ...waypoints, dropoffMarker.getPosition()];
 
-        let pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
-        let dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
-
-        // Handle pickup location selection
-        pickupAutocomplete.addListener('place_changed', function () {
-            let place = pickupAutocomplete.getPlace();
-            if (place.geometry) {
-                if (pickupMarker) pickupMarker.setMap(null);
-                pickupMarker = new google.maps.Marker({
-                    position: place.geometry.location,
-                    map: map,
-                    title: 'Pick-up Location'
-                });
-                document.getElementById('PickupLatitude').value = place.geometry.location.lat();
-                document.getElementById('PickupLongitude').value = place.geometry.location.lng();
-                map.setCenter(place.geometry.location);
-                streetView.setPosition(place.geometry.location);
+            // Calculate total distance
+            for (let i = 0; i < locations.length - 1; i++) {
+                totalDistance += google.maps.geometry.spherical.computeDistanceBetween(locations[i], locations[i + 1]) / 1000; // KM
             }
-        });
-            document.getElementById('showStreetView').addEventListener('click', function () {
-        if (streetView.getVisible()) {
-            streetView.setVisible(false);
-        } else {
-            streetView.setVisible(true);
-        }
-    });
-        // Handle drop-off location selection
-        dropoffAutocomplete.addListener('place_changed', function () {
-            let place = dropoffAutocomplete.getPlace();
-            if (place.geometry) {
-                if (dropoffMarker) dropoffMarker.setMap(null);
-                dropoffMarker = new google.maps.Marker({
-                    position: place.geometry.location,
-                    map: map,
-                    title: 'Drop-off Location'
-                });
-                document.getElementById('DropoffLatitude').value = place.geometry.location.lat();
-                document.getElementById('DropoffLongitude').value = place.geometry.location.lng();
-                map.setCenter(place.geometry.location);
-                streetView.setPosition(place.geometry.location);
+
+            // Get the vehicle type value from the select dropdown
+            const vehicleType = document.getElementById('vehicleType').value.toLowerCase();
+
+            // Check if vehicleType is valid and present in rates
+            if (!rates[vehicleType]) {
+                alert("Please select a valid vehicle type.");
+                return;
             }
+
+            // Calculate the cost based on the selected vehicle type and distance
+            const cost = totalDistance * rates[vehicleType];
+            document.getElementById('recommendedCost').value = `R ${cost.toFixed(2)}`;
+            document.getElementById('RecommendedCost').value = cost.toFixed(2);
+
+            // Recalculate and render directions
+            const waypointsData = stopMarkers.map(marker => ({ location: marker.getPosition(), stopover: true }));
+
+            document.getElementById('loadingSpinner').classList.remove('hidden');
+            directionsService.route({
+                origin: pickupMarker.getPosition(),
+                destination: dropoffMarker.getPosition(),
+                waypoints: waypointsData,
+                travelMode: google.maps.TravelMode.DRIVING
+            }, function (response, status) {
+                document.getElementById('loadingSpinner').classList.add('hidden');
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(response);
+                } else {
+                    alert('Directions request failed: ' + status);
+                }
+            });
+        }
+
+        // Event listener for vehicle type change
+        document.getElementById('vehicleType').addEventListener('change', function () {
+            document.getElementById('VehicleTypeHidden').value = this.value;
+            updateCostAndDirections();
         });
-    }
 
-    // Add stop functionality
-    document.getElementById('addStop').addEventListener('click', function () {
-        let stopInput = document.createElement('input');
-        stopInput.type = 'text';
-        stopInput.className = 'form-control mt-2';
-        stopInput.placeholder = 'Enter stop location';
-        document.getElementById('stopsContainer').appendChild(stopInput);
-
-        let stopAutocomplete = new google.maps.places.Autocomplete(stopInput);
-        stopAutocomplete.addListener('place_changed', function () {
-            let place = stopAutocomplete.getPlace();
-            if (place.geometry) {
-                let stopMarker = new google.maps.Marker({
-                    position: place.geometry.location,
-                    map: map,
-                    title: 'Stop Location'
-                });
-                stopMarkers.push(stopMarker);
+        // Form validation
+        function validateForm() {
+            if (!document.getElementById('PickupLocation').value || !document.getElementById('DropoffLocation').value) {
+                alert("Please fill in all required fields.");
+                return false;
             }
-        });
-
-        // Add remove button for this stop
-        let removeButton = document.createElement('button');
-        removeButton.type = 'button';
-        removeButton.className = 'btn btn-danger mt-2 removeStop';
-        removeButton.innerText = 'Remove Stop';
-        document.getElementById('stopsContainer').appendChild(removeButton);
-
-        // Remove the stop and the button
-        removeButton.addEventListener('click', function () {
-            stopInput.remove();
-            removeButton.remove();
-            stopMarkers.pop(); // Remove the last stop marker
-        });
-    });
-
-    // Calculate route and recommended cost
-    document.getElementById('calculateDirections').addEventListener('click', function () {
-        if (!pickupMarker || !dropoffMarker) {
-            alert("Please enter valid pickup and drop-off locations.");
-            return;
+            return true;
         }
 
-        let waypoints = stopMarkers.map(marker => ({ location: marker.getPosition(), stopover: true }));
+        window.initMap = initMap;
+    </script>
 
-        directionsService.route({
-            origin: pickupMarker.getPosition(),
-            destination: dropoffMarker.getPosition(),
-            waypoints: waypoints,
-            travelMode: google.maps.TravelMode.DRIVING
-        }, function (response, status) {
-            if (status === 'OK') {
-                directionsRenderer.setDirections(response);
-                updateRecommendedCost(response);
-            } else {
-                alert('Directions request failed due to ' + status);
-            }
-        });
-    });
-
-    // Calculate cost based on stops and vehicle type
-    document.getElementById('calculateCost').addEventListener('click', function () {
-        if (!pickupMarker || !dropoffMarker) {
-            alert("Please enter valid pickup and drop-off locations.");
-            return;
-        }
-
-        let waypoints = stopMarkers.map(marker => marker.getPosition());
-        let totalDistance = 0;
-        let locations = [pickupMarker.getPosition(), ...waypoints, dropoffMarker.getPosition()];
-
-        for (let i = 0; i < locations.length - 1; i++) {
-            totalDistance += google.maps.geometry.spherical.computeDistanceBetween(locations[i], locations[i + 1]) / 1000; // Convert to KM
-        }
-
-        let vehicleType = document.getElementById('vehicleType').value.toLowerCase();
-        if (!rates[vehicleType]) {
-            alert("Please select a valid vehicle type.");
-            return;
-        }
-
-        let cost = totalDistance * rates[vehicleType];
-        document.getElementById('recommendedCost').value = `R ${cost.toFixed(2)}`;
-        document.getElementById('RecommendedCost').value = cost.toFixed(2);
-    });
-
-    // Update recommended cost from Google Maps response
-    function updateRecommendedCost(response) {
-        let vehicleType = document.getElementById('vehicleType').value.toLowerCase();
-        if (!rates[vehicleType]) return;
-
-        let totalDistance = 0;
-        if (response) {
-            let legs = response.routes[0].legs;
-            for (let i = 0; i < legs.length; i++) {
-                totalDistance += legs[i].distance.value / 1000; // Convert to KM
-            }
-        }
-
-        let cost = totalDistance * rates[vehicleType];
-        document.getElementById('recommendedCost').value = `R ${cost.toFixed(2)}`;
-        document.getElementById('RecommendedCost').value = cost.toFixed(2);
-    }
-
-    window.initMap = initMap;
-</script>
-
+</html>

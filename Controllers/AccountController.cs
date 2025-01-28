@@ -147,6 +147,22 @@ namespace MYGUYY.Controllers
 
             return View(taskRequest); // Pass the task request to the view
         }
+        [Authorize]
+        public async Task<IActionResult> Directions(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("Invalid task ID.");
+            }
+
+            var task = await _context.TaskRequests.FindAsync(id);
+            if (task == null)
+            {
+                return NotFound("Task not found.");
+            }
+
+            return View(task);
+        }
 
 
         // GET: Render the registration page
@@ -155,6 +171,35 @@ namespace MYGUYY.Controllers
             // Set ViewData for title
             ViewData["Title"] = "Task Groups";
             return View();  // Return the view
+        }
+        public IActionResult TrackTask()
+        {
+            // Get the logged-in user's ID (assuming User.Identity.Name stores the email or ID)
+            int userId = Convert.ToInt32(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
+
+            if (userId == 0)
+            {
+                return Unauthorized("User not logged in.");
+            }
+
+            // Find the task assigned to the logged-in user (either as a driver or client)
+            var task = _context.TaskRequests
+                        .FirstOrDefault(t => t.ClientId == userId || t.DriverId == userId);
+
+            if (task == null)
+            {
+                return NotFound("No task found for this user.");
+            }
+
+            // Pass task locations to the view using ViewBag
+            ViewBag.PickupLat = task.PickupLatitude;
+            ViewBag.PickupLng = task.PickupLongitude;
+            ViewBag.DropoffLat = task.DropoffLatitude;
+            ViewBag.DropoffLng = task.DropoffLongitude;
+            ViewBag.DriverLat = task.DriverLatitude ?? 0;
+            ViewBag.DriverLng = task.DriverLongitude ?? 0;
+
+            return View();
         }
 
         [HttpPost]
@@ -563,6 +608,13 @@ namespace MYGUYY.Controllers
                     .OrderByDescending(n => n.CreatedAt) // Order by the latest notification
                     .ToListAsync();
 
+                // Mark notifications as read after fetching
+                foreach (var notification in unreadNotifications)
+                {
+                    notification.IsRead = true;
+                }
+                await _context.SaveChangesAsync();
+
                 // Passing the unread notifications to the view
                 ViewBag.Notifications = unreadNotifications;
 
@@ -572,12 +624,20 @@ namespace MYGUYY.Controllers
                     .Include(t => t.Client) // Include client details
                     .ToListAsync();
 
+                // Fetch the most recent task for the driver
+                var recentTask = await _context.TaskRequests
+                    .Where(t => t.DriverId == driverId)
+                    .OrderByDescending(t => t.CreatedAt)
+                    .FirstOrDefaultAsync();
+
+                ViewBag.RecentTask = recentTask;
+
                 return View(tasks);
             }
             catch (Exception ex)
             {
-                // Log the exception for debugging purposes
-                _logger.LogError(ex, "An error occurred while fetching task requests for driver.");
+                //// Log the exception for debugging purposes
+                //_logger.LogError(ex, "An error occurred while fetching task requests for driver.");
 
                 TempData["Error"] = "An error occurred while fetching task requests.";
                 return RedirectToAction("Index", "Home");

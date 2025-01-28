@@ -20,10 +20,17 @@
         {
             try
             {
+                if (taskId <= 0)
+                {
+                    await Clients.Caller.SendAsync("Error", "Invalid task ID.");
+                    return;
+                }
+
                 // Validate the coordinates
                 if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180)
                 {
-                    throw new ArgumentOutOfRangeException("Invalid coordinates.");
+                    await Clients.Caller.SendAsync("Error", "Invalid coordinates.");
+                    return;
                 }
 
                 var taskRequest = await _context.TaskRequests.FindAsync(taskId); // Fetch the task request
@@ -44,17 +51,18 @@
                         DriverId = taskRequest.DriverId,
                         TaskId = taskId
                     });
+
+                    // Optionally, you can also notify the caller that their location has been updated successfully
+                    await Clients.Caller.SendAsync("LocationUpdated", "Driver location updated successfully.");
                 }
                 else
                 {
-                    // Handle case where the task does not exist
                     await Clients.Caller.SendAsync("Error", "Task not found.");
                 }
             }
             catch (Exception ex)
             {
-                // Handle any errors that may occur
-                Console.Error.WriteLine(ex.Message);
+                Console.Error.WriteLine($"Error updating driver location: {ex.Message}");
                 await Clients.Caller.SendAsync("Error", "Failed to update driver location.");
             }
         }
@@ -62,6 +70,12 @@
         // Add a client to a task group (using taskId)
         public async Task JoinTaskGroup(int taskId)
         {
+            if (taskId <= 0)
+            {
+                await Clients.Caller.SendAsync("Error", "Invalid task ID.");
+                return;
+            }
+
             string groupName = taskId.ToString(); // Use the task ID as the group name
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
             await Clients.Group(groupName).SendAsync("Notify", $"A client has joined task group {groupName}.");
@@ -70,6 +84,12 @@
         // Remove a client from a task group (using taskId)
         public async Task LeaveTaskGroup(int taskId)
         {
+            if (taskId <= 0)
+            {
+                await Clients.Caller.SendAsync("Error", "Invalid task ID.");
+                return;
+            }
+
             string groupName = taskId.ToString(); // Use the task ID as the group name
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
             await Clients.Group(groupName).SendAsync("Notify", $"A client has left task group {groupName}.");
@@ -86,7 +106,7 @@
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             await base.OnDisconnectedAsync(exception);
-            // Optionally log or handle disconnection events
+            Console.WriteLine("Client disconnected: " + Context.ConnectionId);
         }
     }
 }

@@ -14,23 +14,37 @@
     <!-- Map Container -->
     <div id="map" style="height: 500px; width: 100%;"></div>
 
-    <!-- Tracking Controls -->
+    <!-- Location Input Controls -->
     <div class="mt-4">
+        <div class="form-group">
+            <label for="pickupLocation">Pickup Location</label>
+            <input type="text" class="form-control" id="pickupLocation" placeholder="Enter Pickup Location" />
+        </div>
+        <div class="form-group">
+            <label for="dropoffLocation">Drop-off Location</label>
+            <input type="text" class="form-control" id="dropoffLocation" placeholder="Enter Drop-off Location" />
+        </div>
+        <div class="form-group">
+            <label for="stopLocation">Stop Location</label>
+            <input type="text" class="form-control" id="stopLocation" placeholder="Enter Stop Location" />
+        </div>
+        <button class="btn btn-success" id="startNavigating">Start Navigating</button>
         <button class="btn btn-danger" id="stopTracking" style="display: none;">Stop Tracking</button>
     </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places&callback=initMap" async defer></script>
 
 <script>
-    let map, directionsService, directionsRenderer, driverMarker, clientMarker;
+    let map, directionsService, directionsRenderer, driverMarker;
     let taskId = @Html.Raw(Json.Serialize(ViewBag.TaskId));
+    let pickupMarker, dropoffMarker, stopMarkers = [];
 
     document.addEventListener("DOMContentLoaded", function () {
         // Initialize Google Maps
         map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 52.52, lng: 13.4050 }, // Default view (Berlin)
+            center: { lat: 0, lng: 0 }, // Initial center (it will change once driver's location is known)
             zoom: 13
         });
 
@@ -73,10 +87,8 @@
                 driverMarker.setPosition({ lat: Latitude, lng: Longitude });
             }
 
-            map.setCenter({ lat: Latitude, lng: Longitude }); // Update map to driver’s location
-            if (clientMarker) {
-                displayRoute(driverMarker.getPosition(), clientMarker.getPosition());
-            }
+            // Update the map's center to the driver's location
+            map.setCenter({ lat: Latitude, lng: Longitude });
         });
 
         // Get current location using Geolocation API
@@ -85,57 +97,136 @@
                 navigator.geolocation.getCurrentPosition(function (position) {
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
-                    console.log('Geolocation received:', latitude, longitude);
+                    const accuracy = position.coords.accuracy; // The accuracy of the location in meters
 
-                    // Send location to SignalR
-                    connection.invoke("UpdateDriverLocation", taskId, latitude, longitude)
-                        .catch(err => console.error("Error sending location to server: ", err));
+                    console.log('Geolocation received:', latitude, longitude, 'Accuracy:', accuracy);
 
-                    if (!driverMarker) {
-                        map.setCenter({ lat: latitude, lng: longitude });
-                        driverMarker = new google.maps.Marker({
-                            position: { lat: latitude, lng: longitude },
-                            map: map,
-                            title: 'Driver Location',
-                            icon: {
-                                url: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
-                                scaledSize: new google.maps.Size(30, 50)
-                            }
-                        });
+                    if (accuracy <= 50) {  // Only send location if accuracy is within 50 meters
+                        // Send location to SignalR
+                        connection.invoke("UpdateDriverLocation", taskId, latitude, longitude)
+                            .catch(err => console.error("Error sending location to server: ", err));
+
+                        if (!driverMarker) {
+                            map.setCenter({ lat: latitude, lng: longitude });
+                            driverMarker = new google.maps.Marker({
+                                position: { lat: latitude, lng: longitude },
+                                map: map,
+                                title: 'Driver Location',
+                                icon: {
+                                    url: 'https://cdn-icons-png.flaticon.com/512/1048/1048312.png',
+                                    scaledSize: new google.maps.Size(30, 50)
+                                }
+                            });
+                        } else {
+                            driverMarker.setPosition({ lat: latitude, lng: longitude });
+                        }
                     } else {
-                        driverMarker.setPosition({ lat: latitude, lng: longitude });
+                        console.warn("Location accuracy is low, retrying...");
                     }
-
-                    // Set client location if not already set
-                    if (!clientMarker) {
-                        clientMarker = new google.maps.Marker({
-                            position: { lat: 52.52, lng: 13.4050 }, // Set this to the task's client location
-                            map: map,
-                            title: 'Client Location',
-                            icon: {
-                                url: 'https://cdn-icons-png.flaticon.com/512/1048/1048323.png',
-                                scaledSize: new google.maps.Size(30, 50)
-                            }
-                        });
-                    }
-                    // Display route from driver to client
-                    displayRoute(driverMarker.getPosition(), clientMarker.getPosition());
                 }, function (error) {
                     console.error("Error getting geolocation: ", error);
                     alert("Failed to get your current location. Please ensure location services are enabled.");
-                });
+                }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
             } else {
                 console.error("Geolocation is not supported by this browser.");
                 alert("Geolocation is not supported by this browser.");
             }
         }
 
-        // Function to display directions between driver and client
-        function displayRoute(driverLocation, clientLocation) {
+        // Initialize Places Autocomplete for location input fields
+        const pickupInput = document.getElementById("pickupLocation");
+        const dropoffInput = document.getElementById("dropoffLocation");
+        const stopInput = document.getElementById("stopLocation");
+
+        new google.maps.places.Autocomplete(pickupInput);
+        new google.maps.places.Autocomplete(dropoffInput);
+        new google.maps.places.Autocomplete(stopInput);
+
+        // Start navigating to the entered locations
+        document.getElementById("startNavigating").addEventListener("click", function () {
+            const pickupLocation = document.getElementById("pickupLocation").value;
+            const dropoffLocation = document.getElementById("dropoffLocation").value;
+            const stopLocation = document.getElementById("stopLocation").value;
+
+            // Validate the locations
+            if (!pickupLocation || !dropoffLocation) {
+                alert("Pickup and Drop-off locations are required!");
+                return;
+            }
+
+            // Geocode the pickup location
+            geocodeLocation(pickupLocation, function (pickupLatLng) {
+                if (pickupMarker) {
+                    pickupMarker.setPosition(pickupLatLng);
+                } else {
+                    pickupMarker = new google.maps.Marker({
+                        position: pickupLatLng,
+                        map: map,
+                        title: 'Pickup Location',
+                        icon: {
+                            url: 'https://cdn-icons-png.flaticon.com/512/1048/1048323.png',
+                            scaledSize: new google.maps.Size(30, 50)
+                        }
+                    });
+                }
+
+                // Geocode the drop-off location
+                geocodeLocation(dropoffLocation, function (dropoffLatLng) {
+                    if (dropoffMarker) {
+                        dropoffMarker.setPosition(dropoffLatLng);
+                    } else {
+                        dropoffMarker = new google.maps.Marker({
+                            position: dropoffLatLng,
+                            map: map,
+                            title: 'Drop-off Location',
+                            icon: {
+                                url: 'https://cdn-icons-png.flaticon.com/512/1048/1048323.png',
+                                scaledSize: new google.maps.Size(30, 50)
+                            }
+                        });
+                    }
+
+                    // Optionally, geocode and add stop locations
+                    if (stopLocation) {
+                        geocodeLocation(stopLocation, function (stopLatLng) {
+                            const stopMarker = new google.maps.Marker({
+                                position: stopLatLng,
+                                map: map,
+                                title: 'Stop Location',
+                                icon: {
+                                    url: 'https://cdn-icons-png.flaticon.com/512/1048/1048323.png',
+                                    scaledSize: new google.maps.Size(30, 50)
+                                }
+                            });
+                            stopMarkers.push(stopMarker);
+                        });
+                    }
+
+                    // Calculate and display the route from pickup to drop-off
+                    displayRoute(pickupLatLng, dropoffLatLng);
+                });
+            });
+        });
+
+        // Function to geocode an address
+        function geocodeLocation(address, callback) {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    callback(results[0].geometry.location);
+                } else {
+                    alert("Geocode failed for the address: " + address);
+                }
+            });
+        }
+
+        // Function to display directions
+        function displayRoute(pickupLatLng, dropoffLatLng) {
             directionsService.route({
-                origin: driverLocation,
-                destination: clientLocation,
-                travelMode: google.maps.TravelMode.DRIVING // You can change this to WALKING or BICYCLING
+                origin: pickupLatLng,
+                destination: dropoffLatLng,
+                waypoints: stopMarkers.map(marker => ({ location: marker.getPosition(), stopover: true })),
+                travelMode: google.maps.TravelMode.DRIVING
             }, function (response, status) {
                 if (status === google.maps.DirectionsStatus.OK) {
                     directionsRenderer.setDirections(response);
@@ -145,54 +236,17 @@
             });
         }
 
-        // Get location every 5 seconds
-        setInterval(getLocationAndSend, 5000); // Update every 5 seconds
-
         // Show Stop Tracking button
         document.getElementById("stopTracking").style.display = "inline-block";
 
-        // Stop tracking
-        document.getElementById("stopTracking").addEventListener("click", async () => {
-            try {
-                await connection.invoke("LeaveTaskGroup", taskId); // Use taskId to leave the task group
-                connection.stop();
-                document.getElementById("stopTracking").style.display = "none";
-                alert("Tracking stopped.");
-            } catch (err) {
-                console.error("Error leaving task group: ", err);
-                alert("Error stopping tracking.");
-            }
+        // Stop Tracking button functionality
+        document.getElementById("stopTracking").addEventListener("click", function () {
+            connection.invoke("LeaveTaskGroup", taskId)
+                .catch(err => console.error("Error leaving task group: ", err));
+            location.reload(); // Refresh the page to reset everything
         });
+
+        // Start getting the location periodically
+        setInterval(getLocationAndSend, 5000); // Send location every 5 seconds
     });
 </script>
-
-<!-- Styles for better appearance -->
-<style>
-    #map {
-        height: 500px;
-        width: 100%;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-    .btn-danger {
-        background-color: #dc3545;
-    }
-
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-</style>
-

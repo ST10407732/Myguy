@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - MyGuy</title>
+    <title>@ViewData["Title"] - SOFT LIFE MYGUY</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         :root {
             --primary-color: #1e3a8a; /* Rich navy blue */
             --secondary-color: #2563eb; /* Bright medium blue */
-            --background-color: #f0f4ff; /* Soft light blue */
+            --background-color: #87CEEB; /* Sky blue background */
             --text-color: #ffffff; /* White for dark backgrounds */
             --form-background: #ffffff; /* White forms */
             --font-color: #1f2937; /* Dark slate for text */
@@ -29,7 +29,7 @@
         }
 
         body {
-            background-color: var(--background-color);
+            background-color: var(--background-color); /* Sky blue */
             color: var(--font-color);
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
@@ -41,16 +41,16 @@
             padding: 0.8rem 1.2rem;
         }
 
-        nav.navbar .navbar-brand,
-        nav.navbar .nav-link {
-            color: var(--text-color);
-            font-weight: 500;
-            font-size: 1rem;
-        }
+            nav.navbar .navbar-brand,
+            nav.navbar .nav-link {
+                color: var(--text-color);
+                font-weight: 500;
+                font-size: 1rem;
+            }
 
-        nav.navbar .nav-link:hover {
-            color: var(--hover-color);
-        }
+                nav.navbar .nav-link:hover {
+                    color: var(--hover-color);
+                }
 
         .container {
             padding: 1.5rem;
@@ -67,9 +67,9 @@
             font-weight: bold;
         }
 
-        .btn:hover {
-            background-color: var(--hover-color);
-        }
+            .btn:hover {
+                background-color: var(--hover-color);
+            }
 
         form {
             background-color: var(--form-background);
@@ -78,25 +78,25 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        form .form-group label {
-            font-weight: bold;
-        }
+            form .form-group label {
+                font-weight: bold;
+            }
 
-        form .form-group input,
-        form .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--input-border-color);
-            border-radius: 5px;
-            font-size: 1rem;
-        }
+            form .form-group input,
+            form .form-group textarea {
+                width: 100%;
+                padding: 1rem;
+                border: 1px solid var(--input-border-color);
+                border-radius: 5px;
+                font-size: 1rem;
+            }
 
-        form .form-group input:focus,
-        form .form-group textarea:focus {
-            border-color: var(--secondary-color);
-            outline: none;
-            box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
-        }
+                form .form-group input:focus,
+                form .form-group textarea:focus {
+                    border-color: var(--secondary-color);
+                    outline: none;
+                    box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+                }
 
         footer {
             background-color: var(--primary-color);
@@ -106,43 +106,39 @@
             margin-top: 2rem;
         }
 
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-        /*
-        */
-
-            nav.navbar .nav-link {
+            footer p {
+                margin: 0;
                 font-size: 0.9rem;
             }
 
-            h2, h4 {
-                font-size: 1.2rem;
-            }
+        nav.navbar .nav-link {
+            font-size: 0.9rem;
+        }
 
-            form {
-                padding: 1rem;
-            }
+        h2, h4 {
+            font-size: 1.2rem;
+        }
 
-            footer p {
-                font-size: 0.8rem;
-            }
+        form {
+            padding: 1rem;
+        }
 
-            .container {
-                padding: 0.5rem;
-            }
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        .container {
+            padding: 0.5rem;
         }
     </style>
 </head>
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MYGUYY</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <li><a asp-controller="Emails" asp-action="SendTestEmail">Send Email</a></li>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" onclick="toggleNavbar()">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -169,7 +165,7 @@
                                 break;
                             case "Client":
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Account" asp-action="DriverTasks">Track My Driver</a>
+                                    <a class="nav-link" asp-controller="Account" asp-action="ClientTasks">MY TASK DASHBOARD</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" asp-controller="Account" asp-action="CreateTask">Create Task</a>
@@ -184,7 +180,6 @@
                         </li>
                         <li><a asp-controller="DriverProfile" asp-action="Create">Driver Profile</a></li>
                         <li><a asp-controller="Account" asp-action="Register">Register a new account</a></li>
-
                     }
                     else
                     {
@@ -208,10 +203,53 @@
     </footer>
 
     <!-- Bootstrap JS -->
-   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    @RenderSection("Scripts", required: false)
 
+    <script>
+        // Function to toggle the navbar on smaller screens
+        function toggleNavbar() {
+            const navbar = document.getElementById('navbarNav');
+            if (navbar.classList.contains('collapse')) {
+                navbar.classList.remove('collapse');
+            } else {
+                navbar.classList.add('collapse');
+            }
+        }
+
+        // Dynamic styling based on screen width
+        function adjustLayout() {
+            const screenWidth = window.innerWidth;
+
+            // Adjust navbar padding and font sizes based on screen width
+            if (screenWidth <= 768) {
+                document.querySelector('nav.navbar').style.padding = '1rem 0.5rem';  // Smaller padding on mobile
+                document.querySelector('nav.navbar .navbar-brand').style.fontSize = '1.2rem'; // Smaller brand font size on mobile
+                document.querySelector('nav.navbar .nav-link').style.fontSize = '1rem'; // Smaller link font size on mobile
+            } else {
+                document.querySelector('nav.navbar').style.padding = '0.8rem 1rem';  // Larger padding on larger screens
+                document.querySelector('nav.navbar .navbar-brand').style.fontSize = '1.5rem'; // Larger brand font size
+                document.querySelector('nav.navbar .nav-link').style.fontSize = '1.1rem'; // Larger link font size
+            }
+
+            // Adjust form inputs for better readability on mobile devices
+            const formInputs = document.querySelectorAll('form .form-group input, form .form-group textarea');
+            formInputs.forEach(input => {
+                input.style.padding = '1rem';
+                input.style.fontSize = screenWidth <= 768 ? '1.2rem' : '1rem';  // Larger input text for mobile
+            });
+
+            // Adjust button size
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.style.padding = screenWidth <= 768 ? '0.8rem 1.2rem' : '1rem 1.5rem'; // Larger button padding for mobile
+                btn.style.fontSize = screenWidth <= 768 ? '1.1rem' : '1rem'; // Adjust button font size for mobile
+            });
+        }
+
+        // Apply changes when the page is loaded or resized
+        window.onload = adjustLayout;
+        window.onresize = adjustLayout;
+    </script>
 
 </body>
 

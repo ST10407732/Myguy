@@ -736,13 +736,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MYGUYY.3vpa0h8jil.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3vpa0h8jil"},{"Name":"integrity","Value":"sha256-kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM="},{"Name":"label","Value":"_content/MYGUYY/MYGUYY.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1124"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 00:04:55 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1124"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 24 Jan 2025 14:30:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/MYGUYY/MYGUYY.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MYGUYY.3vpa0h8jil.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1124"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 00:04:55 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1124"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 24 Jan 2025 14:30:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/MYGUYY/uploads/messages/00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\messages\00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4'))</AssetFile>
@@ -1247,6 +1247,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vabojmydyo"},{"Name":"integrity","Value":"sha256-yUUSTgWNjlvU4EZc7OWvZ7oA7KAgIKqtwfJJRppox7U="},{"Name":"label","Value":"_content/MYGUYY/uploads/WhatsApp Image 2025-01-20 at 12.49.46.jpeg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"441707"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022yUUSTgWNjlvU4EZc7OWvZ7oA7KAgIKqtwfJJRppox7U=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Jan 2025 15:59:25 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MYGUYY/Videos/SOFTLIFE.cxvyggibva.mp4">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Videos\SOFTLIFE.mp4'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"cxvyggibva"},{"Name":"integrity","Value":"sha256-IAbQMznES/hm2JP/ZYit9Unsbl1UFwxgu39pM\u002BuCMXM="},{"Name":"label","Value":"_content/MYGUYY/Videos/SOFTLIFE.mp4"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1386149"},{"Name":"Content-Type","Value":"video/mp4"},{"Name":"ETag","Value":"\u0022IAbQMznES/hm2JP/ZYit9Unsbl1UFwxgu39pM\u002BuCMXM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 15:13:28 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MYGUYY/Videos/SOFTLIFE.mp4">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Videos\SOFTLIFE.mp4'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-IAbQMznES/hm2JP/ZYit9Unsbl1UFwxgu39pM\u002BuCMXM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1386149"},{"Name":"Content-Type","Value":"video/mp4"},{"Name":"ETag","Value":"\u0022IAbQMznES/hm2JP/ZYit9Unsbl1UFwxgu39pM\u002BuCMXM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 15:13:28 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>

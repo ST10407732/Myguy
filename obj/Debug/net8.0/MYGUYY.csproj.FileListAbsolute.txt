@@ -172,7 +172,6 @@ C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\staticwebassets\msbuild.buil
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MYGUYY.props
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MYGUYY.props
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\MYGUYY.csproj.Up2Date
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\MYGUYY.dll
 C:\Users\davyc\source\repos\MYGUYY\obj\Debug\net8.0\refint\MYGUYY.dll
