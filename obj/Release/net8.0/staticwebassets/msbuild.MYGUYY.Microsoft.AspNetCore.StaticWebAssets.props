@@ -1098,24 +1098,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MYGUYY.3vpa0h8jil.bundle.scp.css'))">
-      <SourceType>Package</SourceType>
-      <SourceId>MYGUYY</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/MYGUYY</BasePath>
-      <RelativePath>MYGUYY.3vpa0h8jil.bundle.scp.css</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>Reference</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName>ScopedCss</AssetTraitName>
-      <AssetTraitValue>ProjectBundle</AssetTraitValue>
-      <Fingerprint>3vpa0h8jil</Fingerprint>
-      <Integrity>kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MYGUYY.3vpa0h8jil.bundle.scp.css'))</OriginalItemSpec>
-    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\messages\00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4'))">
       <SourceType>Package</SourceType>
       <SourceId>MYGUYY</SourceId>

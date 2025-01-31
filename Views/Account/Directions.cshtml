@@ -21,6 +21,7 @@
 </head>
 <body>
 
+    <
     <h2>Live Driver Tracking</h2>
     <div id="map"></div>
     <div id="eta">Calculating ETA...</div>
@@ -40,6 +41,7 @@
         let lastRouteCalculated = 0;
         const routeRecalculationInterval = 60000;  // Recalculate route every 60 seconds
         const smoothFactor = 0.1;  // Smoothing factor for driver movement to avoid jitter
+        const defaultLocation = { lat: -29.8587, lng: 31.0218 };  // Durban coordinates
 
         function initMap() {
             var pickupLat = @Model.PickupLatitude;
@@ -47,8 +49,9 @@
             var dropoffLat = @Model.DropoffLatitude;
             var dropoffLng = @Model.DropoffLongitude;
 
+            // Initialize map centered on Durban initially
             map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: pickupLat, lng: pickupLng },
+                center: defaultLocation,  // Default to Durban if no location data is available
                 zoom: 14,
             });
 
@@ -82,60 +85,63 @@
             });
             driverPath.setMap(map);
 
-            // Start tracking the driver
-            trackDriverLocation();
+            // Start tracking the driver's location
+            trackDriverLocation(pickupLat, pickupLng);
         }
 
-        function trackDriverLocation() {
+        function trackDriverLocation(pickupLat, pickupLng) {
             if (navigator.geolocation) {
-                navigator.geolocation.watchPosition(position => {
+                navigator.geolocation.getCurrentPosition(position => {
                     const driverLat = position.coords.latitude;
                     const driverLng = position.coords.longitude;
-                    updateDriverLocation(driverLat, driverLng);
+                    const accuracy = position.coords.accuracy;
+
+                    // Check if the accuracy is good enough
+                    if (accuracy <= 15000) { // 100 meters or less for reasonable accuracy
+                        console.log("Initial position accuracy is good:", accuracy);
+                        updateDriverLocation(driverLat, driverLng, pickupLat, pickupLng);
+
+                        // Now start watching the position for continuous updates
+                        navigator.geolocation.watchPosition(position => {
+                            const driverLat = position.coords.latitude;
+                            const driverLng = position.coords.longitude;
+                            updateDriverLocation(driverLat, driverLng, pickupLat, pickupLng);
+                        }, error => {
+                            console.error("Location error:", error);
+                        }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
+                    } else {
+                        console.error("GPS accuracy is poor. Accuracy:", accuracy);
+                        alert("GPS accuracy is too low. Please move to an open area with better GPS reception.");
+                    }
                 }, error => {
-                    console.error("Error getting location: ", error.message);
-                    alert("Unable to fetch driver's location.");
-                }, {
-                    enableHighAccuracy: true,   // Improve accuracy
-                    timeout: 10000,             // Timeout if location isn't available within 10 seconds
-                    maximumAge: 0               // Don't use cached data
-                });
+                    console.error("Error retrieving location:", error);
+                    alert("Unable to retrieve your location. Please check your location settings.");
+                }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
         }
 
-        function updateDriverLocation(lat, lng) {
+        function updateDriverLocation(lat, lng, pickupLat, pickupLng) {
             const now = Date.now();
             if (now - lastUpdated >= updateInterval) {
                 lastUpdated = now;
 
-                // Smooth the driver's position (to reduce jitter)
-                if (previousPosition) {
-                    lat = (lat * smoothFactor) + (previousPosition.lat * (1 - smoothFactor));
-                    lng = (lng * smoothFactor) + (previousPosition.lng * (1 - smoothFactor));
-                }
-
                 if (driverMarker) {
-                    driverMarker.setPosition({ lat: lat, lng: lng });
+                    driverMarker.setPosition({ lat, lng });
                 } else {
                     driverMarker = new google.maps.Marker({
-                        position: { lat: lat, lng: lng },
+                        position: { lat, lng },
                         map: map,
-                        icon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-                        title: "Driver's Current Location"
+                        title: "Driver",
+                        icon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                     });
                 }
 
-                // Add new position to polyline path
-                let path = driverPath.getPath();
-                path.push(new google.maps.LatLng(lat, lng));
+                driverPath.getPath().push(new google.maps.LatLng(lat, lng));
+                map.setCenter({ lat: defaultLocation.lat, lng: defaultLocation.lng });  // Always center on Durban
 
-                // Center map to driver's latest position
-                map.setCenter({ lat: lat, lng: lng });
-
-                // Calculate route and ETA
-                calculateRouteAndETA(lat, lng);
+                calculateRouteAndETA(lat, lng, pickupLat, pickupLng);
             }
 
             if (previousPosition) {
@@ -148,13 +154,13 @@
             previousTime = now;
         }
 
-        function calculateRouteAndETA(driverLat, driverLng) {
+        function calculateRouteAndETA(driverLat, driverLng, pickupLat, pickupLng) {
             const now = Date.now();
             if (now - lastRouteCalculated >= routeRecalculationInterval) {
                 lastRouteCalculated = now;
 
                 var driverLocation = new google.maps.LatLng(driverLat, driverLng);
-                var pickupLocation = new google.maps.LatLng(@Model.PickupLatitude, @Model.PickupLongitude);
+                var pickupLocation = new google.maps.LatLng(pickupLat, pickupLng);
                 var dropoffLocation = new google.maps.LatLng(@Model.DropoffLatitude, @Model.DropoffLongitude);
 
                 let destination = pickupReached ? dropoffLocation : pickupLocation;
@@ -209,5 +215,8 @@
             }
         }
     </script>
+
+
 </body>
 </html>
+

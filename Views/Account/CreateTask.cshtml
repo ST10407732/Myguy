@@ -1,247 +1,355 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@model TaskRequest
+@{
+    ViewData["Title"] = "Create Task";
+}
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>Create New Task</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions,geometry&callback=initMap" async defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+  
 
+    <style>
+         body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: rgb(210, 180, 140); /* Chocolate Brown */
+            color: rgb(210, 180, 140); /* Caramel */
+            -webkit-font-smoothing: antialiased; /* Smooth fonts on iOS */
+        }
+
+          /* Adjust input and select fields */
+    input, textarea, select {
+        font-size: 1.8rem; /* Bigger font size */
+        padding: 12px; /* More padding */
+        border-radius: 8px; /* Rounded corners */
+    }
+
+    /* Labels and headings */
+    label {
+        font-size: 1.8rem; /* Bigger labels */
+        font-weight: bold;
+    }
+
+    /* Buttons */
+    button {
+        font-size: 1.rem; /* Bigger buttons */
+        padding: 12px 16px; /* Increase button size */
+        border-radius: 8px; /* Rounded corners */
+    }
+
+    /* Headings */
+    h1 {
+        font-size: 2rem; /* Bigger heading */
+    }
+
+    /* Form sections */
+    .form-section {
+        padding: 20px; /* More spacing inside form sections */
+    }
+
+    /* Street view container */
+    #street-view {
+        height: 250px; /* Slightly bigger */
+    }
+        /* Ensure the navbar is at the top */
+        nav.navbar {
+            background: var(--transparent-dark);
+            padding: 0.8rem 1.2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            height: 70px; /* Adjust based on navbar height */
+            backdrop-filter: blur(10px);
+        }
+
+        /* Map positioning to prevent overlap with navbar */
+        #map {
+            width: 100%;
+            height: calc(100vh - 70px); /* Adjust map to fit below navbar */
+            position: absolute;
+            top: 70px; /* Push map down so it starts below the navbar */
+            left: 0;
+        }
+    </style>
 </head>
 
-@model TaskRequest
-<y class="bg-gray-100">
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 h-screen">
-        <!-- Form Section -->
-        <div class="bg-white p-6 lg:col-span-1 overflow-y-auto">
-            <h1 class="text-2xl font-bold text-green-600 mb-4">Create New Task</h1>
+    <div id="map"></div>
+    <div class="form-section">Form content here...</div>
 
-            <form id="taskForm" asp-action="CreateTask" method="post" onsubmit="return validateForm();">
-                <div class="mb-4">
-                    <label for="Description" class="block font-medium text-gray-700">Task Description</label>
-                    <textarea asp-for="Description" id="Description" class="w-full border-gray-300 rounded-md p-2" required></textarea>
-                </div>
-                <div class="mb-4">
-                    <label for="vehicleType" class="block font-medium text-gray-700">Select Vehicle Type</label>
-                    <input type="hidden" id="VehicleTypeHidden" name="VehicleType" value="" />
+    <script>
+                    // Function to adjust map height based on screen width
+                    function adjustMapHeight() {
+                        const mapElement = document.getElementById("map");
 
-                    <select asp-for="VehicleType" id="vehicleType" class="w-full border-gray-300 rounded-md p-2" required>
-                        <option value="Bike">Bike</option>
-                        <option value="Car">Car</option>
-                        <option value="Van">Van</option>
-                    </select>
-                </div>
+                        if (window.innerWidth <= 768) {
+                            mapElement.style.height = "100vh"; // For smaller screens
+                        } else {
+                            mapElement.style.height = "100vh"; // For larger screens
+                        }
+                    }
 
-                <div class="mb-4">
-                    <label for="PickupLocation" class="block font-medium text-gray-700">Pick-up Location</label>
-                    <input id="PickupLocation" class="w-full border-gray-300 rounded-md p-2" type="text" placeholder="Enter pick-up location" required />
-                    <input asp-for="PickupLatitude" id="PickupLatitude" type="hidden" />
-                    <input asp-for="PickupLongitude" id="PickupLongitude" type="hidden" />
-                </div>
+                    // Initial adjustment
+                    adjustMapHeight();
 
-                <div class="mb-4">
-                    <label for="DropoffLocation" class="block font-medium text-gray-700">Drop-off Location</label>
-                    <input id="DropoffLocation" class="w-full border-gray-300 rounded-md p-2" type="text" placeholder="Enter drop-off location" required />
-                    <input asp-for="DropoffLatitude" id="DropoffLatitude" type="hidden" />
-                    <input asp-for="DropoffLongitude" id="DropoffLongitude" type="hidden" />
-                </div>
-
-                <div class="mb-4">
-                    <label for="Stops" class="block font-medium text-gray-700">Stops (Optional)</label>
-                    <div id="stopsContainer" class="space-y-2"></div>
-                    <button type="button" class="mt-2 bg-gray-500 text-white py-1 px-2 rounded hover:bg-gray-600" id="addStop">Add Stop</button>
-                </div>
+                    // Adjust map height on window resize
+                    window.addEventListener("resize", adjustMapHeight);
+                </script>
+        
 
 
 
-                <div class="mb-4">
-                    <label for="recommendedCost" class="block font-medium text-gray-700">YOUR COST WILL APPEAR HERE...</label>
-                    <input id="recommendedCost" class="w-full border-gray-300 rounded-md p-2" type="text" readonly />
-                    <input type="hidden" id="RecommendedCost" name="RecommendedCost" />
-                </div>
-
-                <div class="mb-4">
-                    <label asp-for="IsAgreementConfirmed" class="block font-medium text-gray-700">Agreement Confirmed</label>
-                    <select asp-for="IsAgreementConfirmed" class="w-full border-gray-300 rounded-md p-2">
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
-                </div>
-
-                <div class="flex space-x-2">
-                    <button type="button" id="calculateCost" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Calculate Cost</button>
-                    <button type="submit" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Create Task</button>
-                </div>
-            </form>
-        </div>
-
+<body class="bg-gray-100">
+    <div class="relative h-screen">
         <!-- Map Section -->
-        <div id="map" class="lg:col-span-3 h-full relative">
-            <!-- Spinner -->
-            <div id="loadingSpinner" class="hidden absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-                <div class="spinner-border animate-spin w-12 h-12 border-4 border-t-blue-500 rounded-full"></div>
+        <div id="map"></div>
+
+        <!-- Form Section -->
+        <div class="fixed bottom-10 left-1/2 transform -translate-x-1/2 p-4 z-20 w-full max-w-xl bg-black bg-opacity-50 rounded-t-lg shadow-lg h-[40%] overflow-y-auto">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full">
+                <h1 class="text-2xl font-bold text-green-600 mb-4 text-center bg-transparent">Create New Task</h1>
+
+
+                <!-- Form Start -->
+                <form id="taskForm" asp-action="CreateTask" method="post" onsubmit="return validateForm();">
+                    <!-- Section 1: Task Description and Vehicle Type -->
+                    <<div id="section1" class="form-section active-section bg-black bg-opacity-50 text-white p-6 rounded-lg shadow-lg">
+                        <div class="mb-4">
+                            <label for="Description" class="block font-medium text-white">Task Description</label>
+                            <textarea asp-for="Description" id="Description" class="w-full border-gray-300 rounded-md p-2 bg-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-green-500" required></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="vehicleType" class="block font-medium text-white">Select Vehicle Type</label>
+                            <select asp-for="VehicleType" id="vehicleType" class="w-full border-gray-300 rounded-md p-2 bg-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                                <option value="Bike">Bike</option>
+                                <option value="Car">Car</option>
+                                <option value="Van">Van</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" id="next1" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Next</button>
+                        </div>
+                    </div>
+
+                    <div id="section2" class="form-section bg-black bg-opacity-50 text-white p-6 rounded-lg shadow-lg">
+                        <div class="mb-4">
+                            <label for="PickupLocation" class="block font-medium text-white">Pick-up Location</label>
+                            <input id="PickupLocation" class="w-full border-gray-300 rounded-md p-2 bg-gray-500 text-white font-semibold text-lg focus:outline-none" type="text" placeholder="Enter pick-up location" required />
+                            <input asp-for="PickupLatitude" id="PickupLatitude" type="hidden" />
+                            <input asp-for="PickupLongitude" id="PickupLongitude" type="hidden" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="DropoffLocation" class="block font-medium text-white">Drop-off Location</label>
+                            <input id="DropoffLocation" class="w-full border-gray-300 rounded-md p-2 bg-gray-500 text-white font-semibold text-lg focus:outline-none" type="text" placeholder="Enter drop-off location" required />
+                            <input asp-for="DropoffLatitude" id="DropoffLatitude" type="hidden" />
+                            <input asp-for="DropoffLongitude" id="DropoffLongitude" type="hidden" />
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" id="back1" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">Back</button>
+                            <button type="button" id="next2" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Stops, Cost, Agreement Confirmation -->
+                    <div id="section3" class="form-section bg-black bg-opacity-50 text-white p-6 rounded-lg shadow-lg">
+                        <div class="mb-4">
+                            <label for="Stops" class="block font-medium text-gray-500">Stops (Optional)</label>
+                            <div id="stopsContainer" class="space-y-2"></div>
+                            <button type="button" class="mt-2 bg-gray-500 text-white py-1 px-2 rounded hover:bg-gray-600" id="addStop">Add Stop</button>
+                        </div>
+                        <div class="mb-4">
+                            <label for="recommendedCost" class="block font-medium text-gray-500">YOUR COST WILL APPEAR HERE...</label>
+                            <input id="recommendedCost" class="w-full border-gray-300 rounded-md p-2 bg-gray-500 text-white font-semibold text-lg focus:outline-none" type="text" readonly />
+                            <input type="hidden" id="RecommendedCost" name="RecommendedCost" />
+                        </div>
+                        <div class="mb-4">
+                            <label asp-for="IsAgreementConfirmed" class="block font-medium text-gray-500">Agreement Confirmed</label>
+                            <select asp-for="IsAgreementConfirmed" class="w-full border-gray-300 rounded-md p-2">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" id="back2" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">Back</button>
+                            <button type="submit" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 min-w-[120px]">Create Task</button>
+                        </div>
+                        <div id="street-view" style="height: 300px; width: 100%;"></div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <div id="map" class="lg:col-span-3 h-full relative">
-        <!-- Spinner -->
-        <div id="loadingSpinner" class="hidden absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-            <div class="spinner-border animate-spin w-12 h-12 border-4 border-t-blue-500 rounded-full"></div>
-        </div>
-    </div>
-
+  
+    </body>
     <!-- SignalR -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM&libraries=places,directions,geometry&callback=initMap" async defer></script>
+<script>
+    let currentSection = 1;
+    let pickupMarker, dropoffMarker, stopMarkers = [];
+    let map, directionsService, directionsRenderer;
+    const rates = { bike: 10, car: 20, van: 30 };
 
-    <script>
-                document.getElementById('vehicleType').addEventListener('change', function () {
-            document.getElementById('VehicleTypeHidden').value = this.value;
-            updateCostAndDirections();
+    // Function to initialize the map
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -25.746111, lng: 28.188056 },
+            zoom: 12,
+            disableDefaultUI: true,
+            zoomControl: true
         });
 
-        const rates = { bike: 10, car: 20, van: 30 };
-        let map, directionsService, directionsRenderer, pickupMarker, dropoffMarker, stopMarkers = [];
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -25.746111, lng: 28.188056 },
-                zoom: 12,
-                disableDefaultUI: true,
-                zoomControl: true,
-                streetViewControl: false,
-                mapTypeControl: false
+        // Autocomplete for pickup and drop-off locations
+        const pickupAutocomplete = new google.maps.places.Autocomplete(document.getElementById('PickupLocation'));
+        const dropoffAutocomplete = new google.maps.places.Autocomplete(document.getElementById('DropoffLocation'));
+
+        pickupAutocomplete.addListener('place_changed', () => setMarker(pickupAutocomplete, "Pickup"));
+        dropoffAutocomplete.addListener('place_changed', () => setMarker(dropoffAutocomplete, "Drop-off"));
+
+        // Add event listener for vehicle type change
+        document.getElementById('vehicleType').addEventListener('change', updateCostAndDirections);
+
+        // Add event listener for stop addition
+        document.getElementById("addStop").addEventListener("click", addStop);
+    }
+
+    // Function to set markers for pickup and drop-off locations
+    function setMarker(autocomplete, type) {
+        const place = autocomplete.getPlace();
+        if (!place.geometry) return;
+
+        const markerIcon = type === "Pickup" ? "http://maps.google.com/mapfiles/kml/paddle/grn-circle.png"
+                            : "http://maps.google.com/mapfiles/kml/paddle/red-circle.png";
+
+        if (type === "Pickup") {
+            if (pickupMarker) pickupMarker.setMap(null);
+            pickupMarker = new google.maps.Marker({
+                position: place.geometry.location,
+                map: map,
+                title: type + " Location",
+                icon: markerIcon
             });
-
-            directionsService = new google.maps.DirectionsService();
-            directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
-
-            // Autocomplete setup for pickup and dropoff
-            const pickupAutocomplete = new google.maps.places.Autocomplete(document.getElementById('PickupLocation'));
-            const dropoffAutocomplete = new google.maps.places.Autocomplete(document.getElementById('DropoffLocation'));
-
-            // Pickup marker setup
-            pickupAutocomplete.addListener('place_changed', function () {
-                const place = pickupAutocomplete.getPlace();
-                if (place.geometry) {
-                    if (pickupMarker) pickupMarker.setMap(null);
-                    pickupMarker = new google.maps.Marker({
-                        position: place.geometry.location,
-                        map: map,
-                        title: 'Pick-up Location'
-                    });
-                    document.getElementById('PickupLatitude').value = place.geometry.location.lat();
-                    document.getElementById('PickupLongitude').value = place.geometry.location.lng();
-                    map.setCenter(place.geometry.location);
-                    updateCostAndDirections();
-                }
+            document.getElementById('PickupLatitude').value = place.geometry.location.lat();
+            document.getElementById('PickupLongitude').value = place.geometry.location.lng();
+        } else {
+            if (dropoffMarker) dropoffMarker.setMap(null);
+            dropoffMarker = new google.maps.Marker({
+                position: place.geometry.location,
+                map: map,
+                title: type + " Location",
+                icon: markerIcon
             });
-
-            // Dropoff marker setup
-            dropoffAutocomplete.addListener('place_changed', function () {
-                const place = dropoffAutocomplete.getPlace();
-                if (place.geometry) {
-                    if (dropoffMarker) dropoffMarker.setMap(null);
-                    dropoffMarker = new google.maps.Marker({
-                        position: place.geometry.location,
-                        map: map,
-                        title: 'Drop-off Location'
-                    });
-                    document.getElementById('DropoffLatitude').value = place.geometry.location.lat();
-                    document.getElementById('DropoffLongitude').value = place.geometry.location.lng();
-                    map.setCenter(place.geometry.location);
-                    updateCostAndDirections();
-                }
-            });
+            document.getElementById('DropoffLatitude').value = place.geometry.location.lat();
+            document.getElementById('DropoffLongitude').value = place.geometry.location.lng();
         }
 
-        // Add stop functionality
-        document.getElementById('addStop').addEventListener('click', function () {
-            const stopInput = document.createElement('input');
-            stopInput.type = 'text';
-            stopInput.className = 'form-control mt-2';
-            stopInput.placeholder = 'Enter stop location';
-            document.getElementById('stopsContainer').appendChild(stopInput);
+        map.setCenter(place.geometry.location);
+        updateCostAndDirections();
+    }
 
-            const stopAutocomplete = new google.maps.places.Autocomplete(stopInput);
-            stopAutocomplete.addListener('place_changed', function () {
-                const place = stopAutocomplete.getPlace();
-                if (place.geometry) {
-                    const stopMarker = new google.maps.Marker({
-                        position: place.geometry.location,
-                        map: map,
-                        title: 'Stop Location'
-                    });
-                    stopMarkers.push(stopMarker);
-                    updateCostAndDirections();
-                }
-            });
+    // Function to add a stop
+    function addStop() {
+        const stopContainer = document.createElement("div");
+        stopContainer.classList.add("flex", "items-center", "space-x-2");
+
+        const stopInput = document.createElement("input");
+        stopInput.type = "text";
+        stopInput.classList.add("form-input", "border-gray-300", "rounded", "w-full", "px-2", "py-1");
+        stopInput.placeholder = "Enter stop location";
+
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.classList.add("bg-red-500", "text-white", "py-1", "px-2", "rounded", "hover:bg-red-600");
+        removeButton.textContent = "Remove Stop";
+
+        removeButton.addEventListener("click", function() {
+            stopContainer.remove();
+            stopMarkers.pop(); // Remove last stop from stopMarkers
+            updateCostAndDirections(); // Update cost and directions when a stop is removed
         });
 
-        // Update cost and directions based on selected vehicle type and waypoints
-        function updateCostAndDirections() {
-            if (!pickupMarker || !dropoffMarker) return;
+        stopContainer.appendChild(stopInput);
+        stopContainer.appendChild(removeButton);
 
-            const waypoints = stopMarkers.map(marker => marker.getPosition());
-            let totalDistance = 0;
-            const locations = [pickupMarker.getPosition(), ...waypoints, dropoffMarker.getPosition()];
+        document.getElementById("stopsContainer").appendChild(stopContainer);
 
-            // Calculate total distance
-            for (let i = 0; i < locations.length - 1; i++) {
-                totalDistance += google.maps.geometry.spherical.computeDistanceBetween(locations[i], locations[i + 1]) / 1000; // KM
-            }
+        const stopAutocomplete = new google.maps.places.Autocomplete(stopInput);
+        stopAutocomplete.addListener('place_changed', function() {
+            const place = stopAutocomplete.getPlace();
+            if (!place.geometry) return;
 
-            // Get the vehicle type value from the select dropdown
-            const vehicleType = document.getElementById('vehicleType').value.toLowerCase();
-
-            // Check if vehicleType is valid and present in rates
-            if (!rates[vehicleType]) {
-                alert("Please select a valid vehicle type.");
-                return;
-            }
-
-            // Calculate the cost based on the selected vehicle type and distance
-            const cost = totalDistance * rates[vehicleType];
-            document.getElementById('recommendedCost').value = `R ${cost.toFixed(2)}`;
-            document.getElementById('RecommendedCost').value = cost.toFixed(2);
-
-            // Recalculate and render directions
-            const waypointsData = stopMarkers.map(marker => ({ location: marker.getPosition(), stopover: true }));
-
-            document.getElementById('loadingSpinner').classList.remove('hidden');
-            directionsService.route({
-                origin: pickupMarker.getPosition(),
-                destination: dropoffMarker.getPosition(),
-                waypoints: waypointsData,
-                travelMode: google.maps.TravelMode.DRIVING
-            }, function (response, status) {
-                document.getElementById('loadingSpinner').classList.add('hidden');
-                if (status === 'OK') {
-                    directionsRenderer.setDirections(response);
-                } else {
-                    alert('Directions request failed: ' + status);
-                }
+            const stopMarker = new google.maps.Marker({
+                position: place.geometry.location,
+                map: map,
+                title: "Stop Location",
+                icon: "http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png"
             });
-        }
 
-        // Event listener for vehicle type change
-        document.getElementById('vehicleType').addEventListener('change', function () {
-            document.getElementById('VehicleTypeHidden').value = this.value;
-            updateCostAndDirections();
+            stopMarkers.push(stopMarker);
+            updateCostAndDirections(); // Update cost and directions after adding stop
         });
+    }
 
-        // Form validation
-        function validateForm() {
-            if (!document.getElementById('PickupLocation').value || !document.getElementById('DropoffLocation').value) {
-                alert("Please fill in all required fields.");
-                return false;
-            }
-            return true;
+    // Function to update cost and directions
+    function updateCostAndDirections() {
+        if (!pickupMarker || !dropoffMarker) return;
+
+        const waypoints = stopMarkers.map(marker => ({ location: marker.getPosition(), stopover: true }));
+        const locations = [pickupMarker.getPosition(), ...stopMarkers.map(m => m.getPosition()), dropoffMarker.getPosition()];
+        let totalDistance = 0;
+
+        for (let i = 0; i < locations.length - 1; i++) {
+            totalDistance += google.maps.geometry.spherical.computeDistanceBetween(locations[i], locations[i + 1]) / 1000;
         }
 
-        window.initMap = initMap;
-    </script>
+        const vehicleType = document.getElementById('vehicleType').value.toLowerCase();
+        if (!rates[vehicleType]) return alert("Select a valid vehicle type.");
+
+        const cost = totalDistance * rates[vehicleType];
+        document.getElementById('recommendedCost').value = `R ${cost.toFixed(2)}`;
+        document.getElementById('RecommendedCost').value = cost.toFixed(2);
+
+        // Update directions
+        directionsService.route({
+            origin: pickupMarker.getPosition(),
+            destination: dropoffMarker.getPosition(),
+            waypoints: waypoints,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, (response, status) => {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(response);
+            } else {
+                alert("Error: " + status);
+            }
+        });
+    }
+
+    // Function to reset the map and markers
+    function resetMap() {
+        if (pickupMarker) pickupMarker.setMap(null);
+        if (dropoffMarker) dropoffMarker.setMap(null);
+        stopMarkers.forEach(marker => marker.setMap(null));
+        stopMarkers = [];
+        document.getElementById('PickupLocation').value = '';
+        document.getElementById('DropoffLocation').value = '';
+        directionsRenderer.setDirections({ routes: [] });
+        map.setCenter({ lat: -25.746111, lng: 28.188056 });
+    }
+
+    // Event listener for vehicle type change
+    document.getElementById('vehicleType').addEventListener('change', updateCostAndDirections);
+
+    // Initialize the map when the page loads
+    window.initMap = initMap;
+</script>
+
 
 </html>

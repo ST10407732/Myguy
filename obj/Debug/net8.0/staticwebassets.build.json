@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Qr0g5CdSmWseb1iwk2QPb7wHhtOjh5dfmOxjd7G/U+c=",
+  "Hash": "XpC//qoQ2POddHYVum/50cCpwAUmvewUHcOkN6ULuqs=",
   "Source": "MYGUYY",
   "BasePath": "_content/MYGUYY",
   "Mode": "Default",
@@ -16,48 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MYGUYY.styles.css",
-      "SourceId": "MYGUYY",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "MYGUYY#[.{fingerprint}]?.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "3vpa0h8jil",
-      "Integrity": "kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MYGUYY.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MYGUYY.bundle.scp.css",
-      "SourceId": "MYGUYY",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "MYGUYY#[.{fingerprint}]!.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "3vpa0h8jil",
-      "Integrity": "kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MYGUYY.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\css\\site.css",
       "SourceId": "MYGUYY",
@@ -141,6 +99,174 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ozu22stjof",
+      "Integrity": "ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap.css#[.{fingerprint}]?.map",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "73kdqttayv",
+      "Integrity": "DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap.min#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6gzpyzhau4",
+      "Integrity": "SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css#[.{fingerprint}]?.map",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8inm30yfxf",
+      "Integrity": "gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "gjcw7pocpk",
+      "Integrity": "hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css#[.{fingerprint}]?.map",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4gxs3k148c",
+      "Integrity": "VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6l4ir0ityv",
+      "Integrity": "ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css#[.{fingerprint}]?.map",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fctod5rc9n",
+      "Integrity": "j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
@@ -647,174 +773,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "ozu22stjof",
-      "Integrity": "ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.css#[.{fingerprint}]?.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "73kdqttayv",
-      "Integrity": "DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.min#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "6gzpyzhau4",
-      "Integrity": "SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css#[.{fingerprint}]?.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "8inm30yfxf",
-      "Integrity": "gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "gjcw7pocpk",
-      "Integrity": "hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css#[.{fingerprint}]?.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "4gxs3k148c",
-      "Integrity": "VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "6l4ir0ityv",
-      "Integrity": "ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css#[.{fingerprint}]?.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "fctod5rc9n",
-      "Integrity": "j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
-    },
-    {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
@@ -1088,12 +1046,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
       "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery/dist/jquery#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1102,19 +1060,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "03hjc8e09r",
-      "Integrity": "xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=",
+      "Fingerprint": "7s2n0ol71w",
+      "Integrity": "KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
       "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1123,19 +1081,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "48y08845bh",
-      "Integrity": "RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=",
+      "Fingerprint": "ehgnz7f14e",
+      "Integrity": "zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
       "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE#[.{fingerprint}]?.txt",
+      "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1144,11 +1102,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "356vix0kms",
-      "Integrity": "16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=",
+      "Fingerprint": "5pze98is44",
+      "Integrity": "OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "lib/jquery/LICENSE#[.{fingerprint}]?.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mlv21k5csn",
+      "Integrity": "hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
@@ -1256,12 +1235,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
       "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/jquery/dist/jquery#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1270,19 +1249,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "7s2n0ol71w",
-      "Integrity": "KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=",
+      "Fingerprint": "03hjc8e09r",
+      "Integrity": "xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
       "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1291,19 +1270,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ehgnz7f14e",
-      "Integrity": "zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=",
+      "Fingerprint": "48y08845bh",
+      "Integrity": "RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "MYGUYY",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
       "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.map",
+      "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE#[.{fingerprint}]?.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1312,32 +1291,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "5pze98is44",
-      "Integrity": "OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=",
+      "Fingerprint": "356vix0kms",
+      "Integrity": "16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
-    },
-    {
-      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "SourceId": "MYGUYY",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
-      "BasePath": "_content/MYGUYY",
-      "RelativePath": "lib/jquery/LICENSE#[.{fingerprint}]?.txt",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "mlv21k5csn",
-      "Integrity": "hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4",
@@ -1926,6 +1884,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\messages\\9f07e306-3f71-45ee-9dbd-10745b10c6f1_WhatsApp Image 2025-01-14 at 17.35.08.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\a6f18256-dbfe-4392-bf96-6e86ba12681b_WhatsApp Image 2025-01-27 at 09.58.34.jpeg",
+      "SourceId": "MYGUYY",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\",
+      "BasePath": "_content/MYGUYY",
+      "RelativePath": "uploads/messages/a6f18256-dbfe-4392-bf96-6e86ba12681b_WhatsApp Image 2025-01-27 at 09.58.34#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4wpgrn9kfu",
+      "Integrity": "FC5ABQgNdS5dKO7W4JZUQ1FSZpssizfTEsBy1RD5BME=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\messages\\a6f18256-dbfe-4392-bf96-6e86ba12681b_WhatsApp Image 2025-01-27 at 09.58.34.jpeg"
     },
     {
       "Identity": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\a7197976-9719-4490-9e8f-28f6d3967166_ef67b498-6395-4413-a143-0a95a5e2ffd8_WhatsApp Video 2025-01-12 at 01.38.09 (2).mp4",
@@ -2569,6 +2548,662 @@
         {
           "Name": "integrity",
           "Value": "sha256-hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.css",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "215356"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.css.73kdqttayv.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "536547"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "73kdqttayv"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.css.map"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.css.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "536547"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.min.6gzpyzhau4.css",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162726"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6gzpyzhau4"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.min.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.min.css",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162726"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.min.css.8inm30yfxf.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "449111"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8inm30yfxf"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.min.css.map"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "449111"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.ozu22stjof.css",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "215356"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ozu22stjof"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "214999"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.css.4gxs3k148c.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "536461"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4gxs3k148c"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "536461"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.gjcw7pocpk.css",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "214999"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gjcw7pocpk"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.rtl.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.min.6l4ir0ityv.css",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6l4ir0ityv"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.fctod5rc9n.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "661035"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fctod5rc9n"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "661035"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM="
         }
       ]
     },
@@ -4541,662 +5176,6 @@
       ]
     },
     {
-      "Route": "lib/bootstrap/dist/css/bootstrap.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "215356"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.css.73kdqttayv.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "536547"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "73kdqttayv"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.css.map"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.css.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "536547"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-DRvWr0gangj5/5Q3DRn6ttzpcWDzl3OpHoAwAzNDR5Q="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.min.6gzpyzhau4.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "162726"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6gzpyzhau4"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.min.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.min.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "162726"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.min.css.8inm30yfxf.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "449111"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "8inm30yfxf"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.min.css.map"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.min.css.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "449111"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.ozu22stjof.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "215356"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ozu22stjof"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "214999"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.css.4gxs3k148c.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "536461"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4gxs3k148c"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.rtl.css.map"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "536461"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-VFvmi/ZSwQFmjS6Pry9B8zXeZ/GA168TXLyykDhNMZE="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.gjcw7pocpk.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "214999"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "gjcw7pocpk"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.rtl.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-hA1uBYAPgKq7OVoXF7sqU9NtylyP0K7AJn0a4zQcTbg="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.min.6l4ir0ityv.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "162831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6l4ir0ityv"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.rtl.min.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "162831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ukKL5IDSyNoXFyp0wkgXeBpBITyM7JsCE6Dp96H1vI8="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.fctod5rc9n.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "661035"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "fctod5rc9n"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "661035"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-j7uqK5VoTT4rUHMr911QEU5Sa94lR3uh9E28XBMlzrM="
-        }
-      ]
-    },
-    {
       "Route": "lib/bootstrap/dist/js/bootstrap.1piudyfv7h.js",
       "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "Selectors": [],
@@ -6263,8 +6242,8 @@
       ]
     },
     {
-      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.03hjc8e09r.js",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Route": "lib/jquery/dist/jquery.7s2n0ol71w.js",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -6273,7 +6252,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "19820"
+          "Value": "299461"
         },
         {
           "Name": "Content-Type",
@@ -6281,7 +6260,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=\""
+          "Value": "\"KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=\""
         },
         {
           "Name": "Last-Modified",
@@ -6295,21 +6274,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "03hjc8e09r"
+          "Value": "7s2n0ol71w"
         },
         {
           "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+          "Value": "lib/jquery/dist/jquery.js"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4="
+          "Value": "sha256-KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8="
         }
       ]
     },
     {
-      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Route": "lib/jquery/dist/jquery.js",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -6318,7 +6297,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "19820"
+          "Value": "299461"
         },
         {
           "Name": "Content-Type",
@@ -6326,7 +6305,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=\""
+          "Value": "\"KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=\""
         },
         {
           "Name": "Last-Modified",
@@ -6340,13 +6319,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4="
+          "Value": "sha256-KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8="
         }
       ]
     },
     {
-      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.48y08845bh.js",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Route": "lib/jquery/dist/jquery.min.5pze98is44.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -6355,89 +6334,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "48y08845bh"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/LICENSE.356vix0kms.txt",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1139"
+          "Value": "137972"
         },
         {
           "Name": "Content-Type",
@@ -6445,7 +6342,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
+          "Value": "\"OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=\""
         },
         {
           "Name": "Last-Modified",
@@ -6459,21 +6356,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "356vix0kms"
+          "Value": "5pze98is44"
         },
         {
           "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/LICENSE.txt"
+          "Value": "lib/jquery/dist/jquery.min.map"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+          "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
         }
       ]
     },
     {
-      "Route": "lib/jquery-validation-unobtrusive/LICENSE.txt",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Route": "lib/jquery/dist/jquery.min.ehgnz7f14e.js",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -6482,15 +6379,60 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1139"
+          "Value": "89503"
         },
         {
           "Name": "Content-Type",
-          "Value": "text/plain"
+          "Value": "text/javascript"
         },
         {
           "Name": "ETag",
-          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
+          "Value": "\"zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ehgnz7f14e"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery/dist/jquery.min.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery/dist/jquery.min.js",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89503"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=\""
         },
         {
           "Name": "Last-Modified",
@@ -6504,7 +6446,126 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+          "Value": "sha256-zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery/dist/jquery.min.map",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "137972"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery/LICENSE.mlv21k5csn.txt",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mlv21k5csn"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery/LICENSE.txt"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery/LICENSE.txt",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
         }
       ]
     },
@@ -6919,8 +6980,8 @@
       ]
     },
     {
-      "Route": "lib/jquery/dist/jquery.7s2n0ol71w.js",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.03hjc8e09r.js",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -6929,7 +6990,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "299461"
+          "Value": "19820"
         },
         {
           "Name": "Content-Type",
@@ -6937,7 +6998,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=\""
+          "Value": "\"xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=\""
         },
         {
           "Name": "Last-Modified",
@@ -6951,21 +7012,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "7s2n0ol71w"
+          "Value": "03hjc8e09r"
         },
         {
           "Name": "label",
-          "Value": "lib/jquery/dist/jquery.js"
+          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8="
+          "Value": "sha256-xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4="
         }
       ]
     },
     {
-      "Route": "lib/jquery/dist/jquery.js",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -6974,7 +7035,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "299461"
+          "Value": "19820"
         },
         {
           "Name": "Content-Type",
@@ -6982,7 +7043,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=\""
+          "Value": "\"xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=\""
         },
         {
           "Name": "Last-Modified",
@@ -6996,13 +7057,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8="
+          "Value": "sha256-xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4="
         }
       ]
     },
     {
-      "Route": "lib/jquery/dist/jquery.min.5pze98is44.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.48y08845bh.js",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -7011,52 +7072,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "137972"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "5pze98is44"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery/dist/jquery.min.map"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/dist/jquery.min.ehgnz7f14e.js",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "89503"
+          "Value": "5831"
         },
         {
           "Name": "Content-Type",
@@ -7064,7 +7080,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=\""
+          "Value": "\"RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=\""
         },
         {
           "Name": "Last-Modified",
@@ -7078,21 +7094,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ehgnz7f14e"
+          "Value": "48y08845bh"
         },
         {
           "Name": "label",
-          "Value": "lib/jquery/dist/jquery.min.js"
+          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs="
+          "Value": "sha256-RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk="
         }
       ]
     },
     {
-      "Route": "lib/jquery/dist/jquery.min.js",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -7101,7 +7117,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "89503"
+          "Value": "5831"
         },
         {
           "Name": "Content-Type",
@@ -7109,7 +7125,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=\""
+          "Value": "\"RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=\""
         },
         {
           "Name": "Last-Modified",
@@ -7123,13 +7139,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs="
+          "Value": "sha256-RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk="
         }
       ]
     },
     {
-      "Route": "lib/jquery/dist/jquery.min.map",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Route": "lib/jquery-validation-unobtrusive/LICENSE.356vix0kms.txt",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -7138,7 +7154,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "137972"
+          "Value": "1139"
         },
         {
           "Name": "Content-Type",
@@ -7146,44 +7162,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:40:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/LICENSE.mlv21k5csn.txt",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1117"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
+          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
         },
         {
           "Name": "Last-Modified",
@@ -7197,21 +7176,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "mlv21k5csn"
+          "Value": "356vix0kms"
         },
         {
           "Name": "label",
-          "Value": "lib/jquery/LICENSE.txt"
+          "Value": "lib/jquery-validation-unobtrusive/LICENSE.txt"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
+          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
         }
       ]
     },
     {
-      "Route": "lib/jquery/LICENSE.txt",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Route": "lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -7220,7 +7199,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1117"
+          "Value": "1139"
         },
         {
           "Name": "Content-Type",
@@ -7228,7 +7207,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
+          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
         },
         {
           "Name": "Last-Modified",
@@ -7242,171 +7221,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
-        }
-      ]
-    },
-    {
-      "Route": "MYGUYY.3vpa0h8jil.bundle.scp.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MYGUYY.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1124"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 24 Jan 2025 14:30:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "3vpa0h8jil"
-        },
-        {
-          "Name": "label",
-          "Value": "MYGUYY.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM="
-        }
-      ]
-    },
-    {
-      "Route": "MYGUYY.3vpa0h8jil.styles.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MYGUYY.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1124"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 24 Jan 2025 14:30:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "3vpa0h8jil"
-        },
-        {
-          "Name": "label",
-          "Value": "MYGUYY.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM="
-        }
-      ]
-    },
-    {
-      "Route": "MYGUYY.bundle.scp.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MYGUYY.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1124"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 24 Jan 2025 14:30:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM="
-        }
-      ]
-    },
-    {
-      "Route": "MYGUYY.styles.css",
-      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MYGUYY.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1124"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 24 Jan 2025 14:30:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM="
+          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
         }
       ]
     },
@@ -9703,6 +9518,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-TdUX0q31o7jPysAqPEA1mO5dllfQqi5YJEJFGYe61uM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/messages/a6f18256-dbfe-4392-bf96-6e86ba12681b_WhatsApp Image 2025-01-27 at 09.58.34.4wpgrn9kfu.jpeg",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\a6f18256-dbfe-4392-bf96-6e86ba12681b_WhatsApp Image 2025-01-27 at 09.58.34.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "599310"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FC5ABQgNdS5dKO7W4JZUQ1FSZpssizfTEsBy1RD5BME=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 27 Jan 2025 11:53:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4wpgrn9kfu"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/messages/a6f18256-dbfe-4392-bf96-6e86ba12681b_WhatsApp Image 2025-01-27 at 09.58.34.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FC5ABQgNdS5dKO7W4JZUQ1FSZpssizfTEsBy1RD5BME="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/messages/a6f18256-dbfe-4392-bf96-6e86ba12681b_WhatsApp Image 2025-01-27 at 09.58.34.jpeg",
+      "AssetFile": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\uploads\\messages\\a6f18256-dbfe-4392-bf96-6e86ba12681b_WhatsApp Image 2025-01-27 at 09.58.34.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "599310"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FC5ABQgNdS5dKO7W4JZUQ1FSZpssizfTEsBy1RD5BME=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 27 Jan 2025 11:53:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FC5ABQgNdS5dKO7W4JZUQ1FSZpssizfTEsBy1RD5BME="
         }
       ]
     },

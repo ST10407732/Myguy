@@ -9,9 +9,9 @@
 
 @if (recentTask != null)
 {
-    <div class="alert alert-success text-center font-weight-bold" style="font-size: 36px; color: #28a745; text-transform: uppercase; letter-spacing: 2px;">
+    <div class="alert alert-success text-center font-weight-bold" style="font-size: 25px; color:white; text-transform: uppercase; letter-spacing: 2px;">
         Your Task Has Been Successfully Submitted!<br />
-        <span style="font-size: 40px;">PLEASE WAIT, WE ARE NOW SEARCHING FOR YOUR GUY.</span>
+        <span style="font-size: 20px;">PLEASE WAIT, WE ARE NOW SEARCHING FOR YOUR GUY.</span>
     </div>
 
     <div class="task-details border p-3 mb-3">
@@ -227,3 +227,112 @@
         }
     });
 </script>
+<style>
+    body {
+        background-color: #f7f7f7; /* Light gray background */
+        font-family: Arial, sans-serif;
+        color: #333; /* Dark gray for text */
+    }
+
+
+    .alert {
+        background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+        color: white;
+        border: none;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .task-details {
+        background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+        padding: 20px;
+        border-radius: 8px;
+        color: white;
+        margin-bottom: 20px;
+    }
+
+        .task-details h4 {
+            margin-bottom: 15px;
+        }
+
+    .table-bordered {
+        background-color: #fff; /* White background for the table */
+        color: #333; /* Dark gray text */
+        border: 1px solid #ddd;
+        width: 100%; /* Full width of the container */
+        table-layout: auto; /* Automatically adjust the table width */
+    }
+
+        .table-bordered th, .table-bordered td {
+            padding: 12px;
+            text-align: left;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f2f2f2; /* Light gray for odd rows */
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #ddd; /* Hover effect */
+    }
+
+    #taskHistory {
+        background-color: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+        padding: 20px;
+        border-radius: 8px;
+        color: white;
+        margin-bottom: 20px;
+        width: 100%;
+        overflow-x: auto; /* Allow horizontal scroll if needed */
+    }
+
+    #toggleHistory {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        #toggleHistory:hover {
+            background-color: #0056b3;
+        }
+
+   
+
+    {
+        padding: 15px;
+    }
+
+    .task-details h4 {
+        font-size: 1.2rem;
+    }
+
+    .table-bordered th, .table-bordered td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    #toggleHistory {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    /* Adjust table layout for mobile */
+    .table-bordered {
+        width: auto; /* Allow table to shrink to fit the content */
+        table-layout: fixed; /* Fix column width to fit on screen */
+    }
+
+    /* Limit table width on mobile */
+    #taskHistory {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    }
+</style>

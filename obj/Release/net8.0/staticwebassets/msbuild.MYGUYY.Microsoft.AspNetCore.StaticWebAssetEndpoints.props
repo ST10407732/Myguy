@@ -732,18 +732,6 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1117"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\u0022"},{"Name":"Last-Modified","Value":"Tue, 07 Jan 2025 16:40:36 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/MYGUYY/MYGUYY.3vpa0h8jil.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MYGUYY.3vpa0h8jil.bundle.scp.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3vpa0h8jil"},{"Name":"integrity","Value":"sha256-kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM="},{"Name":"label","Value":"_content/MYGUYY/MYGUYY.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1124"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\u0022"},{"Name":"Last-Modified","Value":"Tue, 28 Jan 2025 12:55:05 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/MYGUYY/MYGUYY.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MYGUYY.3vpa0h8jil.bundle.scp.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1124"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022kTrGulG9HcmWSAiFhMsA2IWPJ7nUk2oFb0yJYi3jhVM=\u0022"},{"Name":"Last-Modified","Value":"Tue, 28 Jan 2025 12:55:05 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/MYGUYY/uploads/messages/00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\messages\00fb0393-6d40-4918-b13a-85dffc3dc22a_WhatsApp Video 2025-01-18 at 06.59.49.mp4'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

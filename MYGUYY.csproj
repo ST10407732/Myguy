@@ -26,12 +26,17 @@
     <Folder Include="Views\Driver\" />
     <Folder Include="Views\Emails\" />
     <Folder Include="Views\Messaging\" />
+    <Folder Include="Views\Payment\" />
     <Folder Include="wwwroot\NewFolder1\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="Views\Account\TaskRequestsForDriver.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Review\Index.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

@@ -268,7 +268,7 @@ namespace MYGUYY.Controllers
                 {
                     "Admin" => RedirectToAction("ManageTasks"),
                     "Driver" => RedirectToAction("TaskRequestsForDriver"),
-                    "Client" => RedirectToAction("ClientTasks"),
+                    "Client" => RedirectToAction("CreateTask"),
                     _ => LocalRedirect(returnUrl)
                 };
             }
@@ -721,7 +721,7 @@ namespace MYGUYY.Controllers
             ViewData["TaskId"] = taskId;
             return View(messages); // Pass the list of messages to the view
         }
-      
+
 
         [HttpPost]
         [Authorize(Roles = "Driver")]

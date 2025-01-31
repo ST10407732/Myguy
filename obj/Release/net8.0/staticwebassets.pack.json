@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\MYGUYY.bundle.scp.css",
-      "PackagePath": "staticwebassets\\MYGUYY.3vpa0h8jil.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\davyc\\source\\repos\\MYGUYY\\wwwroot\\Images\\Home.png",
       "PackagePath": "staticwebassets\\Images\\Home.png"
     },

@@ -160,9 +160,7 @@ C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.MvcApplicationParts
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.RazorAssemblyInfo.cache
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.RazorAssemblyInfo.cs
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\MYGUYY.sourcelink.json
-C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\bundle\MYGUYY.styles.css
-C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\scopedcss\projectbundle\MYGUYY.bundle.scp.css
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets.build.json
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets.development.json
 C:\Users\davyc\source\repos\MYGUYY\obj\Release\net8.0\staticwebassets.build.endpoints.json

@@ -1,330 +1,304 @@
 ﻿@model IEnumerable<MYGUYY.Models.TaskRequest>
-
 @{
-    ViewData["Title"] = "Task Requests for Driver";
+    ViewData["Title"] = "Driver Tasks";
+    var taskRequests = Model.OrderByDescending(t => t.CreatedAt).ToList();
+    var recentTask = taskRequests.FirstOrDefault();
 }
 
-<div class="container mt-4">
-    <h2 class="text-primary mb-4">@ViewData["Title"]</h2>
+<h2>Driver Tasks</h2>
 
-    <div id="notificationArea" class="mb-4">
+@if (recentTask != null)
+{
+    <div class="alert alert-info" role="alert">
+        New task available. Please review and take action.
     </div>
 
-    <div class="task-list mb-4">
-        <h4 class="font-weight-bold">Recent Task Requests</h4>
+    <div class="task-details border p-3 mb-3">
+        <h4>Task Details:</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Description:</strong></td>
+                    <td>@recentTask.Description</td>
+                </tr>
+                <tr>
+                    <td><strong>Status:</strong></td>
+                    <td><span class="text-uppercase font-weight-bold @(@recentTask.Status == "Accepted" ? "text-success" : "text-danger")">@recentTask.Status</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Vehicle Type:</strong></td>
+                    <td>@recentTask.VehicleType</td>
+                </tr>
+                <tr>
+                    <td><strong>Recommended Cost:</strong></td>
+                    <td id="recommendedCostDisplay" data-cost="@recentTask.RecommendedCost">
+                        R @recentTask.RecommendedCost.ToString("F2")
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Pickup Location:</strong></td>
+                    <td><span class="pickup-location" data-lat="@recentTask.PickupLatitude" data-lng="@recentTask.PickupLongitude">Loading...</span></td>
+                    <td><img id="pickupMap" src="" alt="Pickup Location" style="width: 200px; height: 150px;" /></td>
+                </tr>
+                <tr>
+                    <td><strong>Dropoff Location:</strong></td>
+                    <td><span class="dropoff-location" data-lat="@recentTask.DropoffLatitude" data-lng="@recentTask.DropoffLongitude">Loading...</span></td>
+                    <td><img id="dropoffMap" src="" alt="Dropoff Location" style="width: 200px; height: 150px;" /></td>
+                </tr>
+                <tr>
+                    <td><strong>Client Details:</strong></td>
+                    <td>@recentTask.Client?.Username (@recentTask.Client?.Email)</td>
+                </tr>
+                <tr>
+                    <td><strong>Agreement Code:</strong></td>
+                    <td>@recentTask.ConfirmationCode</td>
+                </tr>
+            </tbody>
+        </table>
 
-        @{
-            var notifications = ViewBag.Notifications as List<MYGUYY.Models.Notification>;
-            var recentTasks = Model.Where(t => t.Status == "Pending" || t.Status == "Accepted");
-            var historicalTasks = Model.Where(t => t.Status == "Completed" || t.Status == "Cancelled");
-        }
-
-        @if (notifications != null && notifications.Any())
-        {
-            <p>Notifications Count: @notifications.Count</p>
-
-            <ul>
-                @foreach (var notification in notifications)
-                {
-                    <li>
-                        @notification.Message - <span class="text-muted">@notification.CreatedAt.ToString("g")</span>
-                    </li>
-                }
-            </ul>
-        }
-        else
-        {
-            <p class="text-warning">No notifications available.</p>
-        }
-
-        @if (!recentTasks.Any())
-        {
-            <p class="text-muted">No pending or accepted task requests.</p>
-        }
-        else
-        {
-            <table class="table table-striped table-hover shadow-sm">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Description</th>
-                        <th>Client</th>
-                        <th>Pickup Location</th>
-                        <th>Dropoff Location</th>
-                        <th>Status</th>
-                        <th>Vehicle Type</th>
-                        <th>Recommended Cost</th>
-                        <th>Cashup Amount</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var task in recentTasks)
-                    {
-                        <tr>
-                            <td>@task.Description</td>
-                            <td>@task.Client?.Username</td>
-                            <td>
-                                <span class="pickup-address text-muted">Loading...</span>
-                                <script>
-                                    reverseGeocodeLeaflet(@task.PickupLatitude, @task.PickupLongitude, '.pickup-address');
-                                </script>
-                            </td>
-                            <td>
-                                <span class="dropoff-address text-muted">Loading...</span>
-                                <script>
-                                    reverseGeocodeLeaflet(@task.DropoffLatitude, @task.DropoffLongitude, '.dropoff-address');
-                                </script>
-                            </td>
-                            <td>@task.Status</td>
-                            <td>@task.VehicleType</td>
-                            <td>R@(@task.RecommendedCost.ToString("F2"))</td>
-                            <td>R@((@task.RecommendedCost * 0.05).ToString("F2"))</td> <!-- Cashup Amount Calculation -->
-                            <td>
-                                @if (task.Status == "Pending")
-                                {
-                                    <div class="btn-group">
-                                        <form method="post" action="@Url.Action("AcceptTask", new { id = task.Id })">
-                                            <button type="submit" class="btn btn-success btn-sm">Accept</button>
-                                        </form>
-                                        <form method="post" action="@Url.Action("DeclineTask", new { id = task.Id })">
-                                            <button type="submit" class="btn btn-danger btn-sm">Decline</button>
-                                        </form>
-                                    </div>
-                                }
-                                else if (task.Status == "Accepted")
-                                {
-                                    <span class="badge badge-success">Task Accepted</span>
-                                }
-                                <div class="mt-2">
-                                    <a href="@Url.Action("ViewMessagesForDriver", "Account", new { taskId = task.Id })" class="btn btn-info btn-sm">View Messages</a>
-                                    <a href="@Url.Action("SendMessageForDriver", "Account", new { taskId = task.Id })" class="btn btn-primary btn-sm">Send Message</a>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-
-        <button id="toggleHistoryBtn" class="btn btn-secondary mt-3" onclick="toggleHistory()">Show History</button>
-
-        <div id="historySection" style="display:none;">
-            <h4 class="font-weight-bold mt-4">Task History</h4>
-
-            @if (!historicalTasks.Any())
+        <div class="btn-group">
+            @if (recentTask.Status == "Pending")
             {
-                <p class="text-muted">No task history available.</p>
+                <form method="post" action="@Url.Action("AcceptTask", new { id = recentTask.Id })">
+                    <button type="submit" class="btn btn-success btn-sm">Accept Task</button>
+                </form>
+                <form method="post" action="@Url.Action("DeclineTask", new { id = recentTask.Id })">
+                    <button type="submit" class="btn btn-danger btn-sm">Decline Task</button>
+                </form>
             }
-            else
+            else if (recentTask.Status == "Accepted")
             {
-                <table class="table table-striped table-hover shadow-sm">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Description</th>
-                            <th>Client</th>
-                            <th>Pickup Location</th>
-                            <th>Dropoff Location</th>
-                            <th>Status</th>
-                            <th>Vehicle Type</th>
-                            <th>Recommended Cost</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var task in historicalTasks)
-                        {
-                            <tr>
-                                <td>@task.Description</td>
-                                <td>@task.Client?.Username</td>
-                                <td>
-                                    <span class="pickup-address text-muted">Loading...</span>
-                                    <script>
-                                        reverseGeocodeLeaflet(@task.PickupLatitude, @task.PickupLongitude, '.pickup-address');
-                                    </script>
-                                </td>
-                                <td>
-                                    <span class="dropoff-address text-muted">Loading...</span>
-                                    <script>
-                                        reverseGeocodeLeaflet(@task.DropoffLatitude, @task.DropoffLongitude, '.dropoff-address');
-                                    </script>
-                                </td>
-                                <td>@task.Status</td>
-                                <td>@task.VehicleType</td>
-                                <td>R@(@task.RecommendedCost.ToString("F2"))</td>
-                                <td>
-                                    <a href="@Url.Action("ViewMessagesForDriver", "Account", new { taskId = task.Id })" class="btn btn-info btn-sm">View Messages</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                <span class="badge badge-success">Task Accepted</span>
             }
+            <a href="@Url.Action("ViewMessagesForDriver", "Account", new { taskId = recentTask.Id })" class="btn btn-info btn-sm">View Messages</a>
+            <a href="@Url.Action("Directions", "Account", new { id = recentTask.Id })" class="btn btn-primary btn-sm">View Directions</a>
         </div>
     </div>
+}
 
-    <div id="taskMap" style="height: 400px; width: 100%; display: none; border: 1px solid #ddd; border-radius: 8px;" class="shadow-sm mt-4"></div>
+@if (recentTask == null)
+{
+    <div class="alert alert-warning" role="alert">
+        No new tasks available.
+    </div>
+}
+
+<button id="toggleHistory" class="btn btn-primary">Show Previous Tasks</button>
+
+<div id="taskHistory" class="d-none mt-4">
+    <h4>Past Task Requests:</h4>
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Vehicle Type</th>
+                <th>Recommended Cost</th>
+                <th>Pickup Location</th>
+                <th>Dropoff Location</th>
+                <th>Created At</th>
+                <th>Agreement Code</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in taskRequests.Skip(1))
+            {
+                <tr class="@(task.Status == "Accepted" ? "table-success" : "table-warning")">
+                    <td>@task.Description</td>
+                    <td class="text-uppercase font-weight-bold @(@task.Status == "Accepted" ? "text-success" : "text-danger")">@task.Status</td>
+                    <td>@task.VehicleType</td>
+                    <td>R @task.RecommendedCost.ToString("F2")</td>
+                    <td><span class="pickup-location" data-lat="@task.PickupLatitude" data-lng="@task.PickupLongitude">Loading...</span></td>
+                    <td><span class="dropoff-location" data-lat="@task.DropoffLatitude" data-lng="@task.DropoffLongitude">Loading...</span></td>
+                    <td>@task.CreatedAt.ToString("MM/dd/yyyy HH:mm")</td>
+                    <td>@task.ConfirmationCode</td>
+                    <td>
+                        @if (task.Status == "Pending")
+                        {
+                            <div class="btn-group">
+                                <form method="post" action="@Url.Action("AcceptTask", new { id = task.Id })">
+                                    <button type="submit" class="btn btn-success btn-sm">Accept</button>
+                                </form>
+                                <form method="post" action="@Url.Action("DeclineTask", new { id = task.Id })">
+                                    <button type="submit" class="btn btn-danger btn-sm">Decline</button>
+                                </form>
+                            </div>
+                        }
+                        else if (task.Status == "Accepted")
+                        {
+                            <span class="badge badge-success">Task Accepted</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
-<!-- Add the Toast container for notifications -->
-<div id="toastContainer"></div>
-
-<!-- Leaflet and custom script for showing locations -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.0/signalr.min.js"></script>
-
 <script>
-    // SignalR connection and map logic
-
-    // Establish a connection to the SignalR hub
-    const connection = new signalR.HubConnectionBuilder()
-        .withUrl("/notificationHub") // Ensure this matches the hub's URL
-        .build();
-
-    // Start the connection
-    connection.start()
-        .then(() => console.log("SignalR connected"))
-        .catch(err => console.error("SignalR connection failed: ", err));
-
-    // Listen for notifications
-    connection.on("ReceiveNotification", function(message) {
-        // Display the notification using a Toast message
-        showToastNotification(message);
+    document.getElementById("toggleHistory").addEventListener("click", function () {
+        var historySection = document.getElementById("taskHistory");
+        historySection.classList.toggle("d-none");
+        this.textContent = historySection.classList.contains("d-none") ? "Show Previous Tasks" : "Hide Previous Tasks";
     });
-
-    function showToastNotification(message) {
-        const toastContainer = document.getElementById('toastContainer');
-        const toast = document.createElement('div');
-        toast.classList.add('toast');
-        toast.textContent = message;
-        toastContainer.appendChild(toast);
-
-        setTimeout(() => {
-            toast.remove();
-        }, 5000);
-    }
-
-    let map;
-    let marker = null;
-
-    function reverseGeocodeLeaflet(lat, lng, selector) {
-        if (!lat || !lng) {
-            document.querySelector(selector).textContent = "No location available";
-            return;
-        }
-
-        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                if (data && data.display_name) {
-                    document.querySelector(selector).textContent = data.display_name;
-                } else {
-                    document.querySelector(selector).textContent = "Address not found";
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching address:", error);
-                document.querySelector(selector).textContent = "Error fetching address";
-            });
-    }
-
-    function showLocationOnMap(latitude, longitude, locationType) {
-        if (!map) {
-            map = L.map('taskMap').setView([latitude, longitude], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
-        }
-
-        if (marker) {
-            map.removeLayer(marker);
-        }
-
-        marker = L.marker([latitude, longitude]).addTo(map)
-            .bindPopup(`${locationType} Location: Loading address...`)
-            .openPopup();
-
-        // Fetch and display the address
-        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                if (data && data.display_name) {
-                    marker.bindPopup(`${locationType} Location: ${data.display_name}`).openPopup();
-                } else {
-                    marker.bindPopup(`${locationType} Location: Address not found`).openPopup();
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching address:", error);
-                marker.bindPopup(`${locationType} Location: Error fetching address`).openPopup();
-            });
-
-        map.setView([latitude, longitude], 13);
-        document.getElementById('taskMap').style.display = 'block';
-    }
-
-    function toggleHistory() {
-        const historySection = document.getElementById('historySection');
-        const toggleBtn = document.getElementById('toggleHistoryBtn');
-
-        if (historySection.style.display === 'none') {
-            historySection.style.display = 'block';
-            toggleBtn.textContent = 'Hide History';
-        } else {
-            historySection.style.display = 'none';
-            toggleBtn.textContent = 'Show History';
-        }
-    }
 </script>
 
+<script>
+     function reverseGeocode(lat, lng, element, mapElement) {
+        if (isNaN(lat) || isNaN(lng)) {
+            element.textContent = "Invalid coordinates";
+            return;
+        }
+        element.textContent = "Loading...";
+
+        const googleMapsAPIUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM`;
+
+        fetch(googleMapsAPIUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.results.length > 0) {
+                    element.textContent = data.results[0].formatted_address;
+                } else {
+                    element.textContent = "Address not found";
+                }
+                const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng}&key=AIzaSyBx_0EotM86ynL6i5HcHB6LsZOAWQIUpJM`;
+                mapElement.src = staticMapUrl;
+            })
+            .catch(error => {
+                console.error("Error fetching address:", error);
+                element.textContent = "Error fetching address";
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const pickupLocation = document.querySelector('.pickup-location');
+        const dropoffLocation = document.querySelector('.dropoff-location');
+
+        if (pickupLocation && dropoffLocation) {
+            const pickupLat = pickupLocation.dataset.lat;
+            const pickupLng = pickupLocation.dataset.lng;
+            const dropoffLat = dropoffLocation.dataset.lat;
+            const dropoffLng = dropoffLocation.dataset.lng;
+
+            reverseGeocode(pickupLat, pickupLng, pickupLocation, document.getElementById('pickupMap'));
+            reverseGeocode(dropoffLat, dropoffLng, dropoffLocation, document.getElementById('dropoffMap'));
+        }
+    });
+
+  
+</script>
 <style>
-    .table {
-        margin-top: 20px;
-        border-collapse: separate;
-        border-spacing: 0;
-        width: 100%;
+    body {
+        background-color: #f7f7f7; /* Light gray background */
+        font-family: Arial, sans-serif;
+        color: #333; /* Dark gray for text */
     }
 
-        .table thead th {
-            background-color: #343a40;
-            color: white;
-            border-bottom: 2px solid #dee2e6;
-        }
 
-        .table tbody tr:hover {
-            background-color: #f8f9fa;
-        }
+    .alert {
+        background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+        color: white;
+        border: none;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
 
-    .task-list {
+    .task-details {
+        background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
         padding: 20px;
-        border: 1px solid #ddd;
         border-radius: 8px;
-        background-color: #fff;
+        color: white;
+        margin-bottom: 20px;
     }
 
-    .btn-group form {
-        display: inline;
+        .task-details h4 {
+            margin-bottom: 15px;
+        }
+
+    .table-bordered {
+        background-color: #fff; /* White background for the table */
+        color: #333; /* Dark gray text */
+        border: 1px solid #ddd;
+        width: 100%; /* Full width of the container */
+        table-layout: auto; /* Automatically adjust the table width */
     }
 
-    #taskMap {
-        margin-top: 20px;
+        .table-bordered th, .table-bordered td {
+            padding: 12px;
+            text-align: left;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f2f2f2; /* Light gray for odd rows */
     }
 
-    a.text-primary {
-        text-decoration: underline;
+    .table-hover tbody tr:hover {
+        background-color: #ddd; /* Hover effect */
+    }
+
+    #taskHistory {
+        background-color: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+        padding: 20px;
+        border-radius: 8px;
+        color: white;
+        margin-bottom: 20px;
+        width: 100%;
+        overflow-x: auto; /* Allow horizontal scroll if needed */
+    }
+
+    #toggleHistory {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
         cursor: pointer;
     }
 
-    .toast {
-        background-color: #28a745;
-        color: white;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        font-size: 14px;
+        #toggleHistory:hover {
+            background-color: #0056b3;
+        }
+
+
+
+    {
+        padding: 15px;
     }
-</style>
+
+    .task-details h4 {
+        font-size: 1.2rem;
+    }
+
+    .table-bordered th, .table-bordered td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    #toggleHistory {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    /* Adjust table layout for mobile */
+    .table-bordered {
+        width: auto; /* Allow table to shrink to fit the content */
+        table-layout: fixed; /* Fix column width to fit on screen */
+    }
+
+    /* Limit table width on mobile */
+    #taskHistory {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    }</style>

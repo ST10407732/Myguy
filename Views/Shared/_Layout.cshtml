@@ -17,120 +17,141 @@
 
     <!-- Custom CSS -->
     <style>
-        :root {
-            --primary-color: #1e3a8a; /* Rich navy blue */
-            --secondary-color: #2563eb; /* Bright medium blue */
-            --background-color: #87CEEB; /* Sky blue background */
-            --text-color: #ffffff; /* White for dark backgrounds */
-            --form-background: #ffffff; /* White forms */
-            --font-color: #1f2937; /* Dark slate for text */
-            --hover-color: #3b82f6; /* Brighter blue for hover effects */
-            --input-border-color: #d1d5db; /* Neutral input borders */
-        }
+    :root {
+    --primary-color: #1a1a1a; /* Dark Gray (Background) */
+    --secondary-color: #ffffff; /* White (Text & Elements) */
+    --accent-color: #333333; /* Lighter Dark Gray (Contrast) */
+    --hover-color: #f1f1f1; /* Light Gray Hover */
+    --transparent-dark: rgba(0, 0, 0, 0.7); /* Transparent Black */
+    --input-border-color: #555555; /* Gray Borders */
+    }
 
         body {
-            background-color: var(--background-color); /* Sky blue */
-            color: var(--font-color);
+            background-color: #808080; /* Gray background for all pages */
+            color: var(--secondary-color);
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        nav.navbar {
-            background-color: var(--primary-color);
-            padding: 0.8rem 1.2rem;
-        }
+    /* Navbar */
+    nav.navbar {
+    background: var(--transparent-dark); /* Transparent Dark */
+    padding: 0.8rem 1.2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Blur effect for transparency */
+    }
 
-            nav.navbar .navbar-brand,
-            nav.navbar .nav-link {
-                color: var(--text-color);
-                font-weight: 500;
-                font-size: 1rem;
-            }
+    nav.navbar .navbar-brand,
+    nav.navbar .nav-link {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1rem;
+    }
 
-                nav.navbar .nav-link:hover {
-                    color: var(--hover-color);
-                }
+    nav.navbar .nav-link:hover {
+    color: var(--hover-color);
+    }
 
-        .container {
-            padding: 1.5rem;
-        }
+    /* Responsive Navbar */
 
-        h2, h4 {
-            color: var(--primary-color);
-        }
+    nav.navbar .nav-link {
+    font-size: 0.9rem;
+    }
+    }
 
-        .btn {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            border: none;
-            font-weight: bold;
-        }
+    /* Container */
+    .container {
+    padding: 1rem;
+    margin-top: 70px; /* Adjust for fixed navbar */
+    }
 
-            .btn:hover {
-                background-color: var(--hover-color);
-            }
+    /* Headings */
+    h2, h4 {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    }
 
-        form {
-            background-color: var(--form-background);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    /* Buttons */
+    .btn {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    border: none;
+    font-weight: bold;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    }
 
-            form .form-group label {
-                font-weight: bold;
-            }
+    .btn:hover {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+    }
 
-            form .form-group input,
-            form .form-group textarea {
-                width: 100%;
-                padding: 1rem;
-                border: 1px solid var(--input-border-color);
-                border-radius: 5px;
-                font-size: 1rem;
-            }
+    /* Forms */
+    form {
+    background-color: var(--transparent-dark); /* Transparent Dark */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    }
 
-                form .form-group input:focus,
-                form .form-group textarea:focus {
-                    border-color: var(--secondary-color);
-                    outline: none;
-                    box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
-                }
+    form .form-group label {
+    font-weight: bold;
+    color: var(--secondary-color);
+    }
 
-        footer {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
+    form .form-group input,
+    form .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    }
 
-            footer p {
-                margin: 0;
-                font-size: 0.9rem;
-            }
+    form .form-group input:focus,
+    form .form-group textarea:focus {
+    border-color: var(--hover-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
 
-        nav.navbar .nav-link {
-            font-size: 0.9rem;
-        }
+    /* Footer */
+    footer {
+    background: var(--transparent-dark);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    backdrop-filter: blur(10px);
+    }
 
-        h2, h4 {
-            font-size: 1.2rem;
-        }
+    footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    }
 
-        form {
-            padding: 1rem;
-        }
+    /* Responsive Layout */
+    
 
-        footer p {
-            font-size: 0.8rem;
-        }
+    h2, h4 {
+    font-size: 1rem;
+    }
 
-        .container {
-            padding: 0.5rem;
-        }
-    </style>
+    form {
+    padding: 1rem;
+    }
+
+    footer p {
+    font-size: 0.8rem;
+    }
+    }
+</style>
 </head>
 
 <body>
