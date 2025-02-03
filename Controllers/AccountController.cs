@@ -286,21 +286,30 @@ namespace MYGUYY.Controllers
             return RedirectToAction("Login");
         }
 
-        // Client Features
+
+        // GET: CreateTask
         [HttpGet]
         [Authorize(Roles = "Client")]
         public IActionResult CreateTask()
         {
+            // Set the templates using the separate method
+            ViewBag.TaskTemplates = GetTaskTemplates();
             return View();
         }
+
         [HttpPost]
         [Authorize(Roles = "Client")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateTask(TaskRequest taskRequest, List<Stop> stops)
         {
+            // Always set the TaskTemplates so that if validation fails the view still gets them.
+            ViewBag.TaskTemplates = GetTaskTemplates();
             try
             {
                 // Set ClientId and other properties as before
+
+                // Always set ViewBag.TaskTemplates before returning a view
+               
                 taskRequest.ClientId = int.Parse(User.FindFirst("UserId")?.Value ?? "0");
                 taskRequest.Status = string.IsNullOrEmpty(taskRequest.Status) ? "Pending" : taskRequest.Status;
                 taskRequest.DriverId = taskRequest.DriverId ?? null;
@@ -470,6 +479,14 @@ namespace MYGUYY.Controllers
         {
             return Guid.NewGuid().ToString("N").Substring(0, 8); // Example: 8-character unique code
         }
+        private List<TaskRequest> GetTaskTemplates()
+        {
+            return new List<TaskRequest>
+    {
+        new TaskRequest { Category = "Grocery", TemplateText = "Hi MyGuy, please do my grocery shopping today." },
+        new TaskRequest { Category = "Delivery", TemplateText = "Please pick up and deliver this package for me." }
+    };
+        }
 
 
         [HttpGet]
@@ -479,10 +496,12 @@ namespace MYGUYY.Controllers
             // Get the logged-in client's ID
             var clientId = int.Parse(User.FindFirst("UserId").Value);
 
-            // Fetch the tasks for the logged-in client, ordered by CreatedAt
+            // Fetch the tasks for the logged-in client, including Client and Driver details
             var tasks = await _context.TaskRequests
                 .Where(t => t.ClientId == clientId) // Filter tasks by the logged-in client's ID
-                .OrderBy(t => t.CreatedAt) // Order by creation date to show recent tasks first
+                .Include(t => t.Client) // Fetch Client details
+                .Include(t => t.Driver) // Fetch Driver details
+                .OrderByDescending(t => t.CreatedAt) // Order by creation date (most recent first)
                 .ToListAsync();
 
             // Prepare task summaries using LINQ for the task counts based on status
@@ -501,6 +520,7 @@ namespace MYGUYY.Controllers
             // Return the view with the list of tasks
             return View(tasks);
         }
+
 
         [HttpPost]
         [Authorize(Roles = "Client")]
@@ -667,7 +687,10 @@ namespace MYGUYY.Controllers
         [Authorize(Roles = "Driver")]
         public async Task<IActionResult> AcceptTask(int id)
         {
-            var task = await _context.TaskRequests.FirstOrDefaultAsync(t => t.Id == id);
+            // Include the Driver navigation property
+            var task = await _context.TaskRequests
+                .Include(t => t.Driver) // Ensure driver details are loaded
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (task == null || task.DriverId != null || task.Status != "Pending")
             {
@@ -675,13 +698,46 @@ namespace MYGUYY.Controllers
                 return RedirectToAction("TaskRequestsForDriver");
             }
 
-            task.DriverId = int.Parse(User.FindFirst("UserId").Value);
+            // Assign the task to the driver and change the status
+            int driverId = int.Parse(User.FindFirst("UserId").Value);
+            task.DriverId = driverId;
             task.Status = "Accepted";
+
+            // Save changes to the database
             await _context.SaveChangesAsync();
+
+            // Reload task with driver details after saving
+            _context.Entry(task).Reference(t => t.Driver).Load();
+
+            // Get client and driver user IDs
+            int clientUserId = task.ClientId;
+            int driverUserId = task.DriverId.Value;
+
+            // Send a real-time notification using SignalR to both the client and driver
+            await _hubContext.Clients.User(clientUserId.ToString()).SendAsync("ReceiveTaskUpdate", task.Id, task.Status);
+            await _hubContext.Clients.User(driverUserId.ToString()).SendAsync("ReceiveTaskUpdate", task.Id, task.Status);
+
+            // Debugging: Ensure driver details are available
+            Console.WriteLine($"Driver ID: {task.Driver?.Id}, Name: {task.Driver?.Username}, Email: {task.Driver?.Email}");
 
             TempData["Message"] = "Task accepted.";
             return RedirectToAction("AgreementForm", new { taskId = task.Id });
         }
+
+        public IActionResult TaskDetails(int taskId)
+        {
+            var recentTask = _context.TaskRequests
+                                     .Include(t => t.Driver)  // Include the Driver details
+                                     .FirstOrDefault(t => t.Id == taskId);
+
+            if (recentTask == null)
+            {
+                return NotFound();
+            }
+
+            return View(recentTask);
+        }
+
 
         [HttpPost]
         [Authorize(Roles = "Driver")]
@@ -879,8 +935,34 @@ namespace MYGUYY.Controllers
             }
 
             TempData["SuccessMessage"] = "Trip started successfully.";
-            return RedirectToAction("DriverTasks"); // Redirect to DriverTasks page
+            return RedirectToAction("TaskRequestsForDriver"); // Redirect to DriverTasks page
         }
+     [HttpPost]
+public IActionResult StartTask(int id)
+{
+    var task = _context.TaskRequests.FirstOrDefault(t => t.Id == id);
+    if (task != null && task.Status == "Accepted")
+    {
+        task.Status = "In Progress";
+        _context.SaveChanges();
+        return RedirectToAction("Directions", "Account", new { id = task.Id }); // Redirect to Directions page
+    }
+    return BadRequest("Task not found or invalid status.");
+}
+
+[HttpPost]
+public IActionResult CompleteTask(int id)
+{
+    var task = _context.TaskRequests.FirstOrDefault(t => t.Id == id);
+    if (task != null && task.Status == "In Progress")
+    {
+        task.Status = "Completed";
+        _context.SaveChanges();
+        return RedirectToAction("TaskRequestsForDriver", "Account"); // Redirect back to the task request page
+    }
+    return BadRequest("Task not found or invalid status.");
+}
+
 
 
         // Admin Features

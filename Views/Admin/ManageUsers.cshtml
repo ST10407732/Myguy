@@ -1,1 +1,48 @@
-﻿
+﻿@model List<MYGUYY.Models.User>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<h2>Manage Users</h2>
+
+<form method="get" class="filter-form">
+    <input type="text" name="search" value="@ViewBag.Search" placeholder="Search by username or email" />
+
+    <select name="roleFilter">
+        @foreach (var role in new[] { "All", "Admin", "Client", "Driver" })
+        {
+            <option value="@role" selected="@(ViewBag.RoleFilter == role ? "selected" : null)">@role Roles</option>
+        }
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td>@user.CreatedAt</td>
+                <td>
+                    <form method="post" asp-action="DeleteUser" asp-route-id="@user.Id">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

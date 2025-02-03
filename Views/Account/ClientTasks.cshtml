@@ -14,7 +14,7 @@
         <span style="font-size: 20px;">PLEASE WAIT, WE ARE NOW SEARCHING FOR YOUR GUY.</span>
     </div>
 
-    <div class="task-details border p-3 mb-3">
+    <div class="task-details border p-3 mb-3" data-task-id="@recentTask.Id">
         <h4>Task Details:</h4>
         <table class="table table-bordered">
             <thead>
@@ -26,20 +26,113 @@
             <tbody>
                 <tr>
                     <td><strong>Description:</strong></td>
-                    <td>@recentTask.Description</td>
+                    <td id="taskDescription">@recentTask.Description</td>
                 </tr>
+
+                <!-- Language Selection -->
+                <tr>
+                    <td><strong>Translate To:</strong></td>
+                    <td>
+                        <select id="targetLanguage" class="mt-2 p-2 bg-gray-700 text-black rounded-md">
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                            <option value="es">Spanish</option>
+                            <option value="zh-CN">Chinese</option>
+                        </select>
+
+                        <!-- Translate Button -->
+                        <button type="button" onclick="translateTaskDescription()" class="px-4 py-2 bg-blue-500 text-black rounded-md">
+                            Translate
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Google Translate Script -->
+                <script>
+                    function translateTaskDescription() {
+                        var text = document.getElementById("taskDescription").innerText;
+                        var targetLang = document.getElementById("targetLanguage").value; // Get selected language
+
+                        var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" + targetLang + "&dt=t&q=" + encodeURI(text);
+
+                        fetch(url)
+                            .then(response => response.json())
+                            .then(data => {
+                                document.getElementById("taskDescription").innerText = data[0][0][0]; // Update text with translation
+                            })
+                            .catch(error => console.error("Translation Error:", error));
+                    }
+                </script>
                 <tr>
                     <td><strong>Status:</strong></td>
-                    <td><span class="text-uppercase font-weight-bold @(@recentTask.Status == "Accepted" ? "text-success" : "text-danger")">@recentTask.Status</span></td>
+                    <td>
+                        <span id="taskStatus" class="text-uppercase font-weight-bold @(@recentTask.Status == "Accepted" ? "text-success" : "text-danger")">
+                            @recentTask.Status
+                        </span>
+                        <span id="spinnerContainer"></span> <!-- Spinner will appear here -->
+                    </td>
                 </tr>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        let spinnerContainer = document.getElementById("spinnerContainer");
+
+                        function createSpinner() {
+                            let spinner = document.createElement("span");
+                            spinner.id = "spinner";
+                            spinner.style.display = "inline-block";
+                            spinner.style.width = "15px";
+                            spinner.style.height = "15px";
+                            spinner.style.border = "3px solid rgba(0, 0, 0, 0.2)";
+                            spinner.style.borderTop = "3px solid black";
+                            spinner.style.borderRadius = "50%";
+                            spinner.style.marginLeft = "10px";
+
+                            return spinner;
+                        }
+
+                        function updateSpinner() {
+                            let taskStatus = document.getElementById("taskStatus").innerText.trim();
+                            let existingSpinner = document.getElementById("spinner");
+
+                            if (taskStatus === "PENDING") { // Check uppercase "PENDING"
+                                if (!existingSpinner) {
+                                    let spinner = createSpinner();
+                                    spinnerContainer.appendChild(spinner);
+                                    animateSpinner(spinner); // Start animation
+                                }
+                            } else {
+                                if (existingSpinner) {
+                                    existingSpinner.remove();
+                                }
+                            }
+                        }
+
+                        function animateSpinner(spinner) {
+                            let angle = 0;
+                            function rotate() {
+                                if (document.getElementById("spinner")) {
+                                    angle += 10;
+                                    spinner.style.transform = `rotate(${angle}deg)`;
+                                    requestAnimationFrame(rotate);
+                                }
+                            }
+                            rotate();
+                        }
+
+                        updateSpinner(); // Run on page load
+                        setInterval(updateSpinner, 2000); // Check status every 2 seconds
+                    });
+                </script>
+
+
                 <tr>
                     <td><strong>Vehicle Type:</strong></td>
                     <td>@recentTask.VehicleType</td>
                 </tr>
                 <tr>
                     <td><strong>Cost:</strong></td>
-                    <td id="recommendedCostDisplay"
-                        data-cost="@recentTask.RecommendedCost">
+                    <td id="recommendedCostDisplay" data-cost="@recentTask.RecommendedCost">
                         R @recentTask.RecommendedCost.ToString("F2")
                     </td>
                 </tr>
@@ -61,23 +154,53 @@
                     <td><strong>Agreement Code:</strong></td>
                     <td>@recentTask.ConfirmationCode</td>
                 </tr>
+
+                @if (recentTask.Status == "Accepted" && recentTask.Driver != null)
+                {
+                    <tr>
+                        <td><strong>Driver Name:</strong></td>
+                        <td>@recentTask.Driver.Username</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Driver Email:</strong></td>
+                        <td>@recentTask.Driver.Email</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Driver Vehicle Type:</strong></td>
+                        
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 }
 
+
 @if (recentTask != null && recentTask.Status == "Accepted")
 {
     <div class="alert alert-info text-center font-weight-bold">
         TASK ACCEPTED BY DRIVER!<br />
-        Driver Details: @recentTask.Driver?.Username (@recentTask.Driver?.Email)
-        <a href="@Url.Action("TrackDriver", "Account", new { taskId = recentTask.Id })" class="btn btn-info mt-2">Track My Driver</a>
-        <a href="@Url.Action("ViewMessages", "Account", new { taskId = recentTask.Id })" class="btn btn-secondary mt-2">View Messages</a>
-    </div>
 
-    <!-- View Directions button only when task is accepted -->
-    <a asp-action="Directions" asp-route-id="@recentTask.Id" class="btn btn-primary mt-3">View Directions</a>
+        @if (recentTask.Driver != null)
+        {
+            <span>Driver Details: <strong>@recentTask.Driver.Username</strong> (@recentTask.Driver.Email)</span>
+        }
+        else
+        {
+            <span class="text-danger">Driver details unavailable.</span>
+        }
+
+        <div class="mt-2">
+         
+            <a href="@Url.Action("ViewMessages", "Account", new { taskId = recentTask.Id })" class="btn btn-secondary">View Messages</a>
+            <a href="@Url.Action("Directions", "Account", new { id = recentTask.Id })" class="btn btn-primary btn-sm">View Directions</a>
+        </div>
+
+        <!-- View Directions button -->
+        <a href="@Url.Action("Directions", "Account", new { taskId = recentTask.Id })" class="btn btn-primary mt-3">TRACK MY DRIVER</a>
+    </div>
 }
+
 
 @if (recentTask == null)
 {
@@ -148,7 +271,7 @@
 
                             @if (task.DriverId != null)
                             {
-                                <a href="@Url.Action("TrackDriver", "Account", new { taskId = task.Id })" class="btn btn-info">Track My Driver</a>
+                                <a href="@Url.Action("Directions", "Account", new { id = recentTask.Id })" class="btn btn-primary btn-sm">View Directions</a>
                             }
                             else
                             {
@@ -159,6 +282,15 @@
                         {
                             <span class="badge badge-secondary">No Action</span>
                         }
+                        @if (recentTask.Driver != null)
+                        {
+                            <p>Driver Found: @recentTask.Driver.Username</p>
+                        }
+                        else
+                        {
+                            <p>Driver details not available</p>
+                        }
+
                     </td>
                 </tr>
             }
@@ -227,6 +359,31 @@
         }
     });
 </script>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signalr/5.0.8/signalr.min.js"></script>
+    <script>
+        // Establish a connection to SignalR
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/taskHub")
+            .build();
+
+        // Listen for task updates
+        connection.on("ReceiveTaskUpdate", (taskId, status) => {
+            // Find the task row by taskId and update the status
+            const taskRow = document.querySelector(`#task-${taskId}`);
+            if (taskRow) {
+                const statusCell = taskRow.querySelector(".task-status");
+                statusCell.textContent = status;
+                statusCell.className = `task-status text-uppercase font-weight-bold ${status === "Accepted" ? "text-success" : "text-danger"}`;
+            }
+        });
+
+        // Start the SignalR connection
+        connection.start().catch(err => console.error(err.toString()));
+    </script>
+}
+
 <style>
     body {
         background-color: #f7f7f7; /* Light gray background */

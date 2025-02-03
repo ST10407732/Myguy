@@ -1,4 +1,4 @@
-﻿@using MYGUYY.Models
+﻿@* @using MYGUYY.Models
 @{
     ViewData["Title"] = "Manage Tasks";
 }
@@ -21,31 +21,41 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var task in ViewBag.Tasks as List<TaskRequest>)
+        @if (ViewBag.Tasks != null && ViewBag.Tasks is List<TaskRequest> tasks)
+        {
+            foreach (var task in tasks)
+            {
+                <tr>
+                    <td>@task.Id</td>
+                    <td>@task.Description</td>
+                    <td>@task.Client?.Username</td>
+                    <td>@task.Driver?.Username</td>
+                    <td>@task.Status</td>
+                    <td>@task.VehicleType</td>
+                    <td>@task.Cost</td>
+                    <td>
+                        <!-- Delete Task Button -->
+                        <form method="post" asp-action="DeleteTask" asp-route-id="@task.Id" class="d-inline">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+
+                        <!-- Mark as Completed Button -->
+                        @if (task.Status != "Completed")
+                        {
+                            <form method="post" asp-action="UpdateTaskStatus" asp-route-id="@task.Id" asp-route-status="Completed" class="d-inline">
+                                <button type="submit" class="btn btn-primary">Mark as Completed</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@task.Id</td>
-                <td>@task.Description</td>
-                <td>@task.Client?.Username</td>
-                <td>@task.Driver?.Username</td>
-                <td>@task.Status</td>
-                <td>@task.VehicleType</td>
-                <td>@task.Cost</td>
-                <td>
-                    <!-- Delete Task Button -->
-                    <form method="post" asp-action="DeleteTask" asp-route-id="@task.Id" class="d-inline">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-
-                    <!-- Mark as Completed Button -->
-                    @if (task.Status != "Completed")
-                    {
-                        <form method="post" asp-action="UpdateTaskStatus" asp-route-id="@task.Id" asp-route-status="Completed" class="d-inline">
-                            <button type="submit" class="btn btn-primary">Mark as Completed</button>
-                        </form>
-                    }
-                </td>
+                <td colspan="8">No tasks available.</td>
             </tr>
         }
     </tbody>
 </table>
+ *@

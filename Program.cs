@@ -1,44 +1,43 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using MYGUYY.Data; // Adjust based on your project namespace
-using MYGUYY.Hubs; // Include the namespace for your SignalR hubs
+using MYGUYY.Data;
+using MYGUYY.Hubs;
 using MYGUYY.Models;
-using MYGUYY.Services; // Include EmailService namespace
+using MYGUYY.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Load Configuration
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddEnvironmentVariables();
+
+// Register Services
 builder.Services.AddScoped<EmailService>();
-builder.Services.AddScoped<Notification>(); // Add the NotificationService to handle storing and sending notifications
+builder.Services.AddScoped<Notification>();
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+builder.Services.AddSignalR();
 
-// Configure services BEFORE calling Build()
-builder.Services.AddControllersWithViews(); // MVC
-builder.Services.AddRazorPages(); // Razor Pages
-builder.Services.AddSignalR(); // Add SignalR services
-
-// Configure the database connection
+// Configure Database (Only Once)
 var connectionString = builder.Configuration.GetConnectionString("MYGUYYYS");
 builder.Services.AddDbContext<MYGUYYContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Add authentication and authorization services
+// Authentication & Authorization
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Account/Login"; // Path to the login page
-        options.LogoutPath = "/Account/Logout"; // Path to the logout page
-        options.AccessDeniedPath = "/Account/AccessDenied"; // Path to the access denied page
+        options.LoginPath = "/Account/Login";
+        options.LogoutPath = "/Account/Logout";
+        options.AccessDeniedPath = "/Account/AccessDenied";
     });
+builder.Services.AddAuthorization();
 
-builder.Services.AddAuthorization(); // Add authorization services
-
-// Register the EmailService for email-related functionality
-builder.Services.AddScoped<EmailService>();
-
-// Register NotificationService for handling notifications
-builder.Services.AddScoped<Notification>();
-
-// Configure email settings (from appsettings.json)
+// Configure Email Settings
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
+// CORS Policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -47,37 +46,37 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// Middleware
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error"); // Redirect to error page in production
-    app.UseHsts(); // Enable HTTP Strict Transport Security (HSTS)
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
 
-app.UseHttpsRedirection(); // Redirect HTTP to HTTPS
-app.UseStaticFiles(); // Serve static files (wwwroot)
-
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
-
-// Authentication and Authorization middleware
 app.UseAuthentication();
 app.UseAuthorization();
-
-// Enable CORS
 app.UseCors("AllowAll");
 
-// Map SignalR hubs for real-time communication
-app.MapHub<MessageHub>("/messageHub"); // Chat/MessageHub
-app.MapHub<LocationHub>("/locationHub"); // Location tracking (if used)
-app.MapHub<NotificationHub>("/notificationHub"); // Notifications
+// Map SignalR Hubs
+app.MapHub<MessageHub>("/messageHub");
+app.MapHub<LocationHub>("/locationHub");
+app.MapHub<NotificationHub>("/notificationHub");
+app.MapHub<TaskHub>("/taskHub");
 
-// Map default route for controllers
+// Routing
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Map Razor Pages
+app.MapControllerRoute(
+    name: "admin",
+    pattern: "admin/dashboard",
+    defaults: new { controller = "Admin", action = "Dashboard" });
+
 app.MapRazorPages();
 
-// Run the application
+// Run App
 app.Run();

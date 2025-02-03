@@ -52,6 +52,8 @@ namespace MYGUYY.Models
         public User? Client { get; set; } // Navigation property to Client (User)
         public User? Driver { get; set; } // Navigation property to Driver (User)
         public ICollection<Stop> Stops { get; set; } = new List<Stop>(); // Collection of stops
+        public string Category { get; set; }  // For categorizing templates like "Grocery", "Delivery", etc.
+        public string TemplateText { get; set; }  // The actual template text
 
         public double Cost { get; set; } // Total cost (driver + company share)
         public string VehicleType { get; set; } // Type of vehicle for the task

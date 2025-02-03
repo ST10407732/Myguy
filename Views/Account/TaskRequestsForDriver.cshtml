@@ -13,7 +13,7 @@
         New task available. Please review and take action.
     </div>
 
-    <div class="task-details border p-3 mb-3">
+    <div class="task-details border p-3 mb-3" data-task-id="@recentTask.Id">
         <h4>Task Details:</h4>
         <table class="table table-bordered">
             <thead>
@@ -25,8 +25,44 @@
             <tbody>
                 <tr>
                     <td><strong>Description:</strong></td>
-                    <td>@recentTask.Description</td>
+                    <td id="taskDescription">@recentTask.Description</td>
                 </tr>
+
+                <!-- Language Selection -->
+                <tr>
+                    <td><strong>Translate To:</strong></td>
+                    <td>
+                        <select id="targetLanguage" class="mt-2 p-2 bg-gray-700 text-black rounded-md">
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                            <option value="es">Spanish</option>
+                            <option value="zh-CN">Chinese</option>
+                        </select>
+
+                        <!-- Translate Button -->
+                        <button type="button" onclick="translateTaskDescription()" class="px-4 py-2 bg-blue-500 text-black rounded-md">
+                            Translate
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Google Translate Script -->
+                <script>
+                    function translateTaskDescription() {
+                        var text = document.getElementById("taskDescription").innerText;
+                        var targetLang = document.getElementById("targetLanguage").value; // Get selected language
+
+                        var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" + targetLang + "&dt=t&q=" + encodeURI(text);
+
+                        fetch(url)
+                            .then(response => response.json())
+                            .then(data => {
+                                document.getElementById("taskDescription").innerText = data[0][0][0]; // Update text with translation
+                            })
+                            .catch(error => console.error("Translation Error:", error));
+                    }
+                </script>
+
                 <tr>
                     <td><strong>Status:</strong></td>
                     <td><span class="text-uppercase font-weight-bold @(@recentTask.Status == "Accepted" ? "text-success" : "text-danger")">@recentTask.Status</span></td>
@@ -55,30 +91,47 @@
                     <td><strong>Client Details:</strong></td>
                     <td>@recentTask.Client?.Username (@recentTask.Client?.Email)</td>
                 </tr>
-                <tr>
-                    <td><strong>Agreement Code:</strong></td>
-                    <td>@recentTask.ConfirmationCode</td>
-                </tr>
+              
             </tbody>
         </table>
-
+        
+       
         <div class="btn-group">
             @if (recentTask.Status == "Pending")
             {
-                <form method="post" action="@Url.Action("AcceptTask", new { id = recentTask.Id })">
+                <form method="post" asp-action="AcceptTask">
+                    <input type="hidden" name="id" value="@recentTask.Id" />
                     <button type="submit" class="btn btn-success btn-sm">Accept Task</button>
                 </form>
-                <form method="post" action="@Url.Action("DeclineTask", new { id = recentTask.Id })">
+                <form method="post" asp-action="DeclineTask">
+                    <input type="hidden" name="id" value="@recentTask.Id" />
                     <button type="submit" class="btn btn-danger btn-sm">Decline Task</button>
                 </form>
             }
             else if (recentTask.Status == "Accepted")
             {
-                <span class="badge badge-success">Task Accepted</span>
+                <form method="post" asp-action="StartTask">
+                    <input type="hidden" name="id" value="@recentTask.Id" />
+                    <button type="submit" class="btn btn-warning btn-sm">Start Task</button>
+                </form>
             }
+            else if (recentTask.Status == "In Progress")
+            {
+                <form method="post" asp-action="CompleteTask">
+                    <input type="hidden" name="id" value="@recentTask.Id" />
+                    <button type="submit" class="btn btn-primary btn-sm">Complete Task</button>
+                </form>
+            }
+            else if (recentTask.Status == "Completed")
+            {
+                <span class="badge badge-success">Task Completed</span>
+            }
+
             <a href="@Url.Action("ViewMessagesForDriver", "Account", new { taskId = recentTask.Id })" class="btn btn-info btn-sm">View Messages</a>
             <a href="@Url.Action("Directions", "Account", new { id = recentTask.Id })" class="btn btn-primary btn-sm">View Directions</a>
         </div>
+
+
     </div>
 }
 
@@ -118,7 +171,7 @@
                     <td><span class="pickup-location" data-lat="@task.PickupLatitude" data-lng="@task.PickupLongitude">Loading...</span></td>
                     <td><span class="dropoff-location" data-lat="@task.DropoffLatitude" data-lng="@task.DropoffLongitude">Loading...</span></td>
                     <td>@task.CreatedAt.ToString("MM/dd/yyyy HH:mm")</td>
-                    <td>@task.ConfirmationCode</td>
+                   
                     <td>
                         @if (task.Status == "Pending")
                         {
@@ -194,6 +247,30 @@
 
   
 </script>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signalr/5.0.8/signalr.min.js"></script>
+    <script>
+        // Establish a connection to SignalR
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/taskHub")
+            .build();
+
+        // Listen for task updates
+        connection.on("ReceiveTaskUpdate", (taskId, status) => {
+            // Find the task row by taskId and update the status
+            const taskRow = document.querySelector(`#task-${taskId}`);
+            if (taskRow) {
+                const statusCell = taskRow.querySelector(".task-status");
+                statusCell.textContent = status;
+                statusCell.className = `task-status text-uppercase font-weight-bold ${status === "Accepted" ? "text-success" : "text-danger"}`;
+            }
+        });
+
+        // Start the SignalR connection
+        connection.start().catch(err => console.error(err.toString()));
+    </script>
+}
+
 <style>
     body {
         background-color: #f7f7f7; /* Light gray background */

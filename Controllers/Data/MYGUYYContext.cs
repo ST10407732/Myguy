@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MYGUYY.Models;
-using Microsoft.AspNetCore.SignalR;
-using System.Threading.Tasks;
 
 namespace MYGUYY.Data
 {
@@ -14,8 +12,10 @@ namespace MYGUYY.Data
         public DbSet<User> Users { get; set; }
         public DbSet<TaskRequest> TaskRequests { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<Stop> Stops { get; set; }  // Added Stop DbSet
-        public DbSet<DriverProfile> DriverProfiles { get; set; }
+        public DbSet<Stop> Stops { get; set; }
+        //public DbSet<DriverProfile> DriverProfiles { get; set; }
+        public DbSet<TransactionModel> Transactions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configure User entity
@@ -37,19 +37,7 @@ namespace MYGUYY.Data
 
             // Configure TaskRequest entity
             modelBuilder.Entity<TaskRequest>()
-                .HasKey(tr => tr.Id); // Primary Key
-            modelBuilder.Entity<DriverProfile>()
-        .HasKey(dp => dp.Id);
-
-            //modelBuilder.Entity<DriverProfile>()
-            //    .HasOne(dp => dp.User)
-            //    .WithOne()
-            //    .HasForeignKey<DriverProfile>(dp => dp.UserId)
-            //    .OnDelete(DeleteBehavior.Cascade); // Deleting a
-            //modelBuilder.Entity<TaskRequest>()
-            //    .Property(tr => tr.Description)
-            //    .IsRequired()
-            //    .HasMaxLength(500);
+                .HasKey(tr => tr.Id);
 
             modelBuilder.Entity<TaskRequest>()
                 .Property(tr => tr.Status)
@@ -74,26 +62,36 @@ namespace MYGUYY.Data
 
             // Configure Message entity
             modelBuilder.Entity<Message>()
-                .HasKey(m => m.Id); // Primary Key
+                .HasKey(m => m.Id);
 
             modelBuilder.Entity<Message>()
                 .Property(m => m.Content)
                 .IsRequired()
-                .HasMaxLength(1000); // Adjust length as needed
+                .HasMaxLength(1000);
 
             modelBuilder.Entity<Message>()
                 .Property(m => m.SentAt)
-                .HasDefaultValueSql("GETDATE()"); // Default to current date/time
+                .HasDefaultValueSql("GETDATE()");
 
             modelBuilder.Entity<Message>()
                 .HasOne(m => m.TaskRequest)
                 .WithMany() // A task can have multiple messages
                 .HasForeignKey(m => m.TaskRequestId)
-                .OnDelete(DeleteBehavior.Restrict); // Prevent deletion if related
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // Configure Stop entity (new addition)
+            //// Configure DriverProfile entity
+            //modelBuilder.Entity<DriverProfile>()
+            //    .HasKey(dp => dp.Id);
+
+            //modelBuilder.Entity<DriverProfile>()
+            //    .HasOne(dp => dp.User)
+            //    .WithOne()
+            //    .HasForeignKey<DriverProfile>(dp => dp.UserId)
+            //    .OnDelete(DeleteBehavior.Cascade); // If a user is deleted, their profile is deleted
+
+            // Configure Stop entity (for multi-stop routes)
             modelBuilder.Entity<Stop>()
-                .HasKey(s => s.Id); // Primary Key
+                .HasKey(s => s.Id);
 
             modelBuilder.Entity<Stop>()
                 .Property(s => s.Latitude)
@@ -109,9 +107,9 @@ namespace MYGUYY.Data
 
             modelBuilder.Entity<Stop>()
                 .HasOne(s => s.TaskRequest)
-                .WithMany(tr => tr.Stops) // A TaskRequest can have multiple Stops
+                .WithMany(tr => tr.Stops)
                 .HasForeignKey(s => s.TaskRequestId)
-                .OnDelete(DeleteBehavior.Cascade); // Cascade delete behavior for stops if TaskRequest is deleted
+                .OnDelete(DeleteBehavior.Cascade); // Stops are deleted if TaskRequest is deleted
         }
     }
 }

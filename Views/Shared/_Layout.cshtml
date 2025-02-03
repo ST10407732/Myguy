@@ -158,7 +158,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MYGUYY</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HOMEPAGE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" onclick="toggleNavbar()">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -173,7 +173,13 @@
                         {
                             case "Admin":
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Admin" asp-action="ManageTasks">Admin Dashboard</a>
+                                    <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Admin" asp-action="ManageTasks">MANAGE TASKS</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Admin" asp-action="ManageUsers">Admin Dashboard</a>
+                                </li>
                                 </li>
                                 break;
                             case "Driver":
@@ -196,11 +202,7 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="AgreementForm">AgreementForm</a>
-                        </li>
-                        <li><a asp-controller="DriverProfile" asp-action="Create">Driver Profile</a></li>
-                        <li><a asp-controller="Account" asp-action="Register">Register a new account</a></li>
+                       
                     }
                     else
                     {
@@ -212,6 +214,12 @@
             </div>
         </div>
     </nav>
+    <!-- _Layout.cshtml -->
+    
+        <!-- Your body content here -->
+        <!-- Render the Scripts section if it's defined -->
+      @RenderSection("Scripts", false)
+   
 
     <!-- Page Content -->
     <div class="container mt-4">
@@ -230,11 +238,7 @@
         // Function to toggle the navbar on smaller screens
         function toggleNavbar() {
             const navbar = document.getElementById('navbarNav');
-            if (navbar.classList.contains('collapse')) {
-                navbar.classList.remove('collapse');
-            } else {
-                navbar.classList.add('collapse');
-            }
+            navbar.classList.toggle('collapse');  // Toggle the 'collapse' class
         }
 
         // Dynamic styling based on screen width
@@ -242,14 +246,20 @@
             const screenWidth = window.innerWidth;
 
             // Adjust navbar padding and font sizes based on screen width
+            const navbar = document.querySelector('nav.navbar');
+            const navbarBrand = document.querySelector('nav.navbar .navbar-brand');
+            const navLinks = document.querySelectorAll('nav.navbar .nav-link');
+
             if (screenWidth <= 768) {
-                document.querySelector('nav.navbar').style.padding = '1rem 0.5rem';  // Smaller padding on mobile
-                document.querySelector('nav.navbar .navbar-brand').style.fontSize = '1.2rem'; // Smaller brand font size on mobile
-                document.querySelector('nav.navbar .nav-link').style.fontSize = '1rem'; // Smaller link font size on mobile
+                // Smaller padding and font sizes for mobile
+                navbar.style.padding = '1rem 0.5rem';
+                navbarBrand.style.fontSize = '1.2rem';
+                navLinks.forEach(link => link.style.fontSize = '1rem');
             } else {
-                document.querySelector('nav.navbar').style.padding = '0.8rem 1rem';  // Larger padding on larger screens
-                document.querySelector('nav.navbar .navbar-brand').style.fontSize = '1.5rem'; // Larger brand font size
-                document.querySelector('nav.navbar .nav-link').style.fontSize = '1.1rem'; // Larger link font size
+                // Larger padding and font sizes for larger screens
+                navbar.style.padding = '0.8rem 1rem';
+                navbarBrand.style.fontSize = '1.5rem';
+                navLinks.forEach(link => link.style.fontSize = '1.1rem');
             }
 
             // Adjust form inputs for better readability on mobile devices
@@ -259,7 +269,7 @@
                 input.style.fontSize = screenWidth <= 768 ? '1.2rem' : '1rem';  // Larger input text for mobile
             });
 
-            // Adjust button size
+            // Adjust button size for mobile screens
             const buttons = document.querySelectorAll('.btn');
             buttons.forEach(btn => {
                 btn.style.padding = screenWidth <= 768 ? '0.8rem 1.2rem' : '1rem 1.5rem'; // Larger button padding for mobile
@@ -271,6 +281,7 @@
         window.onload = adjustLayout;
         window.onresize = adjustLayout;
     </script>
+
 
 </body>
 
